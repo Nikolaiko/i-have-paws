@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
 
     id("com.android.library")
-    
+    id("io.realm.kotlin")
 }
 
 kotlin {
@@ -19,14 +19,24 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+                implementation("io.realm.kotlin:library-base:0.9.0")
+                implementation("io.insert-koin:koin-core:3.2.0-beta-1")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))

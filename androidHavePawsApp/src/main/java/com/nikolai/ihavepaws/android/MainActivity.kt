@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nikolai.ihavepaws.Greeting
 import android.widget.TextView
+import com.nikolai.ihavepaws.localStorage.realm.RealmStorage
 
 fun greet(): String {
     return Greeting().greeting()
@@ -16,5 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         val tv: TextView = findViewById(R.id.text_view)
         tv.text = greet()
+
+        val st = RealmStorage()
+        println("AHA : ${st.getAllGroups()}")
     }
 }
