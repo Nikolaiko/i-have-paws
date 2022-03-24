@@ -19,12 +19,13 @@ struct GroupsTab: View {
                 }
                 
                 Spacer()
-                TabBottomButton(
-                    title: "Добавить группу",
-                    callback: { navigation.push(AddGroupView()) }
+                PurpleButton(
+                    buttonTitle: "Добавить группу",
+                    buttonCallback: { navigation.push(AddGroupView()) },
+                    buttonWidth: .infinity,
+                    buttonHeight: 50.0
                 )
-                .frame(maxWidth: .infinity, maxHeight: 100.0)
-                
+                .padding(.horizontal, 16.0)
             }
             .onAppear {
                 presenter.refreshGroupsList()

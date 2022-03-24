@@ -13,11 +13,17 @@ struct AddGroupView: View {
                 .padding(.vertical, 20)
                 .foregroundColor(Color.black)
                 .cornerRadius(20)
-            Button {
-                
-            } label: {
-                Text("Добавить")                    
-            }
+            PurpleButton(
+                buttonTitle: "Добавить",
+                buttonCallback: {  },                
+                buttonHeight: 50.0
+            )
+            .disabled(!presenter.addButtonEnabled)
+            PurpleButton(
+                buttonTitle: "Назад",
+                buttonCallback: { navigation.pop() },
+                buttonHeight: 50.0
+            )
             .disabled(!presenter.addButtonEnabled)
             Spacer()
             

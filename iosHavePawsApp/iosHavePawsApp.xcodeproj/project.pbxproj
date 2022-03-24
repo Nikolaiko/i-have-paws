@@ -12,11 +12,15 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		911DD90527E60064001F7F18 /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90427E60064001F7F18 /* GroupElement.swift */; };
-		911DD90927E62E34001F7F18 /* TabBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90827E62E34001F7F18 /* TabBottomButton.swift */; };
+		911DD90927E62E34001F7F18 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90827E62E34001F7F18 /* PurpleButton.swift */; };
+		915368D827EB9D37008C2A03 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915368D727EB9D37008C2A03 /* TypeAliases.swift */; };
 		9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E427D519AC00FD2277 /* GroupsTab.swift */; };
 		9185A2E827D519D500FD2277 /* SwiftDevPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 9185A2E727D519D500FD2277 /* SwiftDevPackage */; };
 		9185A2EA27D51B6B00FD2277 /* GroupScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E927D51B6B00FD2277 /* GroupScreenPresenter.swift */; };
 		9185A2EE27D5DF5A00FD2277 /* FlowObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */; };
+		918B98BB27E981D900222FCB /* PurpleButton+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B98BA27E981D900222FCB /* PurpleButton+Shape.swift */; };
+		918B98BE27E9822900222FCB /* RoundedShapeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B98BD27E9822900222FCB /* RoundedShapeModifier.swift */; };
+		918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B98BF27E98A2D00222FCB /* CallbackTypes.swift */; };
 		91A5AFF027E8B3BE00DA611B /* AddGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5AFEF27E8B3BE00DA611B /* AddGroupPresenter.swift */; };
 		91A8193A27DA06F900990954 /* TabTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A8193927DA06F900990954 /* TabTitle.swift */; };
 		91A8193C27DA078600990954 /* TabTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A8193B27DA078600990954 /* TabTitleText.swift */; };
@@ -49,10 +53,14 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		911DD90427E60064001F7F18 /* GroupElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
-		911DD90827E62E34001F7F18 /* TabBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBottomButton.swift; sourceTree = "<group>"; };
+		911DD90827E62E34001F7F18 /* PurpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		915368D727EB9D37008C2A03 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		9185A2E427D519AC00FD2277 /* GroupsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTab.swift; sourceTree = "<group>"; };
 		9185A2E927D51B6B00FD2277 /* GroupScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenPresenter.swift; sourceTree = "<group>"; };
 		9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowObserver.swift; sourceTree = "<group>"; };
+		918B98BA27E981D900222FCB /* PurpleButton+Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PurpleButton+Shape.swift"; sourceTree = "<group>"; };
+		918B98BD27E9822900222FCB /* RoundedShapeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeModifier.swift; sourceTree = "<group>"; };
+		918B98BF27E98A2D00222FCB /* CallbackTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackTypes.swift; sourceTree = "<group>"; };
 		91A5AFEF27E8B3BE00DA611B /* AddGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPresenter.swift; sourceTree = "<group>"; };
 		91A8193927DA06F900990954 /* TabTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitle.swift; sourceTree = "<group>"; };
 		91A8193B27DA078600990954 /* TabTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitleText.swift; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 		7555FF7D242A565900829871 /* iosHavePawsApp */ = {
 			isa = PBXGroup;
 			children = (
+				915368D627EB9D21008C2A03 /* Model */,
+				918B98B827E981B300222FCB /* Extensions */,
 				91D4CF2127E781DF00362F9B /* AddGroupScreen */,
 				91A8193D27DA08C700990954 /* SupportingFiles */,
 				91A8193827DA06E100990954 /* CommonUI */,
@@ -115,6 +125,7 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				918B98BF27E98A2D00222FCB /* CallbackTypes.swift */,
 			);
 			path = iosHavePawsApp;
 			sourceTree = "<group>";
@@ -138,9 +149,17 @@
 		911DD90727E62E15001F7F18 /* TabBottomButton */ = {
 			isa = PBXGroup;
 			children = (
-				911DD90827E62E34001F7F18 /* TabBottomButton.swift */,
+				911DD90827E62E34001F7F18 /* PurpleButton.swift */,
 			);
 			path = TabBottomButton;
+			sourceTree = "<group>";
+		};
+		915368D627EB9D21008C2A03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				915368D727EB9D37008C2A03 /* TypeAliases.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9185A2E127D5196800FD2277 /* GroupsTab */ = {
@@ -185,6 +204,30 @@
 			path = Multiplatform;
 			sourceTree = "<group>";
 		};
+		918B98B827E981B300222FCB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				918B98B927E981C500222FCB /* UI */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		918B98B927E981C500222FCB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				918B98BA27E981D900222FCB /* PurpleButton+Shape.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		918B98BC27E9820A00222FCB /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				918B98BD27E9822900222FCB /* RoundedShapeModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		91A5AFEE27E8B3AE00DA611B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +239,7 @@
 		91A8193827DA06E100990954 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				918B98BC27E9820A00222FCB /* Modifiers */,
 				911DD90727E62E15001F7F18 /* TabBottomButton */,
 				911DD90627E62E08001F7F18 /* TabTitle */,
 			);
@@ -355,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918B98BE27E9822900222FCB /* RoundedShapeModifier.swift in Sources */,
 				91BCFB6D27D9AB880008838E /* MainScreen.swift in Sources */,
 				9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */,
 				91A8193A27DA06F900990954 /* TabTitle.swift in Sources */,
@@ -363,12 +408,15 @@
 				9185A2EA27D51B6B00FD2277 /* GroupScreenPresenter.swift in Sources */,
 				91A5AFF027E8B3BE00DA611B /* AddGroupPresenter.swift in Sources */,
 				91A8194427DA0B3200990954 /* Fonts.swift in Sources */,
+				918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */,
 				9185A2EE27D5DF5A00FD2277 /* FlowObserver.swift in Sources */,
-				911DD90927E62E34001F7F18 /* TabBottomButton.swift in Sources */,
+				911DD90927E62E34001F7F18 /* PurpleButton.swift in Sources */,
+				915368D827EB9D37008C2A03 /* TypeAliases.swift in Sources */,
 				91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */,
 				911DD90527E60064001F7F18 /* GroupElement.swift in Sources */,
 				91A8193C27DA078600990954 /* TabTitleText.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				918B98BB27E981D900222FCB /* PurpleButton+Shape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

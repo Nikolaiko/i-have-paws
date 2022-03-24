@@ -12,25 +12,31 @@ import com.nikolai.ihavepaws.model.storage.StorageState
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.query
+import kotlinx.coroutines.*
 
 class RealmStorage : LocalStorage {
+    private val job = Job()
+    private val scope = CoroutineScope(Dispatchers.Main + job)
+
     private var realm: Realm? = null
 
     override val state: StorageState
         get() = _state
 
-    private var _state: StorageState = StorageState.NotInitialized()
+    private var _state: StorageState = StorageState.NotInitialized
 
     init {
         val config = RealmConfiguration.Builder(
             schema = setOf(RealmGroup::class, RealmGroupItem::class)
         ).build()
 
-        try {
-            realm = Realm.open(config)
-            _state = StorageState.Ready()
-        } catch (wrongConfig: IllegalArgumentException) {
-            _state = StorageState.FailedWithError()
+        scope.launch {
+            try {
+                realm = Realm.open(config)
+                _state = StorageState.Ready
+            } catch (wrongConfig: IllegalArgumentException) {
+                _state = StorageState.FailedWithError
+            }
         }
     }
 
@@ -62,7 +68,7 @@ class RealmStorage : LocalStorage {
         item: GroupItem
     ): Result<GroupItem> {
         val result = realm!!.query<RealmGroup>("id = $0", groupId).find()
-        return when(result.isEmpty()) {
+        return when(result.isNotEmpty()) {
             true -> Result.failure(LocalStorageException.ObjectAlreadyExists)
             false -> {
                 realm!!.writeBlocking {

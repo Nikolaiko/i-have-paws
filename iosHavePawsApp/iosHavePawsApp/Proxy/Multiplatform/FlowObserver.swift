@@ -10,7 +10,10 @@ class FlowObserver: FlowCollector {
         self.callback = callback
     }
         
-    func emit(value: Any?, completionHandler: @escaping (KotlinUnit?, Error?) -> Void) {
+    func emit(
+        value: Any?,
+        completionHandler: @escaping FlowCompleteCallback = { _, _ in   }
+    ) {
         callback(value)
         completionHandler(KotlinUnit(), nil)
     }

@@ -7,7 +7,7 @@ import com.nikolai.ihavepaws.model.consts.readyDescription
 sealed class StorageState(
     val description: String
 ) {
-    class NotInitialized : StorageState(notInitializedDescription)
-    class Ready : StorageState(readyDescription)
-    class FailedWithError : StorageState(errorDescription)
+    object NotInitialized : StorageState(notInitializedDescription)
+    object Ready : StorageState(readyDescription)
+    object FailedWithError : StorageState(errorDescription)
 }

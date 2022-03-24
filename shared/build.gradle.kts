@@ -3,7 +3,19 @@ plugins {
 
     id("com.android.library")
     id("io.realm.kotlin")
+    id("com.squareup.sqldelight")
 }
+
+sqldelight {
+    database("GroupsDatabase") {
+        packageName = "com.nikolai"
+        sourceFolders = listOf("database")
+        schemaOutputDirectory = file("build/dbs")
+        verifyMigrations = true
+    }
+    linkSqlite = true
+}
+
 
 kotlin {
     android()
@@ -24,6 +36,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
                 implementation("io.realm.kotlin:library-base:0.9.0")
                 implementation("io.insert-koin:koin-core:3.2.0-beta-1")
+                implementation("com.squareup.sqldelight:runtime:1.5.3")
             }
         }
         val commonTest by getting {
@@ -35,6 +48,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+                implementation("com.squareup.sqldelight:android-driver:1.5.3")
             }
         }
         val androidTest by getting {
@@ -47,6 +61,10 @@ kotlin {
         val iosArm64Main by getting
         //val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation("com.squareup.sqldelight:native-driver:1.5.3")
+            }
+
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)

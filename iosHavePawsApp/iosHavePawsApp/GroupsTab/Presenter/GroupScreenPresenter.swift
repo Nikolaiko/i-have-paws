@@ -2,7 +2,7 @@ import Foundation
 import shared
 
 class GroupScreenPresenter: ObservableObject {
-    private let reducer = GroupsScreenReducer()
+    private let reducer = GroupsScreenReducer(SQLDelightStorage(factory: DatabaseDriverFactory()))
     private lazy var stateHandler: FlowObserver = {
         let handler = FlowObserver(callback: stateUpdate)
         return handler
@@ -27,11 +27,6 @@ class GroupScreenPresenter: ObservableObject {
     
     func refreshGroupsList() {
         reducer.refreshGroupsList()
-    }
-    
-    func addGroup() {
-        let gr = Group(id: UUID().uuidString, name: "My Test", items: [])
-        reducer.addGroup(newGroup: gr)
     }
     
     private func stateUpdate(newState: Any?) {
