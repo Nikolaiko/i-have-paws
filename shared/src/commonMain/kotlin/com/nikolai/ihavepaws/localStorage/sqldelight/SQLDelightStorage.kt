@@ -22,8 +22,8 @@ class SQLDelightStorage constructor(
     }
 
     override fun addNewGroup(newGroup: Group): Result<Group> {
-        val result = queries.selectGroupById(newGroup.id).executeAsOneOrNull()
-        return when(result == null) {
+        val result = queries.selectGroupByName(newGroup.name).executeAsList()
+        return when(result.isEmpty()) {
             false -> Result.failure(LocalStorageException.ObjectAlreadyExists)
             true -> {
                 queries.addGroup(newGroup.id, newGroup.name)

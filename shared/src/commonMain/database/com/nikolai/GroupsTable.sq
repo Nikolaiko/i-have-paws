@@ -16,5 +16,9 @@ selectGroupById:
 SELECT * FROM GroupsTable
 WHERE id = ?;
 
+selectGroupByName:
+SELECT * FROM GroupsTable
+WHERE name = ?;
+
 selectAllGroups:
 SELECT * FROM GroupsTable;

@@ -15,7 +15,7 @@ struct AddGroupView: View {
                 .cornerRadius(20)
             PurpleButton(
                 buttonTitle: "Добавить",
-                buttonCallback: {  },                
+                buttonCallback: presenter.addGroup,
                 buttonHeight: 50.0
             )
             .disabled(!presenter.addButtonEnabled)

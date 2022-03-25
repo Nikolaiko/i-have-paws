@@ -2,49 +2,34 @@ package com.nikolai.ihavepaws.groupsScreen.reducer
 
 import com.nikolai.ihavepaws.groupsScreen.contract.GroupsScreen
 import com.nikolai.ihavepaws.localStorage.LocalStorage
-import com.nikolai.ihavepaws.localStorage.realm.RealmStorage
-import com.nikolai.ihavepaws.model.Group
-import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.StateMessage
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class GroupsScreenReducer constructor (
     private val storage: LocalStorage
 ): GroupsScreen.Reducer {
     private var currentState = GroupsScreen.State()
-    private var scope: CoroutineScope? = null
 
     override val state = MutableStateFlow(currentState)
     override val messages = MutableSharedFlow<StateMessage>()
 
     private val job = Job()
-
-    init {
-        scope = CoroutineScope(Dispatchers.Main + job)
-        scope?.launch {
-
-        }
-    }
+    private var scope = CoroutineScope(Dispatchers.Main + job)
 
     override fun refreshGroupsList() {
-        scope?.launch {
-            val groups = storage!!.getAllGroups()
-            currentState = currentState.copy(groups = groups)
-            emitState()
+        val groups = storage.getAllGroups()
+        currentState = currentState.copy(groups = groups)
+        emitState()
+    }
+
+    private fun emitState() {
+        scope.launch {
+            state.emit(currentState)
         }
-    }
-
-    private suspend fun emitErrorMessage(message: String) {
-        messages.emit(StateMessage.ErrorMessage(message))
-    }
-
-    private suspend fun emitInfoMessage(message: String) {
-        messages.emit(StateMessage.InfoMessage(message))
-    }
-
-    private suspend fun emitState() {
-        state.emit(currentState)
     }
 }

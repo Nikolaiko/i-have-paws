@@ -1,10 +1,8 @@
 package com.nikolai.ihavepaws.localStorage
 
-import com.nikolai.ihavepaws.localStorage.realm.model.RealmGroup
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.storage.StorageState
-import kotlinx.coroutines.flow.Flow
 
 interface LocalStorage {
     val state: StorageState

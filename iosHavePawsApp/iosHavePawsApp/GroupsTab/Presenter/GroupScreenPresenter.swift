@@ -1,8 +1,10 @@
 import Foundation
+import Resolver
 import shared
 
 class GroupScreenPresenter: ObservableObject {
-    private let reducer = GroupsScreenReducer(SQLDelightStorage(factory: DatabaseDriverFactory()))
+    @Injected private var reducer: GroupsScreenReducer
+    
     private lazy var stateHandler: FlowObserver = {
         let handler = FlowObserver(callback: stateUpdate)
         return handler
