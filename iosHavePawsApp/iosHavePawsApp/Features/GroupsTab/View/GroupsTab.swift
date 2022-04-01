@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftDevPackage
 
 struct GroupsTab: View {
-    @ObservedObject private var presenter = GroupScreenPresenter()
+    @ObservedObject private var presenter = GroupsScreenPresenter()
     @EnvironmentObject private var navigation: NavigationControllerViewModel
     
     var body: some View {
@@ -13,6 +13,9 @@ struct GroupsTab: View {
                     ForEach(presenter.groupsList, id: \.self) { group in
                         GroupElement(groupItem: group)
                             .frame(maxWidth: .infinity, maxHeight: 84.0)
+                            .onTapGesture {
+                                self.presenter.openGroupScreen(item: group)
+                            }
                     }
                     .listRowBackground(transparentColor)
                     .listRowInsets(EdgeInsets())
@@ -32,11 +35,5 @@ struct GroupsTab: View {
             }
         }
         .background(mainBackgroundColor)
-    }
-}
-
-struct GroupsScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupsTab()
     }
 }

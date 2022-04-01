@@ -9,9 +9,3 @@ struct TabTitleText: View {
             .foregroundColor(tabTitleTextColor)
     }
 }
-
-struct TabTitleText_Previews: PreviewProvider {
-    static var previews: some View {
-        TabTitleText(text: "Groups")
-    }
-}

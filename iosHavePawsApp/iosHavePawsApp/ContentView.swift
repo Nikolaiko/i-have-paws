@@ -1,16 +1,16 @@
 import SwiftUI
 import SwiftDevPackage
+import Resolver
 
 struct ContentView: View {
-	var body: some View {
-        NavigationControllerView(transition: .custom(.slide, .slide)) {
+    
+    var body: some View {
+        NavigationControllerView(
+            transition: .custom(.slide, .slide),
+            viewModel: Resolver.resolve()
+        ) {
             GroupsTab()
         }
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}

@@ -15,9 +15,3 @@ struct TabTitle: View {
         .background(tabTiteBackgroundColor)
     }
 }
-
-struct TabTitle_Previews: PreviewProvider {
-    static var previews: some View {
-        TabTitle(title: "Groups")
-    }
-}

@@ -1,8 +1,14 @@
 
 
 CREATE TABLE GroupsTable (
-  id TEXT NOT NULL PRIMARY KEY,
-  name TEXT NOT NULL
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE GroupsElements (
+    id TEXT NOT NULL PRIMARY KEY,
+    groupId TEXT NOT NULL,
+    name TEXT NOT NULL
 );
 
 addGroup:
@@ -18,7 +24,19 @@ WHERE id = ?;
 
 selectGroupByName:
 SELECT * FROM GroupsTable
+WHERE GroupsTable.name = ?;
+
+deleteGroupByName:
+DELETE FROM GroupsTable
 WHERE name = ?;
 
 selectAllGroups:
 SELECT * FROM GroupsTable;
+
+addGroupItem:
+INSERT INTO GroupsElements(id, name, groupId)
+VALUES (?, ?, ?);
+
+selectGroupItemsByGroupId:
+SELECT * FROM GroupsElements
+WHERE groupId = ?;

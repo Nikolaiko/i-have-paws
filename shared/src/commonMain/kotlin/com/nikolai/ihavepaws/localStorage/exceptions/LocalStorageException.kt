@@ -4,4 +4,5 @@ import com.nikolai.ihavepaws.model.consts.objectAlreadyExistsMessage
 
 sealed class LocalStorageException(localMessage: String) : Throwable(localMessage) {
     object ObjectAlreadyExists : LocalStorageException(objectAlreadyExistsMessage)
+    object ObjectDoesNotExists : LocalStorageException(objectAlreadyExistsMessage)
 }

@@ -2,8 +2,9 @@ import Foundation
 import Resolver
 import shared
 
-class GroupScreenPresenter: ObservableObject {
+class GroupsScreenPresenter: ObservableObject {
     @Injected private var reducer: GroupsScreenReducer
+    @Injected private var navigation: AppNavigation
     
     private lazy var stateHandler: FlowObserver = {
         let handler = FlowObserver(callback: stateUpdate)
@@ -29,6 +30,10 @@ class GroupScreenPresenter: ObservableObject {
     
     func refreshGroupsList() {
         reducer.refreshGroupsList()
+    }
+    
+    func openGroupScreen(item: shared.Group) {
+        navigation.navigateTo(destination: .groupScreen, parameter: item)
     }
     
     private func stateUpdate(newState: Any?) {

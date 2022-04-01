@@ -8,13 +8,15 @@ class AddGroupPresenter: ObservableObject {
     @Published var groupName = ""
     @Published var addButtonEnabled = false
     
+    @Injected private var navigation: AppNavigation
     @Injected private var reducer: AddGroupReducer
-    private var subscriptions: Set<AnyCancellable> = []
     
     private lazy var messageHandler: FlowObserver = {
         let handler = FlowObserver(callback: messageReceived)
         return handler
     }()
+    
+    private var subscriptions: Set<AnyCancellable> = []
     
     init() {
         $groupName
@@ -38,7 +40,18 @@ class AddGroupPresenter: ObservableObject {
     
     private func messageReceived(newMessage: Any?) {
         if let message = newMessage as? StateMessage {
-            print("Message! : \(message.text)")
+            switch message {
+            case is StateMessage.SuccessMessage:
+                navigation.navigateTo(destination: .popBackStack, parameter: nil)
+            case is StateMessage.ErrorMessage:
+                print("Message! : \(message.text)")
+            case is StateMessage.InfoMessage:
+                print("Message! : \(message.text)")
+            default:
+                print("Unknown message")
+            }
+            
+            
         }
     }
 }

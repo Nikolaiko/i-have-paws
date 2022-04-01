@@ -1,8 +1,9 @@
 import SwiftUI
 import SwiftDevPackage
+import Combine
 
 struct AddGroupView: View {
-    @ObservedObject private var presenter = AddGroupPresenter()
+    @StateObject private var presenter = AddGroupPresenter()
     @EnvironmentObject private var navigation: NavigationControllerViewModel
     
     var body: some View {
@@ -23,17 +24,10 @@ struct AddGroupView: View {
                 buttonTitle: "Назад",
                 buttonCallback: { navigation.pop() },
                 buttonHeight: 50.0
-            )
-            .disabled(!presenter.addButtonEnabled)
+            )            
             Spacer()
             
         }
         .background(mainBackgroundColor)
-    }
-}
-
-struct AddGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddGroupView()
     }
 }

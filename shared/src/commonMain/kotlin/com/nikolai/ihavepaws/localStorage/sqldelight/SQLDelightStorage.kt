@@ -32,13 +32,34 @@ class SQLDelightStorage constructor(
         }
     }
 
+    override fun addNewItemToGroup(groupId: String, item: GroupItem): Result<GroupItem> {
+        return try {
+            queries.addGroupItem(item.id, item.title, groupId)
+            Result.success(item)
+        } catch (exception: Exception) {
+            Result.failure(exception)
+        }
+    }
+
     override fun getAllGroups(): List<Group>
         = queries.selectAllGroups(::convertToGroup).executeAsList()
 
-    override fun addNewItemToGroup(groupId: String, item: GroupItem): Result<GroupItem> {
-        TODO("Not yet implemented")
+    override fun getGroupByName(name: String): Result<Group> {
+        val group = queries.selectGroupByName(name, ::convertToGroup).executeAsOneOrNull()
+        return when (group != null) {
+            false -> Result.failure(LocalStorageException.ObjectDoesNotExists)
+            true -> {
+                val items = queries
+                    .selectGroupItemsByGroupId(group.id, ::convertToGroupItem)
+                    .executeAsList()
+                Result.success(group.copy(items = items))
+            }
+        }
     }
 
     private fun convertToGroup(id: String, name: String)
         = Group(id = id, name = name, items = emptyList())
+
+    private fun convertToGroupItem(id: String, groupId: String, name: String)
+        = GroupItem(id = id, title = name)
 }

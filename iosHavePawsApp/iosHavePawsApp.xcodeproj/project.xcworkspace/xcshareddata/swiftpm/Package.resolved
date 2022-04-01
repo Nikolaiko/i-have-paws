@@ -14,8 +14,8 @@
         "package": "iOSDevPackage",
         "repositoryURL": "https://github.com/ISSArt-LLC/SwiftDeveloperPackage",
         "state": {
-          "branch": "main",
-          "revision": "ed7ba9b36fcc0699c96232c7de17d9706ad06b93",
+          "branch": "add-select-image-view",
+          "revision": "5df53ca1503beb6dad52126548558b04cdf975df",
           "version": null
         }
       }
