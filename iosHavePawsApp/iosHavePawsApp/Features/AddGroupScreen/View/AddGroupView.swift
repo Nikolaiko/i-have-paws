@@ -14,13 +14,13 @@ struct AddGroupView: View {
                 .padding(.vertical, 20)
                 .foregroundColor(Color.black)
                 .cornerRadius(20)
-            PurpleButton(
+            ApplicationButton(
                 buttonTitle: "Добавить",
                 buttonCallback: presenter.addGroup,
                 buttonHeight: 50.0
             )
             .disabled(!presenter.addButtonEnabled)
-            PurpleButton(
+            ApplicationButton(
                 buttonTitle: "Назад",
                 buttonCallback: { navigation.pop() },
                 buttonHeight: 50.0

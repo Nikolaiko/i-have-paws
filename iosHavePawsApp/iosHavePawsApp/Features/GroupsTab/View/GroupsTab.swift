@@ -22,13 +22,15 @@ struct GroupsTab: View {
                 }
                 
                 Spacer()
-                PurpleButton(
+                ApplicationButton(
                     buttonTitle: "Добавить группу",
                     buttonCallback: { navigation.push(AddGroupView()) },
                     buttonWidth: .infinity,
-                    buttonHeight: 50.0
+                    buttonHeight: 50.0,
+                    buttonColor: mainPurpleColor
                 )
                 .padding(.horizontal, 16.0)
+                .padding(.bottom, 16.0)
             }
             .onAppear {
                 presenter.refreshGroupsList()

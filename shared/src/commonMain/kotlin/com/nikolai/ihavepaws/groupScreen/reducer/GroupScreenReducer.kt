@@ -7,17 +7,15 @@ import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.StateMessage
 import com.nikolai.ihavepaws.model.consts.failMessage
 import com.nikolai.ihavepaws.model.consts.getGroupItemsError
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.nikolai.ihavepaws.model.consts.shortGroupItemsName
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.launch
 
 class GroupScreenReducer constructor(
     private val storage: LocalStorage
 ): GroupScreen.Reducer {
-    private var currentState = GroupScreen.State(Group("", "", emptyList()))
+    private var currentState = GroupScreen.State()
 
     override val state = MutableSharedFlow<GroupScreen.State>()
     override val messages = MutableSharedFlow<StateMessage>()
@@ -38,14 +36,25 @@ class GroupScreenReducer constructor(
     }
 
     override fun addGroupItem(item: GroupItem) {
-        val result = storage.addNewItemToGroup(currentState.group.id, item)
-        result.onSuccess {
-            getGroup(currentState.group)
+        when(item.title.length >= 4) {
+            true -> {
+                val result = storage.addNewItemToGroup(currentState.group.id, item)
+                result.onSuccess {
+                    getGroup(currentState.group)
+                }
+                result.onFailure {
+                    val message = StateMessage.ErrorMessage(it.message ?: getGroupItemsError)
+                    emitMessage(message)
+                }
+            }
+            false -> emitMessage(StateMessage.ErrorMessage(shortGroupItemsName))
         }
-        result.onFailure {
-            val message = StateMessage.ErrorMessage(it.message ?: getGroupItemsError)
-            emitMessage(message)
-        }
+
+    }
+
+    override fun selectRandomElement() {
+        val selectedItem = currentState.group.items.random()
+        emitMessage(StateMessage.SelectedItemMessage(selectedItem))
     }
 
     private fun emitState() {

@@ -4,8 +4,12 @@ import Resolver
 
 class GroupScreenPresenter: ObservableObject {
     @Published var group: shared.Group? = nil
-    @Published var showAddItemMenu: Bool = false
-    @Published var newItemName: String = ""
+    @Published var enableRandomButton = false
+    @Published var showErrorMessage = false
+    @Published var showRandomResult = false
+    
+    var errorMessage = ""
+    var selectedItemName = ""
     
     @Injected private var reducer: GroupScreenReducer
     
@@ -39,16 +43,34 @@ class GroupScreenPresenter: ObservableObject {
         reducer.addGroupItem(item: item)
     }
     
+    func selectRandomItem() {
+        reducer.selectRandomElement()
+    }
+    
+    func hideRandomItem() {
+        showRandomResult = false
+    }
+    
     private func stateUpdate(newState: Any?) {
         if let state = newState as? GroupScreen.State {
             group = state.group
-            print(group)
+            enableRandomButton = !(group?.items.isEmpty ?? true)
         }
     }
     
     private func messageReceived(newMessage: Any?) {
-        if let message = newMessage as? StateMessage {
-            print("Message! : \(message.text)")
+        guard newMessage != nil else { return }
+        
+        if let message = newMessage as? StateMessage.SelectedItemMessage {
+            selectedItemName = message.selectedItem.title
+            showRandomResult = true
+        }
+        
+        if let message = newMessage as? StateMessage.ErrorMessage {
+            if !showErrorMessage {
+                errorMessage = message.text
+                showErrorMessage = true
+            }
         }
     }
 }

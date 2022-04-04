@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.SharedFlow
 
 class GroupScreen {
     data class State(
-        val group: Group
+        val group: Group = Group("", "", emptyList())
     )
 
     interface Reducer : BaseReducer {
@@ -16,5 +16,6 @@ class GroupScreen {
 
         fun getGroup(group: Group)
         fun addGroupItem(item: GroupItem)
+        fun selectRandomElement()
     }
 }

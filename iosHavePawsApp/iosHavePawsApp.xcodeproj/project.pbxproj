@@ -15,7 +15,11 @@
 		9111AFC127F0CE5A006214E4 /* TabTitleWithBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111AFC027F0CE5A006214E4 /* TabTitleWithBack.swift */; };
 		9111AFC327F13855006214E4 /* GroupScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111AFC227F13855006214E4 /* GroupScreenPresenter.swift */; };
 		911DD90527E60064001F7F18 /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90427E60064001F7F18 /* GroupElement.swift */; };
-		911DD90927E62E34001F7F18 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90827E62E34001F7F18 /* PurpleButton.swift */; };
+		911DD90927E62E34001F7F18 /* ApplicationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DD90827E62E34001F7F18 /* ApplicationButton.swift */; };
+		912E7FBE27FAC7B2001C34A7 /* UIToastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FBD27FAC7B2001C34A7 /* UIToastModel.swift */; };
+		912E7FC027FAC81B001C34A7 /* UIConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FBF27FAC81B001C34A7 /* UIConsts.swift */; };
+		912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */; };
+		912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC327FACD46001C34A7 /* View+Toast.swift */; };
 		912F797727F58B3100E14D5A /* GroupItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F797627F58B3100E14D5A /* GroupItemElement.swift */; };
 		9150F98827EEA0A400AE4BEA /* NavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */; };
 		9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98A27EF5E5A00AE4BEA /* AppNavigation.swift */; };
@@ -67,7 +71,11 @@
 		9111AFC027F0CE5A006214E4 /* TabTitleWithBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitleWithBack.swift; sourceTree = "<group>"; };
 		9111AFC227F13855006214E4 /* GroupScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenPresenter.swift; sourceTree = "<group>"; };
 		911DD90427E60064001F7F18 /* GroupElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
-		911DD90827E62E34001F7F18 /* PurpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		911DD90827E62E34001F7F18 /* ApplicationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationButton.swift; sourceTree = "<group>"; };
+		912E7FBD27FAC7B2001C34A7 /* UIToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToastModel.swift; sourceTree = "<group>"; };
+		912E7FBF27FAC81B001C34A7 /* UIConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConsts.swift; sourceTree = "<group>"; };
+		912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
+		912E7FC327FACD46001C34A7 /* View+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Toast.swift"; sourceTree = "<group>"; };
 		912F797627F58B3100E14D5A /* GroupItemElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItemElement.swift; sourceTree = "<group>"; };
 		9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestinations.swift; sourceTree = "<group>"; };
 		9150F98A27EF5E5A00AE4BEA /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
@@ -142,7 +150,7 @@
 				91A8193D27DA08C700990954 /* SupportingFiles */,
 				91A8193827DA06E100990954 /* CommonUI */,
 				91BCFB6E27D9BEF90008838E /* Style */,
-				9185A2EB27D5DF3C00FD2277 /* Proxy */,
+				9185A2EC27D5DF4300FD2277 /* Multiplatform */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -209,9 +217,17 @@
 		911DD90727E62E15001F7F18 /* TabBottomButton */ = {
 			isa = PBXGroup;
 			children = (
-				911DD90827E62E34001F7F18 /* PurpleButton.swift */,
+				911DD90827E62E34001F7F18 /* ApplicationButton.swift */,
 			);
 			path = TabBottomButton;
+			sourceTree = "<group>";
+		};
+		912E7FBC27FAC778001C34A7 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		9150F98927EF5E4800AE4BEA /* Navigation */ = {
@@ -229,6 +245,7 @@
 				91911D5527F6A26000C8B238 /* UIModels */,
 				915368D727EB9D37008C2A03 /* TypeAliases.swift */,
 				9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */,
+				912E7FBF27FAC81B001C34A7 /* UIConsts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,14 +284,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		9185A2EB27D5DF3C00FD2277 /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				9185A2EC27D5DF4300FD2277 /* Multiplatform */,
-			);
-			path = Proxy;
-			sourceTree = "<group>";
-		};
 		9185A2EC27D5DF4300FD2277 /* Multiplatform */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +305,7 @@
 			children = (
 				91911D5827F6A70D00C8B238 /* UIAlertViewController+Model.swift */,
 				91911D5D27F6A88E00C8B238 /* View+Alert.swift */,
+				912E7FC327FACD46001C34A7 /* View+Toast.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -304,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				91911D5627F6A27700C8B238 /* UIAlertModel.swift */,
+				912E7FBD27FAC7B2001C34A7 /* UIToastModel.swift */,
 			);
 			path = UIModels;
 			sourceTree = "<group>";
@@ -327,6 +338,7 @@
 		91A8193827DA06E100990954 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				912E7FBC27FAC778001C34A7 /* Toast */,
 				91911D5A27F6A82B00C8B238 /* Proxy */,
 				911DD90727E62E15001F7F18 /* TabBottomButton */,
 				911DD90627E62E08001F7F18 /* TabTitle */,
@@ -500,20 +512,24 @@
 				9111AFC127F0CE5A006214E4 /* TabTitleWithBack.swift in Sources */,
 				91911D5727F6A27700C8B238 /* UIAlertModel.swift in Sources */,
 				9111AFBF27F0CBCC006214E4 /* GroupView.swift in Sources */,
+				912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				91BCFB7027D9BF080008838E /* Colors.swift in Sources */,
+				912E7FBE27FAC7B2001C34A7 /* UIToastModel.swift in Sources */,
 				9185A2EA27D51B6B00FD2277 /* GroupsScreenPresenter.swift in Sources */,
+				912E7FC027FAC81B001C34A7 /* UIConsts.swift in Sources */,
 				916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */,
 				91A5AFF027E8B3BE00DA611B /* AddGroupPresenter.swift in Sources */,
 				91A8194427DA0B3200990954 /* Fonts.swift in Sources */,
 				918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */,
 				9185A2EE27D5DF5A00FD2277 /* FlowObserver.swift in Sources */,
 				91911D5C27F6A83D00C8B238 /* AlertWrapper.swift in Sources */,
-				911DD90927E62E34001F7F18 /* PurpleButton.swift in Sources */,
+				911DD90927E62E34001F7F18 /* ApplicationButton.swift in Sources */,
 				915368D827EB9D37008C2A03 /* TypeAliases.swift in Sources */,
 				91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */,
 				91911D5927F6A70D00C8B238 /* UIAlertViewController+Model.swift in Sources */,
 				911DD90527E60064001F7F18 /* GroupElement.swift in Sources */,
+				912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */,
 				91A8193C27DA078600990954 /* TabTitleText.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				912F797727F58B3100E14D5A /* GroupItemElement.swift in Sources */,
@@ -574,7 +590,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -629,7 +645,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
