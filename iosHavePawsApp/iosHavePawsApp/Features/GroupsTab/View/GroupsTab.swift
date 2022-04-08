@@ -9,10 +9,12 @@ struct GroupsTab: View {
         GeometryReader { geom in
             VStack {
                 TabTitle(title: "Группы")
+                let _ = print(geom.size.height * groupItemCornerCoff)
                 List {
                     ForEach(presenter.groupsList, id: \.self) { group in
-                        GroupElement(groupItem: group)
-                            .frame(maxWidth: .infinity, maxHeight: 84.0)
+                        GroupElement(groupName: group.name)
+                            .computeFrame(frameSize: geom.size)                            
+                            .listRowSeparator(.hidden)
                             .onTapGesture {
                                 self.presenter.openGroupScreen(item: group)
                             }

@@ -1,22 +1,21 @@
 import SwiftUI
-import shared
 
 struct GroupElement: View {
-    let groupItem: shared.Group
+    let groupName: String
     
     var body: some View {
-        Group {
-            Text(groupItem.name)
-                .foregroundColor(Color.black)
+        HStack {
+            Text(groupName)
+                .font(groupItemFont)
+                .foregroundColor(bluePrimary)
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
-        .cornerRadius(12.0)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)              
     }
 }
 
 struct GroupElement_Previews: PreviewProvider {
     static var previews: some View {
-        GroupElement(groupItem: shared.Group(id: "id", name: "name", items: []))
+        GroupElement(groupName: "Что надеть?")
     }
 }

@@ -8,7 +8,7 @@ struct iOSApp: App {
         
         UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().backgroundColor = transparentUIColor
-        UITableView.appearance().backgroundColor = transparentUIColor
+        UITableView.appearance().backgroundColor = transparentUIColor        
     }
     
 	var body: some Scene {

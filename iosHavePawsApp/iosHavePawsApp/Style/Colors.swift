@@ -11,3 +11,7 @@ let mainDisabledButtonColor = Color.gray
 
 let tabTiteBackgroundColor = Color.init(hex: UInt(ColorsKt.tabTitleBackgroundColor))
 let tabTitleTextColor = Color.init(hex: UInt(ColorsKt.mainTextColor))
+
+let blueLight20 = Color.init(hex: UInt(ColorsKt.blueLight20))
+let blueLight30 = Color.init(hex: UInt(ColorsKt.blueLight30))
+let bluePrimary = Color.init(hex: UInt(ColorsKt.bluePrimary))
