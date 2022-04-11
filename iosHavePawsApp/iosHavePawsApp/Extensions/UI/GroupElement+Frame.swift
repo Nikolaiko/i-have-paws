@@ -7,7 +7,7 @@ extension GroupElement {
             width: frameSize.width * groupItemWidthCoff,
             height: frameSize.height * groupItemHeightCoff
         )
-        .background(blueLight20)
+        .background(blueLight30)
         .cornerRadius(frameSize.height * groupItemCornerCoff)
         .padding(.vertical, (frameSize.height * groupItemVerticalSpacingCoff) / 2.0)
     }

@@ -7,15 +7,13 @@ struct GroupElement: View {
         HStack {
             Text(groupName)
                 .font(groupItemFont)
-                .foregroundColor(bluePrimary)
-            
+                .foregroundColor(blueLightPrimary)
+            Spacer()            
+            Image(deleteListItemImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
+        .padding(24.0)
         .frame(maxWidth: .infinity, maxHeight: .infinity)              
-    }
-}
-
-struct GroupElement_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupElement(groupName: "Что надеть?")
     }
 }

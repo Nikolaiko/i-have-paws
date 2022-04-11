@@ -9,7 +9,6 @@ struct GroupsTab: View {
         GeometryReader { geom in
             VStack {
                 TabTitle(title: "Группы")
-                let _ = print(geom.size.height * groupItemCornerCoff)
                 List {
                     ForEach(presenter.groupsList, id: \.self) { group in
                         GroupElement(groupName: group.name)
@@ -28,8 +27,8 @@ struct GroupsTab: View {
                     buttonTitle: "Добавить группу",
                     buttonCallback: { navigation.push(AddGroupView()) },
                     buttonWidth: .infinity,
-                    buttonHeight: 50.0,
-                    buttonColor: mainPurpleColor
+                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
+                    buttonColor: blueLightPrimary
                 )
                 .padding(.horizontal, 16.0)
                 .padding(.bottom, 16.0)

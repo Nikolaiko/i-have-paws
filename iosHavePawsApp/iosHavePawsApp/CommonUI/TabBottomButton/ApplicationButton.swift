@@ -28,17 +28,12 @@ struct ApplicationButton: View {
     var body: some View {
         Button(action: callback) {
             Text(title)
+                .font(bottomButtonFont)
                 .padding(6.0)
                 .frame(maxWidth: width, maxHeight: height)                
-                .foregroundColor(Color.white)
+                .foregroundColor(bottomButtonTextColor)
                 .background(enabled ? backgroundColor : mainDisabledButtonColor)
                 .cornerRadius((height ?? 0.0) * 0.24)
         }
-    }
-}
-
-struct TabBottomButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ApplicationButton(buttonTitle: "Title")
     }
 }

@@ -3,20 +3,20 @@ import shared
 
 struct GroupItemElement: View {
     let groupItem: shared.GroupItem
+    @Binding var isActive: Bool
     
     var body: some View {
-        Group {
-            Text(groupItem.title)
-                .foregroundColor(Color.black)
+        HStack {
+            Toggle(isOn: $isActive) {
+                Text(groupItem.title)
+                    .font(groupElementFont)
+                    .foregroundColor(blueLightPrimary)
+            }
+            .tint(blueLight20)
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
         .cornerRadius(12.0)
-    }
-}
-
-struct GroupItemElement_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupItemElement(groupItem: shared.GroupItem(id: "123", title: "Title"))
     }
 }

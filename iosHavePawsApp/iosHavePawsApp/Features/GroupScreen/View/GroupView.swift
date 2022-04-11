@@ -19,8 +19,9 @@ struct GroupView: View {
                 TabTitleWithBack(title: presenter.group?.name ?? "")
                 List {
                     ForEach(presenter.group?.items ?? [], id: \.self) { item in
-                        GroupItemElement(groupItem: item)
+                        GroupItemElement(groupItem: item, isActive: .constant(true))
                             .frame(maxWidth: .infinity, maxHeight: 84.0)
+                            .listRowSeparator(.hidden)
                             .onTapGesture {
                                 
                             }
@@ -33,9 +34,9 @@ struct GroupView: View {
                     buttonTitle: "РАНДОМ!!!",
                     buttonCallback: presenter.selectRandomItem,
                     buttonWidth: .infinity,
-                    buttonHeight: 50.0,
+                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
                     buttonEnabled: presenter.enableRandomButton,
-                    buttonColor: mainPurpleColor
+                    buttonColor: blueLightPrimary
                 )
                 .padding(.horizontal, 16.0)
                 
@@ -43,20 +44,11 @@ struct GroupView: View {
                     buttonTitle: "Добавить элемент",
                     buttonCallback: { showMenu = true },
                     buttonWidth: .infinity,
-                    buttonHeight: 50.0,
-                    buttonColor: mainPurpleColor
+                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
+                    buttonColor: blueLightPrimary
                 )
                 .padding(.horizontal, 16.0)
-                
-                ApplicationButton(
-                    buttonTitle: "Удалить группу",
-                    buttonCallback: {  },
-                    buttonWidth: .infinity,
-                    buttonHeight: 50.0,
-                    buttonColor: mainRedButtonColor
-                )
-                .padding(.horizontal, 16.0)
-                .padding(.bottom, 8.0)
+                .padding(.bottom, 16.0)
             }
             .background(mainBackgroundColor)
             .alert(

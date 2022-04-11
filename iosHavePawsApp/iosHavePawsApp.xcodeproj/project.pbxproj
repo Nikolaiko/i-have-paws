@@ -45,6 +45,7 @@
 		9155676927FFE79C00F1EF39 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9155675727FFE79C00F1EF39 /* Poppins-Thin.ttf */; };
 		916E884727ECD625007D391A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 916E884627ECD625007D391A /* Resolver */; };
 		916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916E884927ECD6F3007D391A /* DIResolver.swift */; };
+		917127A92802945A00359E6A /* InputTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917127A82802945A00359E6A /* InputTextFieldStyle.swift */; };
 		9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E427D519AC00FD2277 /* GroupsTab.swift */; };
 		9185A2E827D519D500FD2277 /* SwiftDevPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 9185A2E727D519D500FD2277 /* SwiftDevPackage */; };
 		9185A2EA27D51B6B00FD2277 /* GroupsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E927D51B6B00FD2277 /* GroupsScreenPresenter.swift */; };
@@ -120,6 +121,7 @@
 		9155675627FFE79C00F1EF39 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		9155675727FFE79C00F1EF39 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		916E884927ECD6F3007D391A /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
+		917127A82802945A00359E6A /* InputTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextFieldStyle.swift; sourceTree = "<group>"; };
 		9185A2E427D519AC00FD2277 /* GroupsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTab.swift; sourceTree = "<group>"; };
 		9185A2E927D51B6B00FD2277 /* GroupsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsScreenPresenter.swift; sourceTree = "<group>"; };
 		9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowObserver.swift; sourceTree = "<group>"; };
@@ -323,6 +325,14 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		917127A72802944500359E6A /* InputTextField */ = {
+			isa = PBXGroup;
+			children = (
+				917127A82802945A00359E6A /* InputTextFieldStyle.swift */,
+			);
+			path = InputTextField;
+			sourceTree = "<group>";
+		};
 		9185A2E127D5196800FD2277 /* GroupsTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +414,7 @@
 		91A8193827DA06E100990954 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				917127A72802944500359E6A /* InputTextField */,
 				912E7FBC27FAC778001C34A7 /* Toast */,
 				91911D5A27F6A82B00C8B238 /* Proxy */,
 				911DD90727E62E15001F7F18 /* TabBottomButton */,
@@ -590,6 +601,7 @@
 				9150F98D27EF5EAC00AE4BEA /* Router.swift in Sources */,
 				91EC894927FBEDAB002CCB9B /* Size.swift in Sources */,
 				9111AFC327F13855006214E4 /* GroupScreenPresenter.swift in Sources */,
+				917127A92802945A00359E6A /* InputTextFieldStyle.swift in Sources */,
 				91BCFB6D27D9AB880008838E /* MainScreen.swift in Sources */,
 				9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */,
 				9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */,

@@ -6,14 +6,20 @@ struct TabTitleWithBack: View {
     @EnvironmentObject private var navigation: NavigationControllerViewModel
     
     var body: some View {
-        HStack {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Color.black)
-                .font(Font.title.weight(.bold))
-                .onTapGesture { navigation.pop() }
-            
-            TabTitleText(text: title)
-                .padding(.leading, 12.0)
+        ZStack {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .padding(.leading, 24.0)
+                    .foregroundColor(blueLightPrimary)
+                    .font(Font.title.weight(.bold))
+                    .onTapGesture { navigation.pop() }
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                TabTitleText(text: title)
+                Spacer()
+            }
         }
         .padding(.top, 45.0)
         .padding(.bottom, 16.0)
