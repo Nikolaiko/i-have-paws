@@ -4,6 +4,7 @@ import com.nikolai.ihavepaws.addGroupScreen.contract.AddGroup
 import com.nikolai.ihavepaws.localStorage.LocalStorage
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.StateMessage
+import com.nikolai.ihavepaws.model.consts.addGroupError
 import com.nikolai.ihavepaws.model.consts.failMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ class AddGroupReducer constructor(
         val resultMessage = when(result.isSuccess) {
             true -> StateMessage.SuccessMessage
             false -> StateMessage.ErrorMessage(
-                result.exceptionOrNull()?.message ?: failMessage
+                result.exceptionOrNull()?.message ?: addGroupError
             )
         }
         emitMessage(resultMessage)

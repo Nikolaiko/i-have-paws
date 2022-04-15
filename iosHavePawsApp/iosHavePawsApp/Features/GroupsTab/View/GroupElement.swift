@@ -2,18 +2,25 @@ import SwiftUI
 
 struct GroupElement: View {
     let groupName: String
+    let deleteGroupCallback: VoidCallback
     
     var body: some View {
-        HStack {
-            Text(groupName)
-                .font(groupItemFont)
-                .foregroundColor(blueLightPrimary)
-            Spacer()            
-            Image(deleteListItemImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        GeometryReader { geom in
+            HStack {
+                Text(groupName)
+                    .customFont(
+                        Montserrat.semiBold,
+                        ContentSizeCategory.large,
+                        color: blueLightPrimary
+                    )
+                Spacer()
+                Image(deleteListItemImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onTapGesture { deleteGroupCallback() }
+            }
+            .padding(.vertical, geom.size.height * groupRowInsideVerticalCoff)
+            .padding(.horizontal, geom.size.width * groupRowInsideHorizontalCoff)
         }
-        .padding(24.0)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)              
     }
 }

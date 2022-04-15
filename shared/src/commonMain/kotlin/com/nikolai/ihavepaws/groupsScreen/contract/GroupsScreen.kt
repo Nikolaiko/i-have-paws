@@ -15,6 +15,6 @@ class GroupsScreen {
         val messages: SharedFlow<StateMessage>
 
         fun refreshGroupsList()
-
+        fun removeGroup(groupName: String)
     }
 }

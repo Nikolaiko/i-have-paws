@@ -4,11 +4,11 @@ import SwiftUI
 extension GroupElement {
     func computeFrame(frameSize: CGSize) -> some View {
         return frame(
-            width: frameSize.width * groupItemWidthCoff,
-            height: frameSize.height * groupItemHeightCoff
+            width: frameSize.width * groupRowWidthCoff,
+            height: frameSize.height * groupRowHeightCoff
         )
         .background(blueLight30)
-        .cornerRadius(frameSize.height * groupItemCornerCoff)
-        .padding(.vertical, (frameSize.height * groupItemVerticalSpacingCoff) / 2.0)
+        .cornerRadius(frameSize.height * groupRowCornerCoff)
+        .padding(.vertical, (frameSize.height * groupRowVerticalSpacingCoff) / 2.0)
     }
 }

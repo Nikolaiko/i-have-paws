@@ -3,8 +3,10 @@ buildscript {
         gradlePluginPortal()
         google()
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
+        classpath ("org.testproject:TestProject:1.0-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
         classpath("com.android.tools.build:gradle:7.1.2")
         classpath("io.realm.kotlin:gradle-plugin:0.9.0")

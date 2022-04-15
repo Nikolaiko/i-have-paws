@@ -1,6 +1,7 @@
 import SwiftUI
 import shared
 import Resolver
+import iOSServices
 
 struct GroupView: View {
     private let group: shared.Group
@@ -17,17 +18,16 @@ struct GroupView: View {
         GeometryReader { geom in
             VStack {
                 TabTitleWithBack(title: presenter.group?.name ?? "")
-                List {
-                    ForEach(presenter.group?.items ?? [], id: \.self) { item in
-                        GroupItemElement(groupItem: item, isActive: .constant(true))
-                            .frame(maxWidth: .infinity, maxHeight: 84.0)
-                            .listRowSeparator(.hidden)
-                            .onTapGesture {
-                                
-                            }
+                ScrollView{
+                    LazyVStack {
+                        ForEach(presenter.group?.items ?? [], id: \.self) { item in
+                            GroupItemElement(groupItem: item, toggleCallback: { b in })
+                                .computeFrame(frameSize: geom.size)
+                                .onTapGesture {
+                                    presenter.updateGroupItemState(item: item)
+                                }
+                        }                        
                     }
-                    .listRowBackground(transparentColor)
-                    .listRowInsets(EdgeInsets())
                 }
                 Spacer()
                 ApplicationButton(
@@ -51,13 +51,13 @@ struct GroupView: View {
                 .padding(.bottom, 16.0)
             }
             .background(mainBackgroundColor)
-            .alert(
+            .textAlert(
                 isPresented: $showMenu,
-                UIAlertModel(
-                    title: "Добавить элемент",
-                    message: "Длина имени не менее 4 символов",
-                    keyboardType: .default,
-                    action: presenter.tryAddNewGroupItem
+                AlertConfiguration(
+                    alertTitle: "Добавить элемент",
+                    alertMessage: "Длина имени не менее 4 символов",
+                    mainAction: presenter.tryAddNewGroupItem,
+                    alertKeyboardType: .default
                 )
             )
         }

@@ -39,8 +39,12 @@ class GroupScreenPresenter: ObservableObject {
     }
     
     func tryAddNewGroupItem(itemName: String?) {
-        let item = shared.GroupItem(id: UUID().uuidString, title: itemName ?? "")
+        let item = shared.GroupItem(id: UUID().uuidString, title: itemName ?? "", active: true)
         reducer.addGroupItem(item: item)
+    }
+    
+    func updateGroupItemState(item: shared.GroupItem) {
+        reducer.toggleGroupItemActiveState(groupItem: item)
     }
     
     func selectRandomItem() {

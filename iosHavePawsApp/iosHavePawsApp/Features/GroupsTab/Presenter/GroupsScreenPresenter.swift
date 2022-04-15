@@ -36,6 +36,10 @@ class GroupsScreenPresenter: ObservableObject {
         navigation.navigateTo(destination: .groupScreen, parameter: item)
     }
     
+    func deleteGroup(item: shared.Group) {
+        reducer.removeGroup(groupName: item.name)
+    }
+    
     private func stateUpdate(newState: Any?) {
         if let state = newState as? GroupsScreen.State {
             groupsList = state.groups

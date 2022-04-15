@@ -3,20 +3,25 @@ import shared
 
 struct GroupItemElement: View {
     let groupItem: shared.GroupItem
-    @Binding var isActive: Bool
+    let toggleCallback: BoolCallback
     
     var body: some View {
-        HStack {
-            Toggle(isOn: $isActive) {
+        GeometryReader { geom in
+            HStack {
                 Text(groupItem.title)
-                    .font(groupElementFont)
+                    .customFont(
+                        Montserrat.semiBold,
+                        ContentSizeCategory.large,
+                        color: blueLightPrimary
+                    )
+                Spacer()
+                Image(groupItem.active ? activeImage : disabledImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .foregroundColor(blueLightPrimary)
             }
-            .tint(blueLight20)
-            Spacer()
+            .padding(.vertical, geom.size.height * groupItemRowInsideVerticalCoff)
+            .padding(.horizontal, geom.size.width * groupItemRowInsideHorizontalCoff)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
-        .cornerRadius(12.0)
     }
 }

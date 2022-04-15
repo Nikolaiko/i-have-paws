@@ -11,7 +11,7 @@ struct GroupsTab: View {
                 TabTitle(title: "Группы")
                 List {
                     ForEach(presenter.groupsList, id: \.self) { group in
-                        GroupElement(groupName: group.name)
+                        GroupElement(groupName: group.name, deleteGroupCallback: { presenter.deleteGroup(item: group) })
                             .computeFrame(frameSize: geom.size)                            
                             .listRowSeparator(.hidden)
                             .onTapGesture {

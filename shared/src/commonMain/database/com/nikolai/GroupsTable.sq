@@ -8,7 +8,8 @@ CREATE TABLE GroupsTable (
 CREATE TABLE GroupsElements (
     id TEXT NOT NULL PRIMARY KEY,
     groupId TEXT NOT NULL,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    active INTEGER NOT NULL
 );
 
 addGroup:
@@ -17,6 +18,9 @@ VALUES(?, ?);
 
 removeAllGroups:
 DELETE FROM GroupsTable;
+
+selectAllGroups:
+SELECT * FROM GroupsTable;
 
 selectGroupById:
 SELECT * FROM GroupsTable
@@ -30,13 +34,24 @@ deleteGroupByName:
 DELETE FROM GroupsTable
 WHERE name = ?;
 
-selectAllGroups:
-SELECT * FROM GroupsTable;
+getGroupItemById:
+SELECT * FROM GroupsElements
+WHERE GroupsElements.id = ?;
 
 addGroupItem:
-INSERT INTO GroupsElements(id, name, groupId)
-VALUES (?, ?, ?);
+INSERT INTO GroupsElements(id, name, groupId, active)
+VALUES (?, ?, ?, ?);
 
 selectGroupItemsByGroupId:
 SELECT * FROM GroupsElements
+WHERE groupId = ?
+ORDER BY GroupsElements.name DESC;
+
+setGroupItemActiveState:
+UPDATE GroupsElements
+SET active = ?
 WHERE groupId = ?;
+
+insertOrReplaceGroupItem:
+INSERT OR REPLACE INTO GroupsElements
+VALUES ?;

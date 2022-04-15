@@ -11,6 +11,7 @@ sqldelight {
         packageName = "com.nikolai"
         sourceFolders = listOf("database")
         schemaOutputDirectory = file("build/dbs")
+        migrationOutputFileFormat = ".sqm"
         verifyMigrations = true
     }
     linkSqlite = true
