@@ -1,24 +1,30 @@
 package com.nikolai.ihavepaws.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.nikolai.ihavepaws.Greeting
-import android.widget.TextView
-import com.nikolai.ihavepaws.localStorage.realm.RealmStorage
-
-fun greet(): String {
-    return Greeting().greeting()
-}
+import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
+import com.nikolai.ihavepaws.android.navigation.AppScreens
+import com.nikolai.ihavepaws.android.navigation.appMainGraph
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        setContent {
+            val navigationController = rememberNavController()
 
-        val st = RealmStorage()
-        println("AHA : ${st.getAllGroups()}")
+            NavHost(navController = navigationController, startDestination = appMainGraph) {
+                navigation(startDestination = AppScreens.MainScreen.route, route = appMainGraph) {
+                    composable(route = AppScreens.MainScreen.route) {
+
+                    }
+                }
+            }
+        }
     }
 }
