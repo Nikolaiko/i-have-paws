@@ -47,6 +47,10 @@ class GroupScreenPresenter: ObservableObject {
         reducer.toggleGroupItemActiveState(groupItem: item)
     }
     
+    func deleteGroupItem(item: shared.GroupItem) {
+        reducer.deleteGroupItem(item: item)        
+    }
+    
     func selectRandomItem() {
         reducer.selectRandomElement()
     }

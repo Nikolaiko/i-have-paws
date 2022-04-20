@@ -14,5 +14,6 @@ interface LocalStorage {
     fun addNewGroup(newGroup: Group): Result<Group>
 
     fun addNewItemToGroup(groupId: String, item: GroupItem): Result<GroupItem>
+    fun deleteGroupItemById(groupItemId: String): Result<Boolean>
     fun updateGroupItemActiveState(groupItemId: String, active: Boolean): Result<Boolean>
 }

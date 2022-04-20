@@ -17,6 +17,9 @@ struct GroupView: View {
     var body: some View {
         GeometryReader { geom in
             VStack {
+                TabAddPanel(tapCallback: {})
+                    .computeFrame(frameSize: geom.size)
+                
                 TabTitleWithBack(title: presenter.group?.name ?? "")
                 ScrollView{
                     LazyVStack {
@@ -25,6 +28,9 @@ struct GroupView: View {
                                 .computeFrame(frameSize: geom.size)
                                 .onTapGesture {
                                     presenter.updateGroupItemState(item: item)
+                                }
+                                .onDelete {
+                                    presenter.deleteGroupItem(item: item)
                                 }
                         }                        
                     }

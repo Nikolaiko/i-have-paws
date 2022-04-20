@@ -5,10 +5,7 @@ import com.nikolai.ihavepaws.localStorage.LocalStorage
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.StateMessage
-import com.nikolai.ihavepaws.model.consts.failMessage
-import com.nikolai.ihavepaws.model.consts.getGroupItemsError
-import com.nikolai.ihavepaws.model.consts.setGroupItemActiveStateError
-import com.nikolai.ihavepaws.model.consts.shortGroupItemsName
+import com.nikolai.ihavepaws.model.consts.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -49,6 +46,17 @@ class GroupScreenReducer constructor(
                 }
             }
             false -> emitMessage(StateMessage.ErrorMessage(shortGroupItemsName))
+        }
+    }
+
+    override fun deleteGroupItem(item: GroupItem) {
+        val result = storage.deleteGroupItemById(item.id)
+        result.onSuccess {
+            getGroup(currentState.group)
+        }
+        result.onFailure {
+            val message = StateMessage.ErrorMessage(it.message ?: deleteGroupItemsError)
+            emitMessage(message)
         }
     }
 

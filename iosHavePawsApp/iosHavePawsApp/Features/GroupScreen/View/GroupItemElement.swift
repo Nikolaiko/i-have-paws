@@ -19,6 +19,7 @@ struct GroupItemElement: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(blueLightPrimary)
+                
             }
             .padding(.vertical, geom.size.height * groupItemRowInsideVerticalCoff)
             .padding(.horizontal, geom.size.width * groupItemRowInsideHorizontalCoff)

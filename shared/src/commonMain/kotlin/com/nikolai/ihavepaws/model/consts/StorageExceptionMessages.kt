@@ -3,6 +3,7 @@ package com.nikolai.ihavepaws.model.consts
 const val getGroupItemsError = "Error during fetch group items"
 const val setGroupItemActiveStateError = "Error during setting group item state"
 const val addGroupItemsError = "Error during add group item"
+const val deleteGroupItemsError = "Error during delete group item"
 
 
 const val addGroupError = "Error during add group"

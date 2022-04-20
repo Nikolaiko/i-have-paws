@@ -16,6 +16,7 @@ class GroupScreen {
 
         fun getGroup(group: Group)
         fun addGroupItem(item: GroupItem)
+        fun deleteGroupItem(item: GroupItem)
         fun toggleGroupItemActiveState(groupItem: GroupItem)
         fun selectRandomElement()
     }

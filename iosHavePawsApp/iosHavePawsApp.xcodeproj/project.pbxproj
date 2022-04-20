@@ -21,6 +21,8 @@
 		912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */; };
 		912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC327FACD46001C34A7 /* View+Toast.swift */; };
 		912F797727F58B3100E14D5A /* GroupItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F797627F58B3100E14D5A /* GroupItemElement.swift */; };
+		9136BC92280FD29B002E5653 /* TabAddPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136BC91280FD29B002E5653 /* TabAddPanel.swift */; };
+		9136BC94280FD421002E5653 /* Views+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136BC93280FD421002E5653 /* Views+Frame.swift */; };
 		9150F98827EEA0A400AE4BEA /* NavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */; };
 		9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98A27EF5E5A00AE4BEA /* AppNavigation.swift */; };
 		9150F98D27EF5EAC00AE4BEA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98C27EF5EAC00AE4BEA /* Router.swift */; };
@@ -28,7 +30,6 @@
 		916E884727ECD625007D391A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 916E884627ECD625007D391A /* Resolver */; };
 		916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916E884927ECD6F3007D391A /* DIResolver.swift */; };
 		917127A92802945A00359E6A /* InputTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917127A82802945A00359E6A /* InputTextFieldStyle.swift */; };
-		9174682C2809061B000F8F95 /* GroupItemElement+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174682B2809061B000F8F95 /* GroupItemElement+Frame.swift */; };
 		9174683F28090C80000F8F95 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9174682D28090C80000F8F95 /* Montserrat-BoldItalic.ttf */; };
 		9174684028090C80000F8F95 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9174682E28090C80000F8F95 /* Montserrat-ExtraLight.ttf */; };
 		9174684128090C80000F8F95 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9174682F28090C80000F8F95 /* Montserrat-LightItalic.ttf */; };
@@ -49,6 +50,8 @@
 		9174685028090C80000F8F95 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9174683E28090C80000F8F95 /* Montserrat-Black.ttf */; };
 		9174685328090EE2000F8F95 /* Text+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174685228090EE2000F8F95 /* Text+CustomFonts.swift */; };
 		917468552809101F000F8F95 /* ContentSizeCategory+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917468542809101F000F8F95 /* ContentSizeCategory+Size.swift */; };
+		91809578280E7CD900A056FC /* DeleteListItemModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91809577280E7CD900A056FC /* DeleteListItemModifier.swift */; };
+		9180957A280E802C00A056FC /* View+SwipeToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91809579280E802C00A056FC /* View+SwipeToDelete.swift */; };
 		9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E427D519AC00FD2277 /* GroupsTab.swift */; };
 		9185A2E827D519D500FD2277 /* SwiftDevPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 9185A2E727D519D500FD2277 /* SwiftDevPackage */; };
 		9185A2EA27D51B6B00FD2277 /* GroupsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E927D51B6B00FD2277 /* GroupsScreenPresenter.swift */; };
@@ -63,7 +66,6 @@
 		91BCFB6D27D9AB880008838E /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCFB6C27D9AB880008838E /* MainScreen.swift */; };
 		91BCFB7027D9BF080008838E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCFB6F27D9BF080008838E /* Colors.swift */; };
 		91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF2327E7821100362F9B /* AddGroupView.swift */; };
-		91EC894527FBEB33002CCB9B /* GroupElement+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC894427FBEB33002CCB9B /* GroupElement+Frame.swift */; };
 		91EC894927FBEDAB002CCB9B /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC894827FBEDAB002CCB9B /* Size.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,13 +99,14 @@
 		912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		912E7FC327FACD46001C34A7 /* View+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Toast.swift"; sourceTree = "<group>"; };
 		912F797627F58B3100E14D5A /* GroupItemElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItemElement.swift; sourceTree = "<group>"; };
+		9136BC91280FD29B002E5653 /* TabAddPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabAddPanel.swift; sourceTree = "<group>"; };
+		9136BC93280FD421002E5653 /* Views+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+Frame.swift"; sourceTree = "<group>"; };
 		9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestinations.swift; sourceTree = "<group>"; };
 		9150F98A27EF5E5A00AE4BEA /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
 		9150F98C27EF5EAC00AE4BEA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		915368D727EB9D37008C2A03 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		916E884927ECD6F3007D391A /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
 		917127A82802945A00359E6A /* InputTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextFieldStyle.swift; sourceTree = "<group>"; };
-		9174682B2809061B000F8F95 /* GroupItemElement+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupItemElement+Frame.swift"; sourceTree = "<group>"; };
 		9174682D28090C80000F8F95 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		9174682E28090C80000F8F95 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		9174682F28090C80000F8F95 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 		9174683E28090C80000F8F95 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		9174685228090EE2000F8F95 /* Text+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+CustomFonts.swift"; sourceTree = "<group>"; };
 		917468542809101F000F8F95 /* ContentSizeCategory+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentSizeCategory+Size.swift"; sourceTree = "<group>"; };
+		91809577280E7CD900A056FC /* DeleteListItemModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteListItemModifier.swift; sourceTree = "<group>"; };
+		91809579280E802C00A056FC /* View+SwipeToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SwipeToDelete.swift"; sourceTree = "<group>"; };
 		9185A2E427D519AC00FD2277 /* GroupsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTab.swift; sourceTree = "<group>"; };
 		9185A2E927D51B6B00FD2277 /* GroupsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsScreenPresenter.swift; sourceTree = "<group>"; };
 		9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowObserver.swift; sourceTree = "<group>"; };
@@ -137,7 +142,6 @@
 		91BCFB6C27D9AB880008838E /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		91BCFB6F27D9BF080008838E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		91D4CF2327E7821100362F9B /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
-		91EC894427FBEB33002CCB9B /* GroupElement+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupElement+Frame.swift"; sourceTree = "<group>"; };
 		91EC894827FBEDAB002CCB9B /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,14 +248,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		911DD90627E62E08001F7F18 /* TabTitle */ = {
+		911DD90627E62E08001F7F18 /* ListTopTab */ = {
 			isa = PBXGroup;
 			children = (
 				91A8193927DA06F900990954 /* TabTitle.swift */,
 				91A8193B27DA078600990954 /* TabTitleText.swift */,
 				9111AFC027F0CE5A006214E4 /* TabTitleWithBack.swift */,
+				9136BC91280FD29B002E5653 /* TabAddPanel.swift */,
 			);
-			path = TabTitle;
+			path = ListTopTab;
 			sourceTree = "<group>";
 		};
 		911DD90727E62E15001F7F18 /* TabBottomButton */ = {
@@ -340,6 +345,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		91809576280E7CC500A056FC /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				91809577280E7CD900A056FC /* DeleteListItemModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		9185A2E127D5196800FD2277 /* GroupsTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +390,7 @@
 		918B98B827E981B300222FCB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				91809576280E7CC500A056FC /* Modifiers */,
 				9174685128090EBF000F8F95 /* Font */,
 				918B98B927E981C500222FCB /* UI */,
 			);
@@ -387,8 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				912E7FC327FACD46001C34A7 /* View+Toast.swift */,
-				91EC894427FBEB33002CCB9B /* GroupElement+Frame.swift */,
-				9174682B2809061B000F8F95 /* GroupItemElement+Frame.swift */,
+				91809579280E802C00A056FC /* View+SwipeToDelete.swift */,
+				9136BC93280FD421002E5653 /* Views+Frame.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -415,7 +429,7 @@
 				917127A72802944500359E6A /* InputTextField */,
 				912E7FBC27FAC778001C34A7 /* Toast */,
 				911DD90727E62E15001F7F18 /* TabBottomButton */,
-				911DD90627E62E08001F7F18 /* TabTitle */,
+				911DD90627E62E08001F7F18 /* ListTopTab */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -602,9 +616,11 @@
 				917127A92802945A00359E6A /* InputTextFieldStyle.swift in Sources */,
 				9174685328090EE2000F8F95 /* Text+CustomFonts.swift in Sources */,
 				91BCFB6D27D9AB880008838E /* MainScreen.swift in Sources */,
+				91809578280E7CD900A056FC /* DeleteListItemModifier.swift in Sources */,
 				9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */,
 				9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */,
 				91A8193A27DA06F900990954 /* TabTitle.swift in Sources */,
+				9180957A280E802C00A056FC /* View+SwipeToDelete.swift in Sources */,
 				9150F98827EEA0A400AE4BEA /* NavigationDestinations.swift in Sources */,
 				9111AFC127F0CE5A006214E4 /* TabTitleWithBack.swift in Sources */,
 				9111AFBF27F0CBCC006214E4 /* GroupView.swift in Sources */,
@@ -616,10 +632,8 @@
 				912E7FC027FAC81B001C34A7 /* UIConsts.swift in Sources */,
 				916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */,
 				91A5AFF027E8B3BE00DA611B /* AddGroupPresenter.swift in Sources */,
-				9174682C2809061B000F8F95 /* GroupItemElement+Frame.swift in Sources */,
 				91A8194427DA0B3200990954 /* Fonts.swift in Sources */,
 				918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */,
-				91EC894527FBEB33002CCB9B /* GroupElement+Frame.swift in Sources */,
 				9185A2EE27D5DF5A00FD2277 /* FlowObserver.swift in Sources */,
 				911DD90927E62E34001F7F18 /* ApplicationButton.swift in Sources */,
 				915368D827EB9D37008C2A03 /* TypeAliases.swift in Sources */,
@@ -627,7 +641,9 @@
 				911DD90527E60064001F7F18 /* GroupElement.swift in Sources */,
 				912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */,
 				91A8193C27DA078600990954 /* TabTitleText.swift in Sources */,
+				9136BC92280FD29B002E5653 /* TabAddPanel.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				9136BC94280FD421002E5653 /* Views+Frame.swift in Sources */,
 				912F797727F58B3100E14D5A /* GroupItemElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,8 +861,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ISSArt-LLC/SwiftDeveloperPackage";
 			requirement = {
-				branch = "add-select-image-view";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -71,6 +71,15 @@ class SQLDelightStorage constructor(
         }
     }
 
+    override fun deleteGroupItemById(groupItemId: String): Result<Boolean> {
+        return try {
+            queries.deleteGroupItemById(groupItemId)
+            Result.success(true)
+        } catch (exception: Exception) {
+            Result.failure(exception)
+        }
+    }
+
     override fun updateGroupItemActiveState(groupItemId: String, active: Boolean): Result<Boolean> {
         val groupItem = queries.getGroupItemById(groupItemId).executeAsOneOrNull()
         return when(groupItem == null) {

@@ -42,6 +42,10 @@ addGroupItem:
 INSERT INTO GroupsElements(id, name, groupId, active)
 VALUES (?, ?, ?, ?);
 
+deleteGroupItemById:
+DELETE FROM GroupsElements
+WHERE GroupsElements.id = ?;
+
 selectGroupItemsByGroupId:
 SELECT * FROM GroupsElements
 WHERE groupId = ?

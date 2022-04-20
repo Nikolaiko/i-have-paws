@@ -8,6 +8,9 @@ struct GroupsTab: View {
     var body: some View {
         GeometryReader { geom in
             VStack {
+                TabAddPanel(tapCallback: openAddGroupScreen)
+                    .computeFrame(frameSize: geom.size)
+                
                 TabTitle(title: "Группы")
                 List {
                     ForEach(presenter.groupsList, id: \.self) { group in
@@ -20,23 +23,16 @@ struct GroupsTab: View {
                     }
                     .listRowBackground(transparentColor)
                     .listRowInsets(EdgeInsets())
-                }
-                
-                Spacer()
-                ApplicationButton(
-                    buttonTitle: "Добавить группу",
-                    buttonCallback: { navigation.push(AddGroupView()) },
-                    buttonWidth: .infinity,
-                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
-                    buttonColor: blueLightPrimary
-                )
-                .padding(.horizontal, 16.0)
-                .padding(.bottom, 16.0)
+                }            
             }
             .onAppear {
                 presenter.refreshGroupsList()
             }
         }
         .background(mainBackgroundColor)
+    }
+    
+    private func openAddGroupScreen() {
+        navigation.push(AddGroupView())
     }
 }

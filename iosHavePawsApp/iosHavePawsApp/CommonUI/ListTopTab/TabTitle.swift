@@ -8,8 +8,7 @@ struct TabTitle: View {
             TabTitleText(text: title)
                 .padding(.leading, 12.0)
             Spacer()
-        }
-        .padding(.top, 45.0)
+        }        
         .padding(.bottom, 16.0)
         .frame(maxWidth: .infinity)
         .background(tabTiteBackgroundColor)

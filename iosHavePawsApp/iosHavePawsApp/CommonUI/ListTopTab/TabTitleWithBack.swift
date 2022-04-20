@@ -20,8 +20,7 @@ struct TabTitleWithBack: View {
                 TabTitleText(text: title)
                 Spacer()
             }
-        }
-        .padding(.top, 45.0)
+        }        
         .padding(.bottom, 16.0)
         .frame(maxWidth: .infinity)
         .background(tabTiteBackgroundColor)
