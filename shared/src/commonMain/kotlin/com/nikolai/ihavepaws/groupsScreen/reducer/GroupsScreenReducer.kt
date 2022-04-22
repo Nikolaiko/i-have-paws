@@ -6,6 +6,7 @@ import com.nikolai.ihavepaws.model.StateMessage
 import com.nikolai.ihavepaws.model.consts.deleteGroupError
 import com.nikolai.ihavepaws.model.consts.errorDescription
 import com.nikolai.ihavepaws.model.consts.refreshGroupsError
+import com.nikolai.ihavepaws.model.extensions.wrapToAny
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,8 +19,11 @@ class GroupsScreenReducer constructor (
 ): GroupsScreen.Reducer {
     private var currentState = GroupsScreen.State()
 
-    override val state = MutableStateFlow(currentState)
-    override val messages = MutableSharedFlow<StateMessage>()
+    private val stateFlow = MutableStateFlow(currentState)
+    private val messageFlow = MutableSharedFlow<StateMessage>()
+
+    override val state = stateFlow.wrapToAny()
+    override val messages = messageFlow.wrapToAny()
 
     private val job = Job()
     private var scope = CoroutineScope(Dispatchers.Main + job)
@@ -45,13 +49,13 @@ class GroupsScreenReducer constructor (
 
     private fun emitState() {
         scope.launch {
-            state.emit(currentState)
+            stateFlow.emit(currentState)
         }
     }
 
     private fun emitMessage(message: StateMessage) {
         scope.launch {
-            messages.tryEmit(message)
+            messageFlow.emit(message)
         }
     }
 }

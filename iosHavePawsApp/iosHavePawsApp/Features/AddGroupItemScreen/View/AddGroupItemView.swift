@@ -2,12 +2,13 @@ import SwiftUI
 import SwiftDevPackage
 import Combine
 
-struct AddGroupView: View {
+struct AddGroupItemView: View {
     let menuTitle: String
     let menuSubtitle: String
+    let groupId: String
     
     @Binding var showMenu: Bool
-    @StateObject private var presenter = AddGroupPresenter()
+    @StateObject private var presenter = AddGroupItemPresenter()
     @EnvironmentObject private var navigation: NavigationControllerViewModel
     
     var body: some View {
@@ -49,12 +50,12 @@ struct AddGroupView: View {
             ApplicationButton(
                 buttonTitle: "Добавить",
                 buttonCallback:  {
-                    presenter.addEntity(callback: addEntityCallback)
+                    presenter.addEntity(groupId: groupId, callback: addEntityCallback)
                 },
                 buttonHeight: 50.0,
                 buttonEnabled: presenter.addButtonEnabled
             )
-            .disabled(!presenter.addButtonEnabled)            
+            .disabled(!presenter.addButtonEnabled)
         }
         .padding(.all, 16.0)
         .background(Color.white)

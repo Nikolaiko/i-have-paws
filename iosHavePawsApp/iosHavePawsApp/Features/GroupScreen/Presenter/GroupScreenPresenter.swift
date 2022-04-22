@@ -1,6 +1,7 @@
 import SwiftUI
 import shared
 import Resolver
+import Combine
 
 class GroupScreenPresenter: ObservableObject {
     @Published var group: shared.Group? = nil
@@ -13,34 +14,21 @@ class GroupScreenPresenter: ObservableObject {
     
     @Injected private var reducer: GroupScreenReducer
     
-    private lazy var stateHandler: FlowObserver = {
-        let handler = FlowObserver(callback: stateUpdate)
-        return handler
-    }()
-    
-    private lazy var messageHandler: FlowObserver = {
-        let handler = FlowObserver(callback: messageReceived)
-        return handler
-    }()
+    private var subscriptions: Set<AnyCancellable> = []
     
     init() {
-        reducer.state.collect(collector: stateHandler) { kotlinUnit, error in
-            print("Complete states?")
-        }
+        FlowPublisher(kotlinFlow: reducer.state).sink { [weak self] state in
+            self?.stateUpdate(newState: state)
+        }.store(in: &subscriptions)
         
-        reducer.messages.collect(collector: messageHandler) { kotlinUnit, error in
-            print("Complete messages?")
-        }
+        FlowPublisher(kotlinFlow: reducer.messages).sink { [weak self] message in
+            self?.messageReceived(newMessage: message)
+        }.store(in: &subscriptions)
     }
     
     func initWithGroup(item: shared.Group) {
         group = item
-        reducer.getGroup(group: item)
-    }
-    
-    func tryAddNewGroupItem(itemName: String?) {
-        let item = shared.GroupItem(id: UUID().uuidString, title: itemName ?? "", active: true)
-        reducer.addGroupItem(item: item)
+        refreshGroup()
     }
     
     func updateGroupItemState(item: shared.GroupItem) {
@@ -59,21 +47,23 @@ class GroupScreenPresenter: ObservableObject {
         showRandomResult = false
     }
     
-    private func stateUpdate(newState: Any?) {
-        if let state = newState as? GroupScreen.State {
-            group = state.group
-            enableRandomButton = !(group?.items.isEmpty ?? true)
+    func refreshGroup() {
+        if let selectedGroup = group {
+            reducer.getGroup(group: selectedGroup)
         }
     }
     
-    private func messageReceived(newMessage: Any?) {
-        guard newMessage != nil else { return }
-        
+    private func stateUpdate(newState: GroupScreen.State) {
+        group = newState.group
+        enableRandomButton = newState.randomEnabled
+    }
+    
+    private func messageReceived(newMessage: StateMessage) {
         if let message = newMessage as? StateMessage.SelectedItemMessage {
             selectedItemName = message.selectedItem.title
             showRandomResult = true
         }
-        
+
         if let message = newMessage as? StateMessage.ErrorMessage {
             if !showErrorMessage {
                 errorMessage = message.text

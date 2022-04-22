@@ -25,6 +25,9 @@ extension Resolver: ResolverRegistering {
         register { AddGroupReducer_(storage: resolve()) as AddGroupReducer }
             .scope(.shared)
         
+        register { AddGroupItemReducer_(storage: resolve()) as AddGroupItemReducer }
+            .scope(.shared)
+        
         register { GroupScreenReducer_(storage: resolve()) as GroupScreenReducer }
             .scope(.shared)
     }

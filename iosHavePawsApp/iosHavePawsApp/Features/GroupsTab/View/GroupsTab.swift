@@ -5,6 +5,8 @@ struct GroupsTab: View {
     @ObservedObject private var presenter = GroupsScreenPresenter()
     @EnvironmentObject private var navigation: NavigationControllerViewModel
     
+    @State private var showAddMenu = false
+    
     var body: some View {
         GeometryReader { geom in
             VStack {
@@ -30,9 +32,20 @@ struct GroupsTab: View {
             }
         }
         .background(mainBackgroundColor)
+        .sheet(isPresented: $showAddMenu, onDismiss: onAddMenuDismiss) {
+            AddGroupView(
+                menuTitle: "Имя группы",
+                menuSubtitle: "(не менее 4-х символов)",
+                showMenu: $showAddMenu
+            )
+        }
     }
     
     private func openAddGroupScreen() {
-        navigation.push(AddGroupView())
+        showAddMenu = true
+    }
+    
+    private func onAddMenuDismiss() {
+        presenter.refreshGroupsList()
     }
 }

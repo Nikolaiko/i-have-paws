@@ -4,12 +4,12 @@ import Combine
 import shared
 import Resolver
 
-class AddGroupPresenter: ObservableObject {
+class AddGroupItemPresenter: ObservableObject {
     
     @Published var newEntityName = ""
     @Published var addButtonEnabled = false
     
-    @Injected private var reducer: AddGroupReducer
+    @Injected private var reducer: AddGroupItemReducer
     
     private var subscriptions: Set<AnyCancellable> = []
     private var addCallback: ErrorCallback? = nil
@@ -17,7 +17,7 @@ class AddGroupPresenter: ObservableObject {
     init() {
         $newEntityName
             .sink { [weak self] currentValue in
-                self?.addButtonEnabled = self?.validateGroupName(value: currentValue) ?? false
+                self?.addButtonEnabled = self?.validateGroupItemName(value: currentValue) ?? false
             }
             .store(in: &subscriptions)
         
@@ -26,12 +26,13 @@ class AddGroupPresenter: ObservableObject {
         }.store(in: &subscriptions)
     }
     
-    func addEntity(callback: ErrorCallback? = nil) {
+    func addEntity(groupId: String, callback: ErrorCallback? = nil) {
         addCallback = callback
-        reducer.addNewGroup(id: UUID.init().uuidString, name: newEntityName)
+        let item = shared.GroupItem(id: UUID().uuidString, title: newEntityName, active: true)
+        reducer.addGroupItem(groupId: groupId, item: item)
     }
     
-    private func validateGroupName(value: String) -> Bool {
+    private func validateGroupItemName(value: String) -> Bool {
         value.count >= 4
     }
     

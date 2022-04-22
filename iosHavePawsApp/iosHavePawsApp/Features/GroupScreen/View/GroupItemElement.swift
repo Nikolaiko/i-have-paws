@@ -2,8 +2,7 @@ import SwiftUI
 import shared
 
 struct GroupItemElement: View {
-    let groupItem: shared.GroupItem
-    let toggleCallback: BoolCallback
+    let groupItem: shared.GroupItem    
     
     var body: some View {
         GeometryReader { geom in

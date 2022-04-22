@@ -6,6 +6,8 @@ import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.StateMessage
 import com.nikolai.ihavepaws.model.consts.*
+import com.nikolai.ihavepaws.model.extensions.isEnabledForRandom
+import com.nikolai.ihavepaws.model.extensions.wrapToAny
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -14,9 +16,11 @@ class GroupScreenReducer constructor(
     private val storage: LocalStorage
 ): GroupScreen.Reducer {
     private var currentState = GroupScreen.State()
+    private val stateFlow = MutableSharedFlow<GroupScreen.State>()
+    private val messagesFlow = MutableSharedFlow<StateMessage>()
 
-    override val state = MutableSharedFlow<GroupScreen.State>()
-    override val messages = MutableSharedFlow<StateMessage>()
+    override val state = stateFlow.wrapToAny()
+    override val messages = messagesFlow.wrapToAny()
 
     private val job = Job()
     private var scope = CoroutineScope(Dispatchers.Main + job)
@@ -24,28 +28,15 @@ class GroupScreenReducer constructor(
     override fun getGroup(group: Group) {
         val result = storage.getGroupByName(group.name)
         result.onSuccess {
-            currentState = currentState.copy(group = it)
+            currentState = currentState.copy(
+                group = it,
+                randomEnabled = it.isEnabledForRandom()
+            )
             emitState()
         }
         result.onFailure {
             val message = StateMessage.ErrorMessage(it.message ?: getGroupItemsError)
             emitMessage(message)
-        }
-    }
-
-    override fun addGroupItem(item: GroupItem) {
-        when(item.title.length >= 4) {
-            true -> {
-                val result = storage.addNewItemToGroup(currentState.group.id, item)
-                result.onSuccess {
-                    getGroup(currentState.group)
-                }
-                result.onFailure {
-                    val message = StateMessage.ErrorMessage(it.message ?: getGroupItemsError)
-                    emitMessage(message)
-                }
-            }
-            false -> emitMessage(StateMessage.ErrorMessage(shortGroupItemsName))
         }
     }
 
@@ -78,13 +69,13 @@ class GroupScreenReducer constructor(
 
     private fun emitState() {
         scope.launch {
-            state.emit(currentState)
+            stateFlow.emit(currentState)
         }
     }
 
     private fun emitMessage(message: StateMessage) {
         scope.launch {
-            messages.emit(message)
+            messagesFlow.emit(message)
         }
     }
 }

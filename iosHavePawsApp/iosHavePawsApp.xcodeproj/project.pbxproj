@@ -65,8 +65,13 @@
 		91A8194427DA0B3200990954 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A8194327DA0B3200990954 /* Fonts.swift */; };
 		91BCFB6D27D9AB880008838E /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCFB6C27D9AB880008838E /* MainScreen.swift */; };
 		91BCFB7027D9BF080008838E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCFB6F27D9BF080008838E /* Colors.swift */; };
+		91CF2106281147BA00D7EA0D /* FlowPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CF2105281147BA00D7EA0D /* FlowPublisher.swift */; };
 		91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF2327E7821100362F9B /* AddGroupView.swift */; };
 		91EC894927FBEDAB002CCB9B /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC894827FBEDAB002CCB9B /* Size.swift */; };
+		91FB046428127394004965C9 /* AddEntityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB046328127394004965C9 /* AddEntityState.swift */; };
+		91FB0469281282B7004965C9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB0468281282B7004965C9 /* AppError.swift */; };
+		91FB047128129575004965C9 /* AddGroupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB047028129575004965C9 /* AddGroupItemView.swift */; };
+		91FB0473281299B4004965C9 /* AddGroupItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB0472281299B4004965C9 /* AddGroupItemPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -141,8 +146,13 @@
 		91A8194327DA0B3200990954 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		91BCFB6C27D9AB880008838E /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		91BCFB6F27D9BF080008838E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		91CF2105281147BA00D7EA0D /* FlowPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowPublisher.swift; sourceTree = "<group>"; };
 		91D4CF2327E7821100362F9B /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		91EC894827FBEDAB002CCB9B /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		91FB046328127394004965C9 /* AddEntityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntityState.swift; sourceTree = "<group>"; };
+		91FB0468281282B7004965C9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		91FB047028129575004965C9 /* AddGroupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupItemView.swift; sourceTree = "<group>"; };
+		91FB0472281299B4004965C9 /* AddGroupItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupItemPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +224,7 @@
 		9111AFBA27F0CB1E006214E4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				91FB046D28129510004965C9 /* AddGroupItemScreen */,
 				9111AFBB27F0CB50006214E4 /* GroupScreen */,
 				91BCFB6B27D9AB740008838E /* MainScreen */,
 				91D4CF2127E781DF00362F9B /* AddGroupScreen */,
@@ -287,10 +298,12 @@
 		915368D627EB9D21008C2A03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				91FB046528128275004965C9 /* Errors */,
 				91911D5527F6A26000C8B238 /* UIModels */,
 				915368D727EB9D37008C2A03 /* TypeAliases.swift */,
 				9150F98727EEA0A400AE4BEA /* NavigationDestinations.swift */,
 				912E7FBF27FAC81B001C34A7 /* UIConsts.swift */,
+				91FB046328127394004965C9 /* AddEntityState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */,
+				91CF2105281147BA00D7EA0D /* FlowPublisher.swift */,
 			);
 			path = Multiplatform;
 			sourceTree = "<group>";
@@ -486,6 +500,39 @@
 				91D4CF2327E7821100362F9B /* AddGroupView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		91FB046528128275004965C9 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				91FB0468281282B7004965C9 /* AppError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		91FB046D28129510004965C9 /* AddGroupItemScreen */ = {
+			isa = PBXGroup;
+			children = (
+				91FB046F28129542004965C9 /* Presenter */,
+				91FB046E2812953C004965C9 /* View */,
+			);
+			path = AddGroupItemScreen;
+			sourceTree = "<group>";
+		};
+		91FB046E2812953C004965C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91FB047028129575004965C9 /* AddGroupItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		91FB046F28129542004965C9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				91FB0472281299B4004965C9 /* AddGroupItemPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,15 +666,18 @@
 				91809578280E7CD900A056FC /* DeleteListItemModifier.swift in Sources */,
 				9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */,
 				9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */,
+				91FB0473281299B4004965C9 /* AddGroupItemPresenter.swift in Sources */,
 				91A8193A27DA06F900990954 /* TabTitle.swift in Sources */,
 				9180957A280E802C00A056FC /* View+SwipeToDelete.swift in Sources */,
 				9150F98827EEA0A400AE4BEA /* NavigationDestinations.swift in Sources */,
 				9111AFC127F0CE5A006214E4 /* TabTitleWithBack.swift in Sources */,
 				9111AFBF27F0CBCC006214E4 /* GroupView.swift in Sources */,
 				912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */,
+				91CF2106281147BA00D7EA0D /* FlowPublisher.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				91BCFB7027D9BF080008838E /* Colors.swift in Sources */,
 				912E7FBE27FAC7B2001C34A7 /* UIToastModel.swift in Sources */,
+				91FB0469281282B7004965C9 /* AppError.swift in Sources */,
 				9185A2EA27D51B6B00FD2277 /* GroupsScreenPresenter.swift in Sources */,
 				912E7FC027FAC81B001C34A7 /* UIConsts.swift in Sources */,
 				916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */,
@@ -640,6 +690,8 @@
 				91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */,
 				911DD90527E60064001F7F18 /* GroupElement.swift in Sources */,
 				912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */,
+				91FB047128129575004965C9 /* AddGroupItemView.swift in Sources */,
+				91FB046428127394004965C9 /* AddEntityState.swift in Sources */,
 				91A8193C27DA078600990954 /* TabTitleText.swift in Sources */,
 				9136BC92280FD29B002E5653 /* TabAddPanel.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,

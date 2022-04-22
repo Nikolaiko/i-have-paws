@@ -17,14 +17,14 @@ struct GroupView: View {
     var body: some View {
         GeometryReader { geom in
             VStack {
-                TabAddPanel(tapCallback: {})
+                TabAddPanel(tapCallback: { showMenu = true } )
                     .computeFrame(frameSize: geom.size)
                 
                 TabTitleWithBack(title: presenter.group?.name ?? "")
                 ScrollView{
                     LazyVStack {
                         ForEach(presenter.group?.items ?? [], id: \.self) { item in
-                            GroupItemElement(groupItem: item, toggleCallback: { b in })
+                            GroupItemElement(groupItem: item)
                                 .computeFrame(frameSize: geom.size)
                                 .onTapGesture {
                                     presenter.updateGroupItemState(item: item)
@@ -44,30 +44,21 @@ struct GroupView: View {
                     buttonEnabled: presenter.enableRandomButton,
                     buttonColor: blueLightPrimary
                 )
-                .padding(.horizontal, 16.0)
-                
-                ApplicationButton(
-                    buttonTitle: "Добавить элемент",
-                    buttonCallback: { showMenu = true },
-                    buttonWidth: .infinity,
-                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
-                    buttonColor: blueLightPrimary
-                )
+                .padding(.horizontal, 16.0)                                
                 .padding(.horizontal, 16.0)
                 .padding(.bottom, 16.0)
             }
             .background(mainBackgroundColor)
-            .textAlert(
-                isPresented: $showMenu,
-                AlertConfiguration(
-                    alertTitle: "Добавить элемент",
-                    alertMessage: "Длина имени не менее 4 символов",
-                    mainAction: presenter.tryAddNewGroupItem,
-                    alertKeyboardType: .default
-                )
-            )
         }
         .toast(message: presenter.errorMessage, isShowing: $presenter.showErrorMessage, duration: shortToastDuration)
+        .sheet(isPresented: $showMenu, onDismiss: onAddMenuDismiss) {
+            AddGroupItemView(
+                menuTitle: "Имя элемента",
+                menuSubtitle: "(не менее 4-х символов)",
+                groupId: group.id,
+                showMenu: $showMenu
+            )
+        }
         .alert(Text("Та дааам!!!"), isPresented: $presenter.showRandomResult) {
             Button("Ok") {
                 presenter.hideRandomItem()
@@ -75,6 +66,10 @@ struct GroupView: View {
         } message: {
             Text(presenter.selectedItemName)
         }
+    }
+    
+    private func onAddMenuDismiss() {
+        presenter.refreshGroup()
     }
 }
 

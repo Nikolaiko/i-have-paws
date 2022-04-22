@@ -1,14 +1,9 @@
 package com.nikolai.ihavepaws.addGroupScreen.contract
 
-import com.nikolai.ihavepaws.groupsScreen.contract.GroupsScreen
-import com.nikolai.ihavepaws.model.StateMessage
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.nikolai.ihavepaws.model.base.BaseReducer
 
 class AddGroup {
-    interface Reducer {
-        val messages: SharedFlow<StateMessage>
-
+    interface Reducer : BaseReducer {
         fun addNewGroup(id: String, name: String)
     }
 }
