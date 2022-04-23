@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
@@ -51,5 +51,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow us to use michrophone for recognition purposes</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow us to use camera for recognition purposes (taking photos with elemnts names)</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Allow us to use speach for recognition purposes</string>
 </dict>
 </plist>
