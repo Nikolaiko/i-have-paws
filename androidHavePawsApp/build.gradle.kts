@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -46,7 +49,15 @@ dependencies {
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.4.2")
 
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.41")
+    kapt("com.google.dagger:hilt-android-compiler:2.41")
+
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+}
+
+kapt {
+    correctErrorTypes = true
 }

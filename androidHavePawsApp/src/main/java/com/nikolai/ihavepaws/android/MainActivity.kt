@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.nikolai.ihavepaws.android.mainScreen.view.GroupsScreenView
 import com.nikolai.ihavepaws.android.navigation.AppScreens
 import com.nikolai.ihavepaws.android.navigation.appMainGraph
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             NavHost(navController = navigationController, startDestination = appMainGraph) {
                 navigation(startDestination = AppScreens.MainScreen.route, route = appMainGraph) {
                     composable(route = AppScreens.MainScreen.route) {
-
+                        GroupsScreenView()
                     }
                 }
             }
