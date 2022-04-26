@@ -45,13 +45,18 @@ dependencies {
     implementation("androidx.compose.material:material:1.1.1")
     implementation("androidx.compose.ui:ui-tooling:1.1.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
 
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.4.2")
 
     //Hilt
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.41")
     kapt("com.google.dagger:hilt-android-compiler:2.41")
+
+    //ViewModel LifeCycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-beta01")
 
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
