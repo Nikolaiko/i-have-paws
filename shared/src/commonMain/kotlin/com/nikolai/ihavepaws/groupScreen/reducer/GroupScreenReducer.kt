@@ -63,7 +63,8 @@ class GroupScreenReducer constructor(
     }
 
     override fun selectRandomElement() {
-        val selectedItem = currentState.group.items.random()
+        val activeItems = currentState.group.items.filter { item -> item.active }
+        val selectedItem = activeItems.random()
         emitMessage(StateMessage.SelectedItemMessage(selectedItem))
     }
 

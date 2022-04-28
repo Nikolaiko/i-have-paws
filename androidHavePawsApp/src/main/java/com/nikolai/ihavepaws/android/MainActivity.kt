@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
                 navigation(startDestination = AppScreens.MainScreen.route, route = appMainGraph) {
                     composable(route = AppScreens.MainScreen.route) {
                         val viewModel = hiltViewModel<GroupsScreenViewModel>()
-                        GroupsScreenView()
+                        GroupsScreenView(
+                            state = viewModel.state,
+                            initGroupsCallback = viewModel::initGroupsList
+                        )
                     }
                 }
             }

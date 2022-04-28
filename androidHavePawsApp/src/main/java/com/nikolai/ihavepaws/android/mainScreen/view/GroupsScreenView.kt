@@ -29,9 +29,7 @@ fun GroupsScreenView(
         state = columnState
     ) {
         items(items = groupsList.value, itemContent = { item ->
-
+            Text(item.name)
         })
     }
-
-    Text("Hello")
 }

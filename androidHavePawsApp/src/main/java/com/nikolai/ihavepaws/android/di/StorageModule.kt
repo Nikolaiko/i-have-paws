@@ -24,8 +24,8 @@ class StorageModule {
         context: Context
     ): DatabaseDriverFactory = DatabaseDriverFactory(context)
 
-    @Provides
     @Singleton
+    @Provides
     fun provideStorage(
         factory: DatabaseDriverFactory
     ): LocalStorage = SQLDelightStorage(factory)
