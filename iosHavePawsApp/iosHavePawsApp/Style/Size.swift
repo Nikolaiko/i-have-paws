@@ -19,6 +19,9 @@ let groupItemRowInsideHorizontalCoff: CGFloat = CofficientsKt.groupItemRowInside
 
 let tabBackArrowCoff: CGFloat = CofficientsKt.titleBarBackArrowCoff
 
+let fabBottomPaddingCoff: CGFloat = CofficientsKt.fabBottomMarginCoff
+let fabButtonHeightCoff: CGFloat = CofficientsKt.fabButtonHeightCoff
+
 let bottomButtonHeightCoff: CGFloat = CofficientsKt.bottomButtonHeightCoff
 
 let messageBoxCornerRadiusCoff: CGFloat = CofficientsKt.messageBoxCornerCoff

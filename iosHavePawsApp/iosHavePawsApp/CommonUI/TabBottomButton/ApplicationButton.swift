@@ -35,5 +35,6 @@ struct ApplicationButton: View {
                 .background(enabled ? backgroundColor : mainDisabledButtonColor)
                 .cornerRadius((height ?? 0.0) * 0.24)
         }
+        .disabled(!enabled)
     }
 }

@@ -18,6 +18,9 @@ const val groupItemRowInsideVerticalPadding = 0.25
 
 const val bottomButtonHeightCoff = 0.0812
 
+const val fabButtonHeightCoff = 0.0812
+const val fabBottomMarginCoff = 0.0402
+
 const val messageBoxCornerCoff = 0.0296
 const val messageBoxSidePaddingCoff = 0.128
 

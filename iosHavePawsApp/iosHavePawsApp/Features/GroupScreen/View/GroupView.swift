@@ -32,24 +32,17 @@ struct GroupView: View {
                                 .onDelete {
                                     presenter.deleteGroupItem(item: item)
                                 }
-                        }                        
+                        }
                     }
                 }
-                Spacer()
-                ApplicationButton(
-                    buttonTitle: "РАНДОМ!!!",
-                    buttonCallback: presenter.selectRandomItem,
-                    buttonWidth: .infinity,
-                    buttonHeight: geom.size.height * bottomButtonHeightCoff,
-                    buttonEnabled: presenter.enableRandomButton,
-                    buttonColor: blueLightPrimary
-                )
-                .padding(.horizontal, 16.0)                                
-                .padding(.horizontal, 16.0)
-                .padding(.bottom, 16.0)
             }
-            .background(mainBackgroundColor)
+            .floatingActionButton(
+                color: presenter.enableRandomButton ? blueLightPrimary : mainDisabledButtonColor,
+                image: Image(systemName: randomButtonImage),
+                action: presenter.enableRandomButton ? presenter.selectRandomItem : { }
+            )
         }
+        .background(mainBackgroundColor)
         .toast(message: presenter.errorMessage, isShowing: $presenter.showErrorMessage, duration: shortToastDuration)
         .sheet(isPresented: $showMenu, onDismiss: onAddMenuDismiss) {
             AddGroupItemView(
@@ -65,6 +58,46 @@ struct GroupView: View {
             }
         } message: {
             Text(presenter.selectedItemName)
+        }
+    }
+    
+    private func buildMainContent(_ geom: GeometryProxy) -> some View {
+        return VStack {
+            TabAddPanel(tapCallback: { showMenu = true } )
+                .computeFrame(frameSize: geom.size)
+            
+            TabTitleWithBack(title: presenter.group?.name ?? "")
+            ScrollView{
+                LazyVStack {
+                    ForEach(presenter.group?.items ?? [], id: \.self) { item in
+                        GroupItemElement(groupItem: item)
+                            .computeFrame(frameSize: geom.size)
+                            .onTapGesture {
+                                presenter.updateGroupItemState(item: item)
+                            }
+                            .onDelete {
+                                presenter.deleteGroupItem(item: item)
+                            }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func buildBottomFloatingButton(_ geom: GeometryProxy) -> some View {
+        return VStack {
+            Spacer()
+            ApplicationButton(
+                buttonTitle: "РАНДОМ!!!",
+                buttonCallback: presenter.selectRandomItem,
+                buttonWidth: .infinity,
+                buttonHeight: geom.size.height * bottomButtonHeightCoff,
+                buttonEnabled: presenter.enableRandomButton,
+                buttonColor: blueLightPrimary
+            )
+            .padding(.horizontal, 16.0)
+            .padding(.horizontal, 16.0)
+            .padding(.bottom, 16.0)
         }
     }
     
