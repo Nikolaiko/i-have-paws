@@ -6,5 +6,3 @@ type("development") # The default type, can be: appstore, adhoc, enterprise or d
 
 app_identifier(["com.nikolai.ihavepaws"])
 username("nikolaiko@mail.ru")
-
-#passphrase - barmaley
