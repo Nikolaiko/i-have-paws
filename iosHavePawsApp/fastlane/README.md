@@ -15,13 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios certificates
+### ios load_asc_api_key
 
 ```sh
-[bundle exec] fastlane ios certificates
+[bundle exec] fastlane ios load_asc_api_key
 ```
 
-
+Load ASC API Key information to use in subsequent lanes
 
 ### ios upload_to_test_flight
 
