@@ -15,7 +15,14 @@ jobs:
     
       - uses: actions/checkout@v3
 
-      - name: Setup gradlew
+      - name: Current Folder
+        run: pwd
+        
+      - name: Current list
+        run: ls
+
+
+      - name: Setup gradlew        
         run: gradle wrapper
 
       - name: Set up ruby env
