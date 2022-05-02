@@ -1,19 +1,28 @@
 default_platform(:ios)
 
 platform :ios do
-  lane :certificates do
+  desc "Load ASC API Key information to use in subsequent lanes"
+  lane :load_asc_api_key do
     app_store_connect_api_key(
-	key_filepath: "./AuthKey_KVXJ2VBJXD.p8",
-	duration: 1200, 
+     key_id: ENV["ASC_KEY_ID"],
+     issuer_id: ENV["ASC_ISSUER_ID"],
+     key_content: ENV["ASC_KEY"],
+     is_key_content_base64: true,
+     in_house: false 
     )
-    team_id("ZWXN4J2VCP")
-    match(type: "appstore", readonly:false)
+    team_id(ENV["TEAM_ID"])
+    match(
+      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"]
+      type: "appstore", 
+      readonly:false,
+      keychain_password: ENV["MATCH_PASSWORD"]
+    )
   end
 
   lane :upload_to_test_flight do
-    certificates
+    load_asc_api_key
     increment_build_number
     build_ios_app
-    upload_to_testflight(skip_submission: false)
+    upload_to_testflight(skip_submission: true)
   end
 end
