@@ -10,6 +10,9 @@ on:
 jobs:  
   deploy:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./iosHavePawsApp
     steps:
       - uses: actions/checkout@v3
 
@@ -18,9 +21,6 @@ jobs:
         with:
           ruby-version: 2.7.2
           bundler-cache: true
-          
-      - name: Change directory to project
-        run: cd iosHavePawsApp
         
       - name: Build & deploy iOS release
         run: bundle exec fastlane ios upload_to_test_flight
