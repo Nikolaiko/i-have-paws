@@ -22,6 +22,8 @@
 		912F797727F58B3100E14D5A /* GroupItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F797627F58B3100E14D5A /* GroupItemElement.swift */; };
 		9136BC92280FD29B002E5653 /* TabAddPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136BC91280FD29B002E5653 /* TabAddPanel.swift */; };
 		9136BC94280FD421002E5653 /* Views+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136BC93280FD421002E5653 /* Views+Frame.swift */; };
+		91426FAE281FABD8008005E5 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 91426FAD281FABD8008005E5 /* Resolver */; };
+		91426FB1281FABF4008005E5 /* SwiftDevPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 91426FB0281FABF4008005E5 /* SwiftDevPackage */; };
 		914FA21F281E460D00D82667 /* GroupItemConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914FA21E281E460D00D82667 /* GroupItemConsts.swift */; };
 		914FA221281E465300D82667 /* ImageNameConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914FA220281E465300D82667 /* ImageNameConsts.swift */; };
 		914FA223281E467B00D82667 /* ToastConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914FA222281E467B00D82667 /* ToastConsts.swift */; };
@@ -31,7 +33,6 @@
 		9150F98B27EF5E5A00AE4BEA /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98A27EF5E5A00AE4BEA /* AppNavigation.swift */; };
 		9150F98D27EF5EAC00AE4BEA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150F98C27EF5EAC00AE4BEA /* Router.swift */; };
 		915368D827EB9D37008C2A03 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915368D727EB9D37008C2A03 /* TypeAliases.swift */; };
-		916E884727ECD625007D391A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 916E884627ECD625007D391A /* Resolver */; };
 		916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916E884927ECD6F3007D391A /* DIResolver.swift */; };
 		917127A92802945A00359E6A /* InputTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917127A82802945A00359E6A /* InputTextFieldStyle.swift */; };
 		9174683F28090C80000F8F95 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9174682D28090C80000F8F95 /* Montserrat-BoldItalic.ttf */; };
@@ -57,7 +58,6 @@
 		91809578280E7CD900A056FC /* DeleteListItemModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91809577280E7CD900A056FC /* DeleteListItemModifier.swift */; };
 		9180957A280E802C00A056FC /* View+SwipeToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91809579280E802C00A056FC /* View+SwipeToDelete.swift */; };
 		9185A2E527D519AC00FD2277 /* GroupsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E427D519AC00FD2277 /* GroupsTab.swift */; };
-		9185A2E827D519D500FD2277 /* SwiftDevPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 9185A2E727D519D500FD2277 /* SwiftDevPackage */; };
 		9185A2EA27D51B6B00FD2277 /* GroupsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2E927D51B6B00FD2277 /* GroupsScreenPresenter.swift */; };
 		9185A2EE27D5DF5A00FD2277 /* FlowObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9185A2ED27D5DF5A00FD2277 /* FlowObserver.swift */; };
 		918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B98BF27E98A2D00222FCB /* CallbackTypes.swift */; };
@@ -181,8 +181,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				916E884727ECD625007D391A /* Resolver in Frameworks */,
-				9185A2E827D519D500FD2277 /* SwiftDevPackage in Frameworks */,
+				91426FAE281FABD8008005E5 /* Resolver in Frameworks */,
+				91426FB1281FABF4008005E5 /* SwiftDevPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,8 +628,8 @@
 			);
 			name = iosHavePawsApp;
 			packageProductDependencies = (
-				9185A2E727D519D500FD2277 /* SwiftDevPackage */,
-				916E884627ECD625007D391A /* Resolver */,
+				91426FAD281FABD8008005E5 /* Resolver */,
+				91426FB0281FABF4008005E5 /* SwiftDevPackage */,
 			);
 			productName = iosHavePawsApp;
 			productReference = 7555FF7B242A565900829871 /* iosHavePawsApp.app */;
@@ -684,8 +684,8 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				9185A2E627D519D500FD2277 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */,
-				916E884527ECD625007D391A /* XCRemoteSwiftPackageReference "Resolver" */,
+				91426FAC281FABD8008005E5 /* XCRemoteSwiftPackageReference "Resolver" */,
+				91426FAF281FABF4008005E5 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -1097,7 +1097,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		916E884527ECD625007D391A /* XCRemoteSwiftPackageReference "Resolver" */ = {
+		91426FAC281FABD8008005E5 /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver";
 			requirement = {
@@ -1105,25 +1105,25 @@
 				kind = branch;
 			};
 		};
-		9185A2E627D519D500FD2277 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */ = {
+		91426FAF281FABF4008005E5 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ISSArt-LLC/SwiftDeveloperPackage";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		916E884627ECD625007D391A /* Resolver */ = {
+		91426FAD281FABD8008005E5 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 916E884527ECD625007D391A /* XCRemoteSwiftPackageReference "Resolver" */;
+			package = 91426FAC281FABD8008005E5 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
 		};
-		9185A2E727D519D500FD2277 /* SwiftDevPackage */ = {
+		91426FB0281FABF4008005E5 /* SwiftDevPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9185A2E627D519D500FD2277 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */;
+			package = 91426FAF281FABF4008005E5 /* XCRemoteSwiftPackageReference "SwiftDeveloperPackage" */;
 			productName = SwiftDevPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
