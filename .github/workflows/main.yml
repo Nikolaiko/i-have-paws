@@ -25,6 +25,9 @@ jobs:
       - name: Install bundler
         run: gem install bundler:1.17.2
         
+      - name: Setup Fastlane
+        run: bundle install   
+        
       - name: Build & deploy iOS release
         run: bundle exec fastlane ios upload_to_test_flight
         env:
