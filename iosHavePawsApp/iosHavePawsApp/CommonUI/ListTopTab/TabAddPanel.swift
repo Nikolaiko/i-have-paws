@@ -14,7 +14,7 @@ struct TabAddPanel: View {
                     tapCallback()
                 }
         }
-        .padding(.trailing, 16.0)
+        .padding(.trailing, topAddButtonTrailing)
     }
 }
 

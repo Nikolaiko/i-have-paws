@@ -26,11 +26,12 @@ extension GroupItemElement {
 
 extension TabAddPanel {
     func computeFrame(frameSize: CGSize) -> some View {
+        _ = print(frameSize.height * topAddHeight)
         return frame(
             width: frameSize.width,
-            height: frameSize.height * 0.05
+            height: frameSize.height * topAddHeight
         )
-        .background(Color.white)
-        .padding(.top, frameSize.height * 0.04)
+        .background(tabAddBackgroundColor)
+        .padding(.top, frameSize.height * topAddTopPadding)
     }
 }

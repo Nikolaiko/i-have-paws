@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    val koin_version= "3.2.0-beta-1"
+
     implementation(project(":shared"))
 
     //Compose
@@ -54,6 +56,12 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.41")
     kapt("com.google.dagger:hilt-android-compiler:2.41")
+
+    //Koin
+    implementation("io.insert-koin:koin-android:$koin_version")
+    implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
+    implementation("io.insert-koin:koin-androidx-compose:$koin_version")
+
 
     //ViewModel LifeCycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-beta01")

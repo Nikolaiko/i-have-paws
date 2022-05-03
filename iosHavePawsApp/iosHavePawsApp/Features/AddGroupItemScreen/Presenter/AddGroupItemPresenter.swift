@@ -33,7 +33,7 @@ class AddGroupItemPresenter: ObservableObject {
     }
     
     private func validateGroupItemName(value: String) -> Bool {
-        value.count >= 4
+        value.count >= RequrementsConstsKt.minEntityNameLength
     }
     
     private func messageReceived(message: StateMessage) {

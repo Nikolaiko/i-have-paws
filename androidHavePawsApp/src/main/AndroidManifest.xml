@@ -4,10 +4,13 @@
 
     <application
         android:name=".App"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_display_name"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

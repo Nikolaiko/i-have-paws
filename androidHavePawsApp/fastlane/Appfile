@@ -1,0 +1,2 @@
+json_key_file("./certs/service-accoun-key.json")
+package_name("com.nikolai.ihavepaws.android")

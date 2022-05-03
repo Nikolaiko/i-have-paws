@@ -12,21 +12,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
+import java.sql.DriverManager
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-class StorageModule {
-
-    @Provides
-    fun provideDriver(
-        @ApplicationContext
-        context: Context
-    ): DatabaseDriverFactory = DatabaseDriverFactory(context)
-
-    @Singleton
-    @Provides
-    fun provideStorage(
-        factory: DatabaseDriverFactory
-    ): LocalStorage = SQLDelightStorage(factory)
+val storageModule = module {
+    single { DatabaseDriverFactory(androidContext()) }
+    single<LocalStorage> { SQLDelightStorage(get()) }
 }

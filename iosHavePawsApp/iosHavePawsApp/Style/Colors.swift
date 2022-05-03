@@ -10,10 +10,10 @@ let transparentColor = Color.white.opacity(0.0)
 
 let mainBackgroundColor = Color.init(hex: UInt(ColorsKt.nativeWhite))
 let mainPurpleColor = Color.init(hex: UInt(ColorsKt.mainPurpleColor))
-let mainRedButtonColor = Color.red
-let mainDisabledButtonColor = Color.gray
+let mainDisabledButtonColor = Color.init(hex: UInt(ColorsKt.disabledButtonColor))
 
-let tabTiteBackgroundColor = Color.init(hex: UInt(ColorsKt.nativeWhite))
+let tabAddBackgroundColor = Color.init(hex: UInt(ColorsKt.topPanelBackground))
+let tabTiteBackgroundColor = Color.init(hex: UInt(ColorsKt.topPanelBackground))
 let tabTitleTextColor = blueLightPrimary
 
 let bottomButtonTextColor = Color.init(hex: UInt(ColorsKt.nativeWhite))

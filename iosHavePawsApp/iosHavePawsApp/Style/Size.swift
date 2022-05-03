@@ -19,6 +19,13 @@ let groupItemRowInsideHorizontalCoff: CGFloat = CofficientsKt.groupItemRowInside
 
 let tabBackArrowCoff: CGFloat = CofficientsKt.titleBarBackArrowCoff
 
+let topAddButtonTrailing: CGFloat = CGFloat(SizesKt.topBarAddIconTrailingPadding)
+let topAddHeight: CGFloat = CGFloat(CofficientsKt.topAddHeightCoff)
+
+let topAddTopPadding: CGFloat = CGFloat(CofficientsKt.topAddTopPaddingCoff)
+let topTitleLeadingPadding: CGFloat = CGFloat(SizesKt.topBarTitleLeadingPadding)
+let topTitleBottomPadding: CGFloat = CGFloat(SizesKt.topBarTitleBottomPadding)
+
 let fabBottomPaddingCoff: CGFloat = CofficientsKt.fabBottomMarginCoff
 let fabButtonHeightCoff: CGFloat = CofficientsKt.fabButtonHeightCoff
 

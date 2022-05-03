@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="groups_title_text">Группы</string>
+    <string name="add_group_title_text">Имя группы</string>
+    <string name="add_group_subtitle_text">(не менее 4-х символов)</string>
+
+</resources>

@@ -6,10 +6,10 @@ struct TabTitle: View {
     var body: some View {
         HStack {
             TabTitleText(text: title)
-                .padding(.leading, 12.0)
+                .padding(.leading, topTitleLeadingPadding)
             Spacer()
         }        
-        .padding(.bottom, 16.0)
+        .padding(.bottom, topTitleBottomPadding)
         .frame(maxWidth: .infinity)
         .background(tabTiteBackgroundColor)
     }

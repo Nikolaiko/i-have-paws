@@ -5,6 +5,7 @@ import com.nikolai.ihavepaws.localStorage.LocalStorage
 import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.StateMessage
 import com.nikolai.ihavepaws.model.consts.addGroupItemError
+import com.nikolai.ihavepaws.model.consts.minEntityNameLength
 import com.nikolai.ihavepaws.model.consts.shortGroupItemsName
 import com.nikolai.ihavepaws.model.extensions.wrapToAny
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +25,7 @@ class AddGroupItemReducer constructor(
     private var scope = CoroutineScope(Dispatchers.Main + job)
 
     override fun addGroupItem(groupId: String, item: GroupItem) {
-        when(item.title.length >= 4) {
+        when(item.title.length >= minEntityNameLength) {
             true -> {
                 val result = storage.addNewItemToGroup(groupId, item)
                 result.onSuccess {
