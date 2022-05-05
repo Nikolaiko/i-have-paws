@@ -17,4 +17,3 @@ let tabTiteBackgroundColor = Color.init(hex: UInt(ColorsKt.topPanelBackground))
 let tabTitleTextColor = blueLightPrimary
 
 let bottomButtonTextColor = Color.init(hex: UInt(ColorsKt.nativeWhite))
-

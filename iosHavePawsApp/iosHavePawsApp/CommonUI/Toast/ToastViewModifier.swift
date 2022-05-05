@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 struct Toast: ViewModifier {
-  
+
     let message: String
     @Binding var isShowing: Bool
     let config: UIToastModel

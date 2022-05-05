@@ -15,6 +15,6 @@
 - Язык : Swift
 - DI : [Resolver](https://github.com/hmlongco/Resolver)
 - Navigation : [SwiftDevPackage](https://github.com/ISSArt-LLC/SwiftDeveloperPackage)
-- Linter : Нет
+- Linter : [SwiftLint](https://github.com/realm/SwiftLint)
 - Тесты : Нет
 

@@ -2,8 +2,8 @@ import SwiftUI
 import shared
 
 struct GroupItemElement: View {
-    let groupItem: shared.GroupItem    
-    
+    let groupItem: shared.GroupItem
+
     var body: some View {
         GeometryReader { geom in
             HStack {

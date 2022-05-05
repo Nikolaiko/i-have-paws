@@ -16,4 +16,3 @@ enum Montserrat: String {
     case semiBold = "Montserrat-SemiBold"
     case regular = "Montserrat-Medium"
 }
-

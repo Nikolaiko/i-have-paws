@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct DeleteListItemModifier: ViewModifier {
-    
+
     let action: () -> Void
-    
+
     @State var offset: CGSize = .zero
     @State var initialOffset: CGSize = .zero
     @State var contentWidth: CGFloat = 0.0
     @State var willDeleteIfReleased = false
-   
+
     func body(content: Content) -> some View {
         content
             .background(
@@ -35,7 +35,7 @@ struct DeleteListItemModifier: ViewModifier {
                 }
             )
             .offset(x: offset.width, y: 0)
-            .gesture (
+            .gesture(
                 DragGesture()
                     .onChanged { gesture in
                         if gesture.translation.width + initialOffset.width <= 0 {
@@ -63,22 +63,21 @@ struct DeleteListItemModifier: ViewModifier {
             )
             .animation(.interactiveSpring())
     }
-    
+
     private func delete() {
         offset.width = -contentWidth
         action()
     }
-    
+
     private func hapticFeedback() {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
     }
-    
-    //MARK: Constants
-    
+
+    // MARK: Constants
+
     let deletionDistance = CGFloat(200)
     let halfDeletionDistance = CGFloat(50)
     let tappableDeletionWidth = CGFloat(100)
-    
-    
+
 }

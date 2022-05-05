@@ -3,6 +3,7 @@ package com.nikolai.ihavepaws.android
 import android.app.Application
 import com.nikolai.ihavepaws.android.di.storageModule
 import com.nikolai.ihavepaws.android.features.addGroupScreen.di.addGroupScreenModule
+import com.nikolai.ihavepaws.android.features.groupScreen.di.groupScreenModule
 import com.nikolai.ihavepaws.android.features.groupsScreen.di.mainScreenModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,7 +20,8 @@ class App : Application() {
             modules(
                 storageModule,
                 mainScreenModule,
-                addGroupScreenModule
+                addGroupScreenModule,
+                groupScreenModule
             )
         }
     }

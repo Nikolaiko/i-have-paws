@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TabAddPanel: View {
     let tapCallback: VoidCallback
-    
+
     var body: some View {
         HStack {
             Spacer()

@@ -5,37 +5,37 @@ import shared
 import Resolver
 
 class AddGroupItemPresenter: ObservableObject {
-    
+
     @Published var newEntityName = ""
     @Published var addButtonEnabled = false
-    
+
     @Injected private var reducer: AddGroupItemReducer
-    
+
     private var subscriptions: Set<AnyCancellable> = []
-    private var addCallback: ErrorCallback? = nil
-    
+    private var addCallback: ErrorCallback?
+
     init() {
         $newEntityName
             .sink { [weak self] currentValue in
                 self?.addButtonEnabled = self?.validateGroupItemName(value: currentValue) ?? false
             }
             .store(in: &subscriptions)
-        
+
         FlowPublisher(kotlinFlow: reducer.messages).sink { [weak self] message in
             self?.messageReceived(message: message)
         }.store(in: &subscriptions)
     }
-    
+
     func addEntity(groupId: String, callback: ErrorCallback? = nil) {
         addCallback = callback
         let item = shared.GroupItem(id: UUID().uuidString, title: newEntityName, active: true)
         reducer.addGroupItem(groupId: groupId, item: item)
     }
-    
+
     private func validateGroupItemName(value: String) -> Bool {
         value.count >= RequrementsConstsKt.minEntityNameLength
     }
-    
+
     private func messageReceived(message: StateMessage) {
             switch message {
             case is StateMessage.SuccessMessage:

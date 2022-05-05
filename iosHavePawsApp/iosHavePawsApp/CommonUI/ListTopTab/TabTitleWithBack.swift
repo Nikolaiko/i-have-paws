@@ -4,7 +4,7 @@ import SwiftDevPackage
 struct TabTitleWithBack: View {
     let title: String
     @EnvironmentObject private var navigation: NavigationControllerViewModel
-    
+
     var body: some View {
         ZStack {
             HStack {
@@ -20,7 +20,7 @@ struct TabTitleWithBack: View {
                 TabTitleText(text: title)
                 Spacer()
             }
-        }        
+        }
         .padding(.bottom, 16.0)
         .frame(maxWidth: .infinity)
         .background(tabTiteBackgroundColor)

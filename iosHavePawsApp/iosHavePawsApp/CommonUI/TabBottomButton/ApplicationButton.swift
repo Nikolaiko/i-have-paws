@@ -5,10 +5,10 @@ struct ApplicationButton: View {
     private let height: CGFloat?
     private let enabled: Bool
     private let backgroundColor: Color
-    
+
     private let title: String
     private let callback: VoidCallback
-    
+
     init(
         buttonTitle: String,
         buttonCallback: @escaping VoidCallback = {},
@@ -24,13 +24,13 @@ struct ApplicationButton: View {
         enabled = buttonEnabled
         backgroundColor = buttonColor
     }
-    
+
     var body: some View {
         Button(action: callback) {
             Text(title)
                 .font(bottomButtonFont)
                 .padding(6.0)
-                .frame(maxWidth: width, maxHeight: height)                
+                .frame(maxWidth: width, maxHeight: height)
                 .foregroundColor(bottomButtonTextColor)
                 .background(enabled ? backgroundColor : mainDisabledButtonColor)
                 .cornerRadius((height ?? 0.0) * 0.24)

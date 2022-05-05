@@ -3,7 +3,7 @@ import SwiftUI
 struct GroupElement: View {
     let groupName: String
     let deleteGroupCallback: VoidCallback
-    
+
     var body: some View {
         GeometryReader { geom in
             HStack {

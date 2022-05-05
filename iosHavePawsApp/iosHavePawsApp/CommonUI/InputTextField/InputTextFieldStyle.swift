@@ -6,12 +6,12 @@ struct InputTextFieldStyle: TextFieldStyle {
     static let defaultBackgroundColor = Color.white
     static let defaultStrokeColor = Color.black
     static let defaultStrokeWidth = 4.0
-    
+
     private let cornerRadius: CGFloat
     private let backgroundColor: Color
     private let strokeColor: Color
     private let strokeWidth: CGFloat
-    
+
     init(
         radius: CGFloat = InputTextFieldStyle.defaultCorderRadius,
         background: Color = InputTextFieldStyle.defaultBackgroundColor,
@@ -23,7 +23,8 @@ struct InputTextFieldStyle: TextFieldStyle {
         strokeColor = strokeLineColor
         strokeWidth = strokeLineWidth
     }
-    
+
+    // swiftlint:disable identifier_name
     func _body(configuration: TextField<_Label>) -> some View {
         configuration
             .background(
@@ -32,4 +33,5 @@ struct InputTextFieldStyle: TextFieldStyle {
                     .background(backgroundColor)
             )
     }
+    // swiftlint:enable identifier_name
 }

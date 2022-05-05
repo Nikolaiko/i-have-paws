@@ -4,7 +4,7 @@ struct FAB<ButtonView: View>: ViewModifier {
     let color: Color
     let buttonContent: ButtonView
     let action: VoidCallback
-    
+
     func body(content: Content) -> some View {
         GeometryReader { geo in
             ZStack {
@@ -14,7 +14,7 @@ struct FAB<ButtonView: View>: ViewModifier {
             }
         }
     }
-    
+
     @ViewBuilder private func button(_ geom: GeometryProxy) -> some View {
         let buttonSize = geom.size.height * fabButtonHeightCoff
         VStack {
