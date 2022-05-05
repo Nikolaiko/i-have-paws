@@ -8,9 +8,15 @@ import com.nikolai.ihavepaws.style.blueLightPrimary
 import com.nikolai.ihavepaws.style.tabTitleTextSize
 
 val topTitleSize = tabTitleTextSize.sp
-val menuTitleFontSize = 24.sp
-val menuSubTitleFontSize = 13.sp
-val appButtonFontSize = 13.sp
+
+val smallSize = 13.sp
+val mediumSize = 17.sp
+val largeSize = 24.sp
+
+val menuTitleFontSize = largeSize
+val menuSubTitleFontSize = smallSize
+val appButtonFontSize = smallSize
+val groupNameFontSize = largeSize
 
 val titleTextStyle = TextStyle(
     color = topPanelTitleColor,
@@ -36,6 +42,13 @@ val menuSubTitleTextStyle = TextStyle(
 val appButtonTextStyle = TextStyle(
     color = appButtonTextColor,
     fontSize = appButtonFontSize,
+    fontWeight = FontWeight.SemiBold,
+    fontFamily = montserratFont
+)
+
+val groupNameTextStyle = TextStyle(
+    color = lightBluePrimaryColor,
+    fontSize = groupNameFontSize,
     fontWeight = FontWeight.SemiBold,
     fontFamily = montserratFont
 )

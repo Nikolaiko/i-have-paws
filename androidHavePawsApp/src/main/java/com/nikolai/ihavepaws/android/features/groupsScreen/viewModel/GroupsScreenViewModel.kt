@@ -4,10 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nikolai.ihavepaws.android.features.groupsScreen.model.GroupsViewState
+import com.nikolai.ihavepaws.android.model.ViewModelMessage
 import com.nikolai.ihavepaws.groupsScreen.contract.GroupsScreen
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.StateMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,10 +20,12 @@ class GroupsScreenViewModel @Inject constructor(
 
     private val groupsList = MutableLiveData<List<Group>>(emptyList())
     private val showAddGroup = MutableLiveData(false)
+    private val messages = MutableSharedFlow<ViewModelMessage>()
 
     val state = GroupsViewState(
         groups = groupsList,
-        showAddGroupScreen = showAddGroup
+        showAddGroupScreen = showAddGroup,
+        messages = messages
     )
 
     init {
@@ -33,7 +37,7 @@ class GroupsScreenViewModel @Inject constructor(
 
         viewModelScope.launch {
             reducer.messages.collect {
-                processMessage(it)
+                messages.emit(ViewModelMessage.Error(it.text))
             }
         }
     }
@@ -50,15 +54,16 @@ class GroupsScreenViewModel @Inject constructor(
         showAddGroup.postValue(false)
     }
 
-    fun deleteGroup() {
+    fun deleteGroup(item: Group) {
+        reducer.removeGroup(item.name)
+        reducer.refreshGroupsList()
+    }
+
+    fun openGroup(item: Group) {
 
     }
 
     private fun updateState(newState: GroupsScreen.State) {
         groupsList.postValue(newState.groups)
-    }
-
-    private fun processMessage(newMessage: StateMessage) {
-
     }
 }

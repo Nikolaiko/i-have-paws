@@ -1,0 +1,63 @@
+package com.nikolai.ihavepaws.android.features.groupsScreen.view
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.nikolai.ihavepaws.android.R
+import com.nikolai.ihavepaws.android.model.consts.groupRowHorizontalPadding
+import com.nikolai.ihavepaws.android.model.consts.groupRowVerticalPadding
+import com.nikolai.ihavepaws.android.model.style.groupNameTextStyle
+import com.nikolai.ihavepaws.android.model.style.lightBlue30
+import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
+
+@Composable
+fun GroupRow(
+    modifier: Modifier = Modifier,
+    title: String,
+    crossTapCallback: VoidCallback
+) {
+    BoxWithConstraints(
+        modifier = modifier
+            .background(lightBlue30)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = maxWidth.times(groupRowHorizontalPadding))
+                .padding(vertical = maxHeight.times(groupRowVerticalPadding)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(title, style = groupNameTextStyle)
+            Spacer(modifier = Modifier.weight(1.0f))
+            Image(
+                painterResource(id = R.drawable.png_delete_button),
+                contentDescription = "",
+                contentScale = ContentScale.FillHeight,
+                modifier = Modifier
+                    .fillMaxHeight(1.0f)
+                    .clickable { crossTapCallback() }
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun GroupRowPreview() {
+    Surface {
+        GroupRow(
+            title = "Skuratov",
+            crossTapCallback = { }
+        )
+    }
+}

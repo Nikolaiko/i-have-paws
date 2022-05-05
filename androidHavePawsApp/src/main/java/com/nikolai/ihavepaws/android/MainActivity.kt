@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity() {
                             state = groupScreenViewModel.state,
                             initGroupsCallback = groupScreenViewModel::initGroupsList,
                             showAddGroupCallback = groupScreenViewModel::showAddGroupScreen,
-                            hideAddGroupCallback = groupScreenViewModel::hideAddGroupScreen
+                            hideAddGroupCallback = groupScreenViewModel::hideAddGroupScreen,
+                            deleteGroupCallback = groupScreenViewModel::deleteGroup,
+                            openGroupCallback = groupScreenViewModel::openGroup
                         )
                     }
                 }
