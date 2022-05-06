@@ -49,6 +49,7 @@ struct AddGroupView: View {
                 .foregroundColor(blueLightPrimary)
                 .font(inputTextFont)
                 .multilineTextAlignment(.center)
+                .accessibilityLabel(newEntityTextFieldLabel)
 
             ApplicationButton(
                 buttonTitle: "Добавить",
@@ -58,6 +59,7 @@ struct AddGroupView: View {
                 buttonHeight: 50.0,
                 buttonEnabled: presenter.addButtonEnabled
             )
+            .accessibilityLabel(addEntityButtonLabel)
             .disabled(!presenter.addButtonEnabled)
         }
         .padding(.all, 16.0)

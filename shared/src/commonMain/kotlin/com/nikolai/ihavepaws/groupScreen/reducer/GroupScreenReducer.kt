@@ -25,8 +25,8 @@ class GroupScreenReducer constructor(
     private val job = Job()
     private var scope = CoroutineScope(Dispatchers.Main + job)
 
-    override fun getGroup(group: Group) {
-        val result = storage.getGroupByName(group.name)
+    override fun getGroupByName(name: String) {
+        val result = storage.getGroupByName(name)
         result.onSuccess {
             currentState = currentState.copy(
                 group = it,
@@ -43,7 +43,7 @@ class GroupScreenReducer constructor(
     override fun deleteGroupItem(item: GroupItem) {
         val result = storage.deleteGroupItemById(item.id)
         result.onSuccess {
-            getGroup(currentState.group)
+            getGroupByName(currentState.group.name)
         }
         result.onFailure {
             val message = StateMessage.ErrorMessage(it.message ?: deleteGroupItemsError)
@@ -54,7 +54,7 @@ class GroupScreenReducer constructor(
     override fun toggleGroupItemActiveState(groupItem: GroupItem) {
         val result = storage.updateGroupItemActiveState(groupItem.id, !groupItem.active)
         result.onSuccess {
-            getGroup(currentState.group)
+            getGroupByName(currentState.group.name)
         }
         result.onFailure {
             val message = StateMessage.ErrorMessage(it.message ?: setGroupItemActiveStateError)

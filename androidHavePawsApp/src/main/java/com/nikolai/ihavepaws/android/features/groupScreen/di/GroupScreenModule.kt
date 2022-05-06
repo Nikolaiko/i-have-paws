@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val groupScreenModule = module {
     single<GroupScreen.Reducer> { GroupScreenReducer(get()) }
-    viewModel { GroupScreenViewModel(get()) }
+    viewModel { GroupScreenViewModel(get(), get()) }
 }

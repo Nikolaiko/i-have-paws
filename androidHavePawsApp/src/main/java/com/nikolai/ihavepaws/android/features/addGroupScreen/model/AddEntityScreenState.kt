@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import com.nikolai.ihavepaws.android.model.ViewModelMessage
 import kotlinx.coroutines.flow.SharedFlow
 
-data class AddGroupScreenState(
-    val groupName: LiveData<String>,
+data class AddEntityScreenState(
+    val entityName: LiveData<String>,
     val addButtonEnabled: LiveData<Boolean>,
     val messages: SharedFlow<ViewModelMessage>
 )

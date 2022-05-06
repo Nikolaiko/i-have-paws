@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nikolai.ihavepaws.android.model.consts.topTitleBottomPadding
@@ -28,6 +29,8 @@ fun TopTitlePanel(
         Text(
             text = title,
             style = titleTextStyle,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(start = topTitleLeadingPadding.dp)
         )

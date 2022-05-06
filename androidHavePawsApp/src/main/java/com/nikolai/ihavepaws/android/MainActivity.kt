@@ -7,18 +7,30 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.nikolai.ihavepaws.android.features.groupScreen.view.GroupScreenView
+import com.nikolai.ihavepaws.android.features.groupScreen.viewModel.GroupScreenViewModel
 import com.nikolai.ihavepaws.android.features.groupsScreen.view.GroupsScreenView
 import com.nikolai.ihavepaws.android.features.groupsScreen.viewModel.GroupsScreenViewModel
 import com.nikolai.ihavepaws.android.navigation.AppScreens
 import com.nikolai.ihavepaws.android.model.consts.appMainGraph
+import com.nikolai.ihavepaws.android.model.consts.groupIdParameter
+import com.nikolai.ihavepaws.android.navigation.AppNavigator
+import org.koin.androidx.compose.get
+import org.koin.androidx.compose.inject
 import org.koin.androidx.compose.viewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navigation: AppNavigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             val navigationController = rememberNavController()
+
+            navigation = get()
+            navigation.setNavigator(navigationController)
 
             NavHost(navController = navigationController, startDestination = appMainGraph) {
                 navigation(startDestination = AppScreens.MainScreen.route, route = appMainGraph) {
@@ -31,6 +43,21 @@ class MainActivity : AppCompatActivity() {
                             hideAddGroupCallback = groupScreenViewModel::hideAddGroupScreen,
                             deleteGroupCallback = groupScreenViewModel::deleteGroup,
                             openGroupCallback = groupScreenViewModel::openGroup
+                        )
+                    }
+                    composable(route = AppScreens.GroupScreen.route) {
+                        val groupName = it.arguments?.getString(groupIdParameter) ?: ""
+                        val groupViewModel: GroupScreenViewModel by viewModel()
+
+                        GroupScreenView(
+                            state = groupViewModel.state,
+                            groupName = groupName,
+                            initGroupCallback = groupViewModel::initWithGroup,
+                            backButtonTapCallback = groupViewModel::backButtonCallback,
+                            showAddGroupItemCallback = groupViewModel::showAddGroupItemScreen,
+                            hideAddGroupItemCallback = groupViewModel::hideAddGroupItemScreen,
+                            deleteGroupItemCallback = groupViewModel::deleteGroupItem,
+                            toggleStateCallback = groupViewModel::toggleGroupItemStatus
                         )
                     }
                 }

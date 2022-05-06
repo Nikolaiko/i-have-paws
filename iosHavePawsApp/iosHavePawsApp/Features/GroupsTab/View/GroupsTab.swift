@@ -14,6 +14,7 @@ struct GroupsTab: View {
                     .computeFrame(frameSize: geom.size)
 
                 TabTitle(title: "Группы")
+                    .accessibilityLabel(screenTitleLabel)
                 List {
                     ForEach(presenter.groupsList, id: \.self) { group in
                         GroupElement(groupName: group.name, deleteGroupCallback: { presenter.deleteGroup(item: group) })
@@ -38,6 +39,7 @@ struct GroupsTab: View {
                 menuSubtitle: "(не менее 4-х символов)",
                 showMenu: $showAddMenu
             )
+            .accessibilityLabel(addGroupViewLabel)
         }
     }
 

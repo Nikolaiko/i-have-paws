@@ -1,11 +1,12 @@
-package com.nikolai.ihavepaws.android.features.addGroupScreen.view
+package com.nikolai.ihavepaws.android.features.addGroupItemScreen.view
 
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.commonComposables.buttons.SimpleAppButton
+import com.nikolai.ihavepaws.android.features.addGroupItemScreen.viewModel.AddGroupItemViewModel
 import com.nikolai.ihavepaws.android.features.addGroupScreen.viewModel.AddGroupViewModel
 import com.nikolai.ihavepaws.android.model.ViewModelMessage
 import com.nikolai.ihavepaws.android.model.consts.errorEffectName
@@ -28,23 +30,24 @@ import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun AddGroupScreen(
+fun AddGroupItemScreen(
     modifier: Modifier = Modifier,
+    selectedGroupId: String,
     onSuccess: VoidCallback,
     onCloseRequest: VoidCallback
 ) {
-    val addViewModel: AddGroupViewModel = getViewModel()
+    val addViewModel: AddGroupItemViewModel = getViewModel()
     val groupName = addViewModel.state.entityName.observeAsState("")
     val addEnabled = addViewModel.state.addButtonEnabled.observeAsState(false)
 
     LaunchedEffect(initialEffectName) {
         addViewModel.resetViewModel()
+        addViewModel.initGroup(selectedGroupId)
     }
 
     val context = LocalContext.current.applicationContext
     LaunchedEffect(errorEffectName) {
         addViewModel.state.messages.collect {
-            println(it)
             when(it) {
                 is ViewModelMessage.Success -> onSuccess()
                 else -> {
@@ -68,7 +71,7 @@ fun AddGroupScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    stringResource(id = R.string.add_group_title_text),
+                    stringResource(id = R.string.add_group_item_title_text),
                     style = menuTitleTextStyle
                 )
                 Text(
@@ -111,9 +114,10 @@ fun AddGroupScreen(
 
 @Preview
 @Composable
-fun AddGroupScreenPreview() {
+fun AddGroupItemScreenPreview() {
     Surface {
-        AddGroupScreen(
+        AddGroupItemScreen(
+            selectedGroupId = "",
             onSuccess = { },
             onCloseRequest =  { }
         )

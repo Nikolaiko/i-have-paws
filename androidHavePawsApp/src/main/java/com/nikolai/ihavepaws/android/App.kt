@@ -1,7 +1,8 @@
 package com.nikolai.ihavepaws.android
 
 import android.app.Application
-import com.nikolai.ihavepaws.android.di.storageModule
+import com.nikolai.ihavepaws.android.di.commonModule
+import com.nikolai.ihavepaws.android.features.addGroupItemScreen.di.addGroupItemModule
 import com.nikolai.ihavepaws.android.features.addGroupScreen.di.addGroupScreenModule
 import com.nikolai.ihavepaws.android.features.groupScreen.di.groupScreenModule
 import com.nikolai.ihavepaws.android.features.groupsScreen.di.mainScreenModule
@@ -18,9 +19,10 @@ class App : Application() {
             androidContext(this@App)
 
             modules(
-                storageModule,
+                commonModule,
                 mainScreenModule,
                 addGroupScreenModule,
+                addGroupItemModule,
                 groupScreenModule
             )
         }

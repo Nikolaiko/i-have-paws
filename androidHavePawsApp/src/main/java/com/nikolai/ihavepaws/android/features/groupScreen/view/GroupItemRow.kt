@@ -1,4 +1,4 @@
-package com.nikolai.ihavepaws.android.features.groupsScreen.view
+package com.nikolai.ihavepaws.android.features.groupScreen.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,8 +9,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.nikolai.ihavepaws.android.R
@@ -21,15 +24,22 @@ import com.nikolai.ihavepaws.android.model.style.lightBlue30
 import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
 
 @Composable
-fun GroupRow(
+fun GroupItemRow(
     modifier: Modifier = Modifier,
     title: String,
-    crossTapCallback: VoidCallback
+    isActive: Boolean,
+    crossTapCallback: VoidCallback,
+    toggleState: VoidCallback
 ) {
+    val resourceId = when(isActive) {
+        true -> R.drawable.svg_selected
+        false -> R.drawable.svg_unselected
+    }
+
     BoxWithConstraints(
         modifier = modifier
-            .background(lightBlue30)
     ) {
+        val viewMaxWidth = maxWidth
         Row(
             modifier = Modifier
                 .fillMaxSize()
@@ -38,6 +48,14 @@ fun GroupRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
+            Image(
+                imageVector = ImageVector.vectorResource(id = resourceId),
+                contentDescription = "",
+                contentScale = ContentScale.FillHeight,
+                modifier = Modifier
+                    .padding(end = viewMaxWidth.times(0.08f))
+                    .clickable { toggleState() }
+            )
             Text(
                 title,
                 style = groupNameTextStyle,
@@ -57,13 +75,16 @@ fun GroupRow(
     }
 }
 
+
 @Preview
 @Composable
-fun GroupRowPreview() {
+fun GroupItemRowPreview() {
     Surface {
-        GroupRow(
-            title = "Skuratov",
-            crossTapCallback = { }
+        GroupItemRow(
+            title = "Title",
+            isActive = true,
+            crossTapCallback = {},
+            toggleState = { }
         )
     }
 }

@@ -5,6 +5,7 @@ struct TabTitleText: View {
 
     var body: some View {
         Text(text)
+            .lineLimit(1)
             .font(tabTitleFont)
             .foregroundColor(tabTitleTextColor)
     }

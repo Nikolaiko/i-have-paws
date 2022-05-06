@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nikolai.ihavepaws.android.features.groupsScreen.model.GroupsViewState
 import com.nikolai.ihavepaws.android.model.ViewModelMessage
+import com.nikolai.ihavepaws.android.navigation.AppNavigator
+import com.nikolai.ihavepaws.android.navigation.AppScreens
 import com.nikolai.ihavepaws.groupsScreen.contract.GroupsScreen
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.StateMessage
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GroupsScreenViewModel @Inject constructor(
-    private val reducer: GroupsScreen.Reducer
+    private val reducer: GroupsScreen.Reducer,
+    private val navigation: AppNavigator
 ) : ViewModel() {
 
     private val groupsList = MutableLiveData<List<Group>>(emptyList())
@@ -60,7 +63,10 @@ class GroupsScreenViewModel @Inject constructor(
     }
 
     fun openGroup(item: Group) {
+        val groupRoute = AppScreens.GroupScreen
+        groupRoute.buildRoute(item.name)
 
+        navigation.navigateTo(groupRoute)
     }
 
     private fun updateState(newState: GroupsScreen.State) {

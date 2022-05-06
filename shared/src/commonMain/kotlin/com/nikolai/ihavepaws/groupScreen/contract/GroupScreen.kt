@@ -16,7 +16,7 @@ class GroupScreen {
     interface Reducer : BaseReducer {
         val state: AnyFlow<State>
 
-        fun getGroup(group: Group)
+        fun getGroupByName(name: String)
         fun deleteGroupItem(item: GroupItem)
         fun toggleGroupItemActiveState(groupItem: GroupItem)
         fun selectRandomElement()

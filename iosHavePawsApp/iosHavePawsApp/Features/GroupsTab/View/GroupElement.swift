@@ -13,6 +13,7 @@ struct GroupElement: View {
                         ContentSizeCategory.large,
                         color: blueLightPrimary
                     )
+                    .accessibilityLabel(groupElementTitleLabel)
                 Spacer()
                 Image(deleteListItemImage)
                     .resizable()

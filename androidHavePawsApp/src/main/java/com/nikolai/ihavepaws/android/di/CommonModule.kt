@@ -1,6 +1,8 @@
 package com.nikolai.ihavepaws.android.di
 
 import android.content.Context
+import com.nikolai.ihavepaws.android.navigation.AppNavigator
+import com.nikolai.ihavepaws.android.navigation.NavComponentNavigator
 import com.nikolai.ihavepaws.localStorage.LocalStorage
 import com.nikolai.ihavepaws.localStorage.sqldelight.DatabaseDriverFactory
 import com.nikolai.ihavepaws.localStorage.sqldelight.SQLDelightStorage
@@ -17,7 +19,8 @@ import org.koin.dsl.module
 import java.sql.DriverManager
 import javax.inject.Singleton
 
-val storageModule = module {
+val commonModule = module {
     single { DatabaseDriverFactory(androidContext()) }
     single<LocalStorage> { SQLDelightStorage(get()) }
+    single<AppNavigator> { NavComponentNavigator() }
 }

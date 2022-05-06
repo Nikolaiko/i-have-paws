@@ -10,6 +10,7 @@ struct TabAddPanel: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(blueLightPrimary)
+                .accessibilityLabel(addEntityButtonLabel)
                 .onTapGesture {
                     tapCallback()
                 }

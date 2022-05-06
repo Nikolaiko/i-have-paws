@@ -49,7 +49,7 @@ class GroupScreenPresenter: ObservableObject {
 
     func refreshGroup() {
         if let selectedGroup = group {
-            reducer.getGroup(group: selectedGroup)
+            reducer.getGroupByName(name_: selectedGroup.name)
         }
     }
 
