@@ -10,11 +10,14 @@ class InitialStateUITest: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let title = app.otherElements[screenTitleLabel]
-        let plusButton = app.otherElements[addEntityButtonLabel]
+        let title = app.staticTexts[screenTitleLabel]
+        let plusButton = app.images[addEntityButtonLabel]
 
-        XCTAssertTrue(title.exists, "No title button on initial screen")
-        XCTAssertTrue(plusButton.exists, "No plus button on initial screen")
+        let titleExist = title.waitForExistence(timeout: waitForExistanceDelay)
+        let buttonExist = plusButton.waitForExistence(timeout: waitForExistanceDelay)
+
+        XCTAssertTrue(titleExist, "No title button on initial screen")
+        XCTAssertTrue(buttonExist, "No plus button on initial screen")
     }
 
     func testNoOtherScreenAtStart() throws {
@@ -22,7 +25,9 @@ class InitialStateUITest: XCTestCase {
         app.launch()
 
         let addGroupView = app.otherElements[addGroupViewLabel]
-        XCTAssertFalse(addGroupView.exists)
+        let exist = addGroupView.waitForExistence(timeout: waitForExistanceDelay)
+
+        XCTAssertFalse(exist)
     }
 
     func testShowAddScreenOnAddTap() throws {
@@ -30,14 +35,18 @@ class InitialStateUITest: XCTestCase {
         app.launch()
 
         let plusButton = app.images[addEntityButtonLabel]
-        XCTAssertTrue(plusButton.exists, "No plus button on initial screen")
+        let buttonExist = plusButton.waitForExistence(timeout: waitForExistanceDelay)
+        XCTAssertTrue(buttonExist, "No plus button on initial screen")
 
         XCUIApplication().images[addEntityButtonLabel].tap()
 
         let entityTextField = app.textFields["Имя группы"]
         let addButton = app.buttons[addGroupViewLabel]
 
-        XCTAssertTrue(entityTextField.exists)
-        XCTAssertTrue(addButton.exists)
+        let entityTitleExist = entityTextField.waitForExistence(timeout: waitForExistanceDelay)
+        let addButtonExist = addButton.waitForExistence(timeout: waitForExistanceDelay)
+
+        XCTAssertTrue(entityTitleExist)
+        XCTAssertTrue(addButtonExist)
     }
 }

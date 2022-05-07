@@ -10,3 +10,4 @@ let newEntityTextFieldLabel = "new_entity_text_field"
 let addGroupViewLabel = "add_group_view"
 
 let applicationButtonLabel = "application_button_label"
+let tabTitleTextLabel = "tab_title_text_label"

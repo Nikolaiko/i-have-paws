@@ -31,6 +31,14 @@ Load ASC API Key information to use in subsequent lanes
 
 
 
+### ios run_ui_tests
+
+```sh
+[bundle exec] fastlane ios run_ui_tests
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

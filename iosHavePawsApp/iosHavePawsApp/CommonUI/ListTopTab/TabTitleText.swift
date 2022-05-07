@@ -8,5 +8,6 @@ struct TabTitleText: View {
             .lineLimit(1)
             .font(tabTitleFont)
             .foregroundColor(tabTitleTextColor)
+            .accessibilityLabel(tabTitleTextLabel)
     }
 }

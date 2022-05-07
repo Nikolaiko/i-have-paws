@@ -25,4 +25,8 @@ platform :ios do
     build_ios_app
     upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
   end
+
+  lane :run_ui_tests do
+    run_tests(scheme: "iosHavePawsAppUITests")
+  end
 end
