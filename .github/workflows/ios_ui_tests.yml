@@ -40,9 +40,9 @@ jobs:
         working-directory: ./iosHavePawsApp
         run: bundle install   
         
-      - name: Build & deploy iOS release
+      - name: Run iOS UI Tests
         working-directory: ./iosHavePawsApp
-        run: bundle exec fastlane ios upload_to_test_flight
+        run: bundle exec fastlane ios run_ui_tests
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
