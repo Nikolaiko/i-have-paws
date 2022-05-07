@@ -4,5 +4,6 @@
     <string name="add_group_title_text">Имя группы</string>
     <string name="add_group_item_title_text">Имя элемента группы</string>
     <string name="add_group_subtitle_text">(не менее 4-х символов)</string>
+    <string name="random_item_title_text">Тададааам!!!</string>
 
 </resources>

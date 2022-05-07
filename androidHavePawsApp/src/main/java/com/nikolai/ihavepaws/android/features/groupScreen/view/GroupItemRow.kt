@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +51,7 @@ fun GroupItemRow(
         ) {
             Image(
                 imageVector = ImageVector.vectorResource(id = resourceId),
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.toggle_status_button_description),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .padding(end = viewMaxWidth.times(0.08f))
@@ -65,7 +66,7 @@ fun GroupItemRow(
             )
             Image(
                 painterResource(id = R.drawable.png_delete_button),
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.delete_button_description),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .fillMaxHeight(1.0f)

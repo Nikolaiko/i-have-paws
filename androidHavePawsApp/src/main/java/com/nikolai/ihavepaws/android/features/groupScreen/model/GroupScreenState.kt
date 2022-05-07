@@ -10,5 +10,6 @@ data class GroupScreenState(
     val randomButtonEnabled: LiveData<Boolean>,
     val addItemMenuShow: LiveData<Boolean>,
     val groupItems: LiveData<List<GroupItem>>,
-    val messages: SharedFlow<ViewModelMessage>
+    val messages: SharedFlow<ViewModelMessage>,
+    val randomItem: LiveData<GroupItem?>
 )

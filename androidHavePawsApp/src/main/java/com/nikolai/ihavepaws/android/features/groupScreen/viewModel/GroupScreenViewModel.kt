@@ -21,6 +21,7 @@ class GroupScreenViewModel(
 ) : ViewModel() {
 
     private val groupsItemsList = MutableLiveData<List<GroupItem>>(emptyList())
+    private val randomItem = MutableLiveData<GroupItem?>(null)
     private val showAddItem = MutableLiveData(false)
     private val selectedGroupId = MutableLiveData("")
     private val randomButtonEnabled = MutableLiveData(false)
@@ -31,7 +32,8 @@ class GroupScreenViewModel(
         addItemMenuShow = showAddItem,
         messages = messages,
         groupItems = groupsItemsList,
-        selectedGroupId = selectedGroupId
+        selectedGroupId = selectedGroupId,
+        randomItem = randomItem
     )
 
     init {
@@ -50,7 +52,7 @@ class GroupScreenViewModel(
                     is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Info(it.text))
 
                     is StateMessage.SelectedItemMessage -> {
-
+                        randomItem.postValue(it.selectedItem)
                     }
                 }
             }
@@ -59,6 +61,10 @@ class GroupScreenViewModel(
 
     fun initWithGroup(name: String) {
         reducer.getGroupByName(name)
+    }
+
+    fun selectRandomElement() {
+        reducer.selectRandomElement()
     }
 
     fun toggleGroupItemStatus(item: GroupItem) {
@@ -79,6 +85,10 @@ class GroupScreenViewModel(
 
     fun hideAddGroupItemScreen() {
         showAddItem.postValue(false)
+    }
+
+    fun hideRandomItemMenu() {
+        randomItem.postValue(null)
     }
 
     private fun updateState(newState: GroupScreen.State) {

@@ -2,4 +2,6 @@
 <resources>
     <string name="add_button_description">Add new item button</string>
     <string name="back_button_description">Back button</string>
+    <string name="delete_button_description">Delete button</string>
+    <string name="toggle_status_button_description">Toggle button</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -19,11 +20,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.MutableLiveData
 import com.nikolai.ihavepaws.android.R
@@ -33,6 +37,7 @@ import com.nikolai.ihavepaws.android.features.addGroupItemScreen.view.AddGroupIt
 import com.nikolai.ihavepaws.android.features.addGroupScreen.view.AddGroupScreen
 import com.nikolai.ihavepaws.android.features.groupScreen.model.GroupScreenState
 import com.nikolai.ihavepaws.android.model.consts.*
+import com.nikolai.ihavepaws.android.model.style.disabledButtonBackground
 import com.nikolai.ihavepaws.android.model.style.lightBluePrimaryColor
 import com.nikolai.ihavepaws.android.model.style.rootBackgroundColor
 import com.nikolai.ihavepaws.android.model.typealiases.GroupItemActionCallback
@@ -49,11 +54,19 @@ fun GroupScreenView(
     deleteGroupItemCallback: GroupItemActionCallback,
     backButtonTapCallback: VoidCallback,
     showAddGroupItemCallback: VoidCallback,
-    hideAddGroupItemCallback: VoidCallback
+    hideAddGroupItemCallback: VoidCallback,
+    selectRandomElementCallback: VoidCallback,
+    hideRandomItemMenuCallback: VoidCallback
 ) {
     val groupItems = state.groupItems.observeAsState(emptyList())
     val showAddGroupItem = state.addItemMenuShow.observeAsState(false)
     val selectedGroupId = state.selectedGroupId.observeAsState("")
+    val randomEnabled = state.randomButtonEnabled.observeAsState(false)
+    val selectedRandomItem = state.randomItem.observeAsState(null)
+    val buttonBackground = when(randomEnabled.value) {
+        true -> lightBluePrimaryColor
+        false -> disabledButtonBackground
+    }
 
     LaunchedEffect(initialEffectName) {
         initGroupCallback(groupName)
@@ -116,14 +129,20 @@ fun GroupScreenView(
             horizontalAlignment = Alignment.End
         ) {
             Image(
-                painter = rememberVectorPainter(image = Icons.Filled.Add),
+                imageVector = ImageVector.vectorResource(id = R.drawable.svg_dice_image),
                 contentDescription = stringResource(id = R.string.add_button_description),
                 contentScale = ContentScale.FillHeight,
-                colorFilter = ColorFilter.tint(lightBluePrimaryColor),
+                colorFilter = ColorFilter.tint(Color.White),
                 modifier = Modifier
-                    .height(maxViewHeight.times(0.2f))
-                    .width(maxViewHeight.times(0.2f))
-                    .clickable {  }
+                    .padding(bottom = maxViewHeight.times(0.05f))
+                    .padding(end = maxViewHeight.times(0.05f))
+                    .height(maxViewHeight.times(0.1f))
+                    .width(maxViewHeight.times(0.1f))
+                    .clip(CircleShape)
+                    .background(buttonBackground)
+                    .clickable(enabled = randomEnabled.value) {
+                        selectRandomElementCallback()
+                    }
             )
         }
         if (showAddGroupItem.value) {
@@ -139,6 +158,15 @@ fun GroupScreenView(
                 onCloseRequest = hideAddGroupItemCallback
             )
         }
+        if (selectedRandomItem.value != null) {
+            RandomItemView(
+                text = selectedRandomItem.value?.title ?: "",
+                onCloseRequest = hideRandomItemMenuCallback,
+                modifier = Modifier
+                    .width(maxViewWidth.times(0.9f))
+                    .height(maxViewHeight.times(0.5f))
+            )
+        }
     }
 }
 
@@ -152,7 +180,8 @@ fun GroupScreenViewPreview() {
                 addItemMenuShow = MutableLiveData(false),
                 messages = MutableSharedFlow(),
                 groupItems = MutableLiveData(emptyList()),
-                selectedGroupId = MutableLiveData("")
+                selectedGroupId = MutableLiveData(""),
+                randomItem = MutableLiveData(null)
             ),
             "name",
             initGroupCallback =  { },
@@ -160,7 +189,9 @@ fun GroupScreenViewPreview() {
             hideAddGroupItemCallback = { },
             backButtonTapCallback = { },
             toggleStateCallback = { },
-            deleteGroupItemCallback = { }
+            deleteGroupItemCallback = { },
+            selectRandomElementCallback = { },
+            hideRandomItemMenuCallback = { }
         )
     }
 }

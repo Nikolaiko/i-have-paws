@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.nikolai.ihavepaws.android.R
@@ -47,7 +48,7 @@ fun GroupRow(
             )
             Image(
                 painterResource(id = R.drawable.png_delete_button),
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.delete_button_description),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .fillMaxHeight(1.0f)

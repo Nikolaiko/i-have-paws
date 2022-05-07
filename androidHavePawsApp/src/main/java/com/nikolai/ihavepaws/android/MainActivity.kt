@@ -57,7 +57,9 @@ class MainActivity : AppCompatActivity() {
                             showAddGroupItemCallback = groupViewModel::showAddGroupItemScreen,
                             hideAddGroupItemCallback = groupViewModel::hideAddGroupItemScreen,
                             deleteGroupItemCallback = groupViewModel::deleteGroupItem,
-                            toggleStateCallback = groupViewModel::toggleGroupItemStatus
+                            toggleStateCallback = groupViewModel::toggleGroupItemStatus,
+                            selectRandomElementCallback = groupViewModel::selectRandomElement,
+                            hideRandomItemMenuCallback = groupViewModel::hideRandomItemMenu
                         )
                     }
                 }

@@ -2,4 +2,5 @@
 <resources>
     <string name="add_button_title">Добавить</string>
     <string name="cancel_button_title">Отмена</string>
+    <string name="ok_button_title">Оk</string>
 </resources>
