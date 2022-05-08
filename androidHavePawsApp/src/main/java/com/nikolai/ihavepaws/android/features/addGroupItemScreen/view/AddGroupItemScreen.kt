@@ -2,9 +2,19 @@ package com.nikolai.ihavepaws.android.features.addGroupItemScreen.view
 
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
@@ -18,7 +28,6 @@ import androidx.compose.ui.window.Dialog
 import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.commonComposables.buttons.SimpleAppButton
 import com.nikolai.ihavepaws.android.features.addGroupItemScreen.viewModel.AddGroupItemViewModel
-import com.nikolai.ihavepaws.android.features.addGroupScreen.viewModel.AddGroupViewModel
 import com.nikolai.ihavepaws.android.model.ViewModelMessage
 import com.nikolai.ihavepaws.android.model.consts.errorEffectName
 import com.nikolai.ihavepaws.android.model.consts.initialEffectName

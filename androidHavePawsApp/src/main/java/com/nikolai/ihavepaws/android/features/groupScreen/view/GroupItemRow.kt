@@ -1,16 +1,20 @@
 package com.nikolai.ihavepaws.android.features.groupScreen.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -20,9 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.model.consts.groupRowHorizontalPadding
 import com.nikolai.ihavepaws.android.model.consts.groupRowVerticalPadding
+import com.nikolai.ihavepaws.android.model.consts.toggleButtonHeightCoff
+import com.nikolai.ihavepaws.android.model.consts.toggleButtonPaddingCoff
 import com.nikolai.ihavepaws.android.model.style.groupItemNameTextStyle
-import com.nikolai.ihavepaws.android.model.style.groupNameTextStyle
-import com.nikolai.ihavepaws.android.model.style.lightBlue30
 import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
 
 @Composable
@@ -56,8 +60,8 @@ fun GroupItemRow(
                 contentDescription = stringResource(id = R.string.toggle_status_button_description),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
-                    .height(viewMaxHeight.times(0.3f))
-                    .padding(end = viewMaxWidth.times(0.03f))
+                    .height(viewMaxHeight.times(toggleButtonHeightCoff))
+                    .padding(end = viewMaxWidth.times(toggleButtonPaddingCoff))
                     .clickable { toggleState() }
             )
             Text(

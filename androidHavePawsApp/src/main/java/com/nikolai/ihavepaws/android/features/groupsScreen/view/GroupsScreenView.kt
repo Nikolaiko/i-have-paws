@@ -3,37 +3,48 @@ package com.nikolai.ihavepaws.android.features.groupsScreen.view
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.commonComposables.topPanel.TopAddPanel
 import com.nikolai.ihavepaws.android.commonComposables.topPanel.TopTitlePanel
 import com.nikolai.ihavepaws.android.features.addGroupScreen.view.AddGroupScreen
 import com.nikolai.ihavepaws.android.features.groupsScreen.model.GroupsViewState
-import com.nikolai.ihavepaws.android.model.ViewModelMessage
-import com.nikolai.ihavepaws.android.model.consts.*
+import com.nikolai.ihavepaws.android.model.consts.topAddHeight
+import com.nikolai.ihavepaws.android.model.consts.topAddTopPadding
+import com.nikolai.ihavepaws.android.model.consts.initialEffectName
+import com.nikolai.ihavepaws.android.model.consts.errorEffectName
+import com.nikolai.ihavepaws.android.model.consts.groupVertSpacing
+import com.nikolai.ihavepaws.android.model.consts.groupHeightCoff
+import com.nikolai.ihavepaws.android.model.consts.groupWidthCoff
+import com.nikolai.ihavepaws.android.model.consts.groupCornerRadius
+import com.nikolai.ihavepaws.android.model.consts.addDialogHeightCoff
+import com.nikolai.ihavepaws.android.model.consts.addDialogWidthCoff
 import com.nikolai.ihavepaws.android.model.style.rootBackgroundColor
 import com.nikolai.ihavepaws.android.model.typealiases.GroupActionCallback
 import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -104,8 +115,8 @@ fun GroupsScreenView(
         if (showAddGroup.value) {
             AddGroupScreen(
                 modifier = Modifier
-                    .width(maxViewWidth.times(0.9f))
-                    .height(maxViewHeight.times(0.5f)),
+                    .width(maxViewWidth.times(addDialogWidthCoff))
+                    .height(maxViewHeight.times(addDialogHeightCoff)),
                 onSuccess = {
                     initGroupsCallback()
                     hideAddGroupCallback()
@@ -124,7 +135,7 @@ fun MainScreenPreview() {
             state = GroupsViewState(
                 groups = MutableLiveData(emptyList()),
                 showAddGroupScreen = MutableLiveData(true),
-                messages = MutableSharedFlow<ViewModelMessage>()
+                messages = MutableSharedFlow()
             ),
             initGroupsCallback = { },
             showAddGroupCallback = { },

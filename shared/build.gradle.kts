@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("io.realm.kotlin")
     id("com.squareup.sqldelight")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 sqldelight {

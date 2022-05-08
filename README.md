@@ -8,7 +8,7 @@
 # Shared модуль.
 - Язык : Kotlin
 - Библиотека локального хранилища : [SQLDelight](https://github.com/cashapp/sqldelight)
-- Linter : Нет
+- Linter : [detekt](https://github.com/detekt/detekt)
 - Тесты : Нет
 
 # iOS приложение
@@ -18,12 +18,14 @@
 - Linter : [SwiftLint](https://github.com/realm/SwiftLint)
 - Тесты : UI
 - CI/CD : [Fastlane](https://fastlane.tools/), Github Actions. Выкатка в TestFlight, Запуск UI тестов.
+- Опубликовано : [App Store](https://apps.apple.com/us/app/%D1%83-%D0%BC%D0%B5%D0%BD%D1%8F-%D0%BB%D0%B0%D0%BF%D0%BA%D0%B8/id1620575531)
 
 # Android приложение
 - Язык : Kotlin
 - DI : [Koin](https://insert-koin.io/)
 - Navigation : [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-- Linter : Нет
+- Linter : [detekt](https://github.com/detekt/detekt)
 - Тесты : Нет
 - CI/CD : [Fastlane](https://fastlane.tools/). Выкатка в Internal Testing.
+- Опубликовано : Play Market - на рассмотрении
 

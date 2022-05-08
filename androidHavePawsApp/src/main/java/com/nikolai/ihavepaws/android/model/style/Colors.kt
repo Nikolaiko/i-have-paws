@@ -1,7 +1,12 @@
 package com.nikolai.ihavepaws.android.model.style
 
 import androidx.compose.ui.graphics.Color
-import com.nikolai.ihavepaws.style.*
+import com.nikolai.ihavepaws.style.nativeWhite
+import com.nikolai.ihavepaws.style.blueLightPrimary
+import com.nikolai.ihavepaws.style.blueLight30
+import com.nikolai.ihavepaws.style.blueLight20
+import com.nikolai.ihavepaws.style.topPanelBackground
+import com.nikolai.ihavepaws.style.disabledButtonColor
 
 val rootBackgroundColor = Color(nativeWhite)
 val lightBluePrimaryColor = Color(blueLightPrimary)

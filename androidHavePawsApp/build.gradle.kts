@@ -3,11 +3,8 @@ plugins {
     kotlin("android")
 
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("io.gitlab.arturbosch.detekt")
 }
-val var1 by extra("sergeantN1kolai")
-val var2 by extra("key0")
-val var3 by extra("sergeantN1kolai")
 
 android {
     signingConfigs {

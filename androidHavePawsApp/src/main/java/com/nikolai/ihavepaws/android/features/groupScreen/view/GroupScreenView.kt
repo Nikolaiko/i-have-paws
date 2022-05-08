@@ -4,16 +4,19 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
@@ -23,7 +26,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -34,9 +36,17 @@ import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.commonComposables.topPanel.TopAddPanel
 import com.nikolai.ihavepaws.android.commonComposables.topPanel.TopTitleWithArrowPanel
 import com.nikolai.ihavepaws.android.features.addGroupItemScreen.view.AddGroupItemScreen
-import com.nikolai.ihavepaws.android.features.addGroupScreen.view.AddGroupScreen
 import com.nikolai.ihavepaws.android.features.groupScreen.model.GroupScreenState
-import com.nikolai.ihavepaws.android.model.consts.*
+import com.nikolai.ihavepaws.android.model.consts.initialEffectName
+import com.nikolai.ihavepaws.android.model.consts.errorEffectName
+import com.nikolai.ihavepaws.android.model.consts.topAddHeight
+import com.nikolai.ihavepaws.android.model.consts.groupHeightCoff
+import com.nikolai.ihavepaws.android.model.consts.groupVertSpacing
+import com.nikolai.ihavepaws.android.model.consts.topAddTopPadding
+import com.nikolai.ihavepaws.android.model.consts.addDialogWidthCoff
+import com.nikolai.ihavepaws.android.model.consts.randomButtonSizeCoof
+import com.nikolai.ihavepaws.android.model.consts.addDialogHeightCoff
+import com.nikolai.ihavepaws.android.model.consts.randomButtonPaddingCoof
 import com.nikolai.ihavepaws.android.model.style.disabledButtonBackground
 import com.nikolai.ihavepaws.android.model.style.lightBluePrimaryColor
 import com.nikolai.ihavepaws.android.model.style.rootBackgroundColor
@@ -134,10 +144,10 @@ fun GroupScreenView(
                 contentScale = ContentScale.FillHeight,
                 colorFilter = ColorFilter.tint(Color.White),
                 modifier = Modifier
-                    .padding(bottom = maxViewHeight.times(0.05f))
-                    .padding(end = maxViewHeight.times(0.05f))
-                    .height(maxViewHeight.times(0.1f))
-                    .width(maxViewHeight.times(0.1f))
+                    .padding(bottom = maxViewHeight.times(randomButtonPaddingCoof))
+                    .padding(end = maxViewHeight.times(randomButtonPaddingCoof))
+                    .height(maxViewHeight.times(randomButtonSizeCoof))
+                    .width(maxViewHeight.times(randomButtonSizeCoof))
                     .clip(CircleShape)
                     .background(buttonBackground)
                     .clickable(enabled = randomEnabled.value) {
@@ -148,8 +158,8 @@ fun GroupScreenView(
         if (showAddGroupItem.value) {
             AddGroupItemScreen(
                 modifier = Modifier
-                    .width(maxViewWidth.times(0.9f))
-                    .height(maxViewHeight.times(0.5f)),
+                    .width(maxViewWidth.times(addDialogWidthCoff))
+                    .height(maxViewHeight.times(addDialogHeightCoff)),
                 selectedGroupId = selectedGroupId.value,
                 onSuccess = {
                     initGroupCallback(groupName)
@@ -163,8 +173,8 @@ fun GroupScreenView(
                 text = selectedRandomItem.value?.title ?: "",
                 onCloseRequest = hideRandomItemMenuCallback,
                 modifier = Modifier
-                    .width(maxViewWidth.times(0.9f))
-                    .height(maxViewHeight.times(0.5f))
+                    .width(maxViewWidth.times(addDialogWidthCoff))
+                    .height(maxViewHeight.times(addDialogHeightCoff))
             )
         }
     }
