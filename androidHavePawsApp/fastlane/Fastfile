@@ -11,9 +11,11 @@ platform :android do
       task: "clean bundleRelease"
     )
     upload_to_play_store(
+      release_status: "draft",
       track: "internal",
-      version_code: newVersionCode,
-      version_name: newVersionCode.to_s + "(" + newVersionCode.to_s + ".0)"
+      skip_upload_apk: true,
+      version_code: 4,
+      version_name: "urgentOne"
     )
   end
 

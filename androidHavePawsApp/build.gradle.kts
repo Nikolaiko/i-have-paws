@@ -13,10 +13,10 @@ android {
     signingConfigs {
         create("release") {
             storeFile =
-                file("/Users/nikolai/Projects/IHavePaws/androidHavePawsApp/certs/PawsCertsStorage")
-            storePassword = "uWie3ii3"
+                file("./certs/PawsCertsStorage")
+            storePassword = "N1kolaiko"
             keyAlias = "key0"
-            keyPassword = "uWie3ii3"
+            keyPassword = "N1kolaiko"
         }
     }
     compileSdk = 31
@@ -24,8 +24,8 @@ android {
         applicationId = "com.nikolai.ihavepaws.android"
         minSdk = 26
         targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 4
+        versionName = "4.0"
     }
     buildFeatures {
         compose = true
@@ -33,7 +33,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            //signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
