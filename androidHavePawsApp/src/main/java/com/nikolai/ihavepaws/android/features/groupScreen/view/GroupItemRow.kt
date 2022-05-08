@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nikolai.ihavepaws.android.R
 import com.nikolai.ihavepaws.android.model.consts.groupRowHorizontalPadding
 import com.nikolai.ihavepaws.android.model.consts.groupRowVerticalPadding
+import com.nikolai.ihavepaws.android.model.style.groupItemNameTextStyle
 import com.nikolai.ihavepaws.android.model.style.groupNameTextStyle
 import com.nikolai.ihavepaws.android.model.style.lightBlue30
 import com.nikolai.ihavepaws.android.model.typealiases.VoidCallback
@@ -41,11 +42,12 @@ fun GroupItemRow(
         modifier = modifier
     ) {
         val viewMaxWidth = maxWidth
+        val viewMaxHeight = maxHeight
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = maxWidth.times(groupRowHorizontalPadding))
-                .padding(vertical = maxHeight.times(groupRowVerticalPadding)),
+                .padding(horizontal = viewMaxWidth.times(groupRowHorizontalPadding))
+                .padding(vertical = viewMaxHeight.times(groupRowVerticalPadding)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -54,12 +56,13 @@ fun GroupItemRow(
                 contentDescription = stringResource(id = R.string.toggle_status_button_description),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
-                    .padding(end = viewMaxWidth.times(0.08f))
+                    .height(viewMaxHeight.times(0.3f))
+                    .padding(end = viewMaxWidth.times(0.03f))
                     .clickable { toggleState() }
             )
             Text(
                 title,
-                style = groupNameTextStyle,
+                style = groupItemNameTextStyle,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.weight(1.0f)

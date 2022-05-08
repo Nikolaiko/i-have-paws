@@ -84,6 +84,10 @@ kotlin {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+        }
+    }
     compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {

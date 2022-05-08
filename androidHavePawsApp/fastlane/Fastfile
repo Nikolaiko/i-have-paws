@@ -2,8 +2,25 @@ default_platform(:android)
 
 platform :android do
   desc "Upload build to internal test"
-  lane :test do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store(track: "internal")
+  lane :upload_to_internal do
+    internalVersionCodes = google_play_track_version_codes(track: 'internal')
+    newVersionCode = internalVersionCodes.max + 1
+
+    gradle(
+      gradle_path: "../gradlew",
+      task: "clean bundleRelease"
+    )
+    upload_to_play_store(
+      track: "internal",
+      version_code: newVersionCode,
+      version_name: newVersionCode.to_s + "(" + newVersionCode.to_s + ".0)"
+    )
   end
+
+  lane :test_t do
+    internalVersionCodes = google_play_track_version_codes(track: 'internal')
+    newVersionCode = internalVersionCodes.max + 1
+    echo(message: newVersionCode.to_s + "(" + newVersionCode.to_s + ".0)")    
+  end
+
 end

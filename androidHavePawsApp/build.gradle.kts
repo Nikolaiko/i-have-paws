@@ -5,8 +5,20 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
+val var1 by extra("sergeantN1kolai")
+val var2 by extra("key0")
+val var3 by extra("sergeantN1kolai")
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile =
+                file("/Users/nikolai/Projects/IHavePaws/androidHavePawsApp/certs/PawsCertsStorage")
+            storePassword = "uWie3ii3"
+            keyAlias = "key0"
+            keyPassword = "uWie3ii3"
+        }
+    }
     compileSdk = 31
     defaultConfig {
         applicationId = "com.nikolai.ihavepaws.android"
@@ -21,6 +33,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            //signingConfig = signingConfigs.getByName("release")
         }
     }
 

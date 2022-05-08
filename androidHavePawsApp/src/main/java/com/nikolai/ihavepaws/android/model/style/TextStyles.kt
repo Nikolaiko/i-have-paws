@@ -17,6 +17,7 @@ val menuTitleFontSize = largeSize
 val menuSubTitleFontSize = smallSize
 val appButtonFontSize = smallSize
 val groupNameFontSize = largeSize
+val groupItemNameFontSize = mediumSize
 
 val titleTextStyle = TextStyle(
     color = topPanelTitleColor,
@@ -49,6 +50,13 @@ val appButtonTextStyle = TextStyle(
 val groupNameTextStyle = TextStyle(
     color = lightBluePrimaryColor,
     fontSize = groupNameFontSize,
+    fontWeight = FontWeight.SemiBold,
+    fontFamily = montserratFont
+)
+
+val groupItemNameTextStyle = TextStyle(
+    color = lightBluePrimaryColor,
+    fontSize = groupItemNameFontSize,
     fontWeight = FontWeight.SemiBold,
     fontFamily = montserratFont
 )
