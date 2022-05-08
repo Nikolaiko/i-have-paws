@@ -39,3 +39,6 @@ ios.xcworkspace/
 
 .DS_Store
 .externalNativeBuild
+androidHavePawsApp/certs/PawsCertsStorage
+androidHavePawsApp/certs/private_key.pepk
+androidHavePawsApp/certs/service-accoun-key.json
