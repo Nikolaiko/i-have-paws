@@ -27,5 +27,8 @@
 - Linter : [detekt](https://github.com/detekt/detekt)
 - Тесты : Нет
 - CI/CD : [Fastlane](https://fastlane.tools/). Выкатка в Internal Testing.
-- Опубликовано : Play Market - на рассмотрении
+- Опубликовано : [Play Market](https://play.google.com/store/apps/details?id=com.nikolai.ihavepaws.android)
+
+# Дизайн шаблон
+[Figma](https://www.figma.com/file/hs8ix9eyqbhMweDaKu3SHp/Bloo-Lo-Fi-Wireframe-Kit-(Community)?node-id=111%3A3207)
 
