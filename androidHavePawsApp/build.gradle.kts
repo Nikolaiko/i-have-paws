@@ -19,10 +19,10 @@ android {
     compileSdk = 31
     defaultConfig {
         applicationId = "com.nikolai.ihavepaws.android"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 31
-        versionCode = 4
-        versionName = "4.0"
+        versionCode = 5
+        versionName = "5.0"
     }
     buildFeatures {
         compose = true
@@ -75,6 +75,10 @@ dependencies {
 
     //ViewModel LifeCycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-beta01")
+
+    //Compose tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.1.1")
 
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.appcompat:appcompat:1.4.1")

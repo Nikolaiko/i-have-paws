@@ -235,7 +235,6 @@
 		7555FF7D242A565900829871 /* iosHavePawsApp */ = {
 			isa = PBXGroup;
 			children = (
-				91242EB6281BD78700EAF5F5 /* Testing */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				918B98BF27E98A2D00222FCB /* CallbackTypes.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
@@ -342,29 +341,6 @@
 				911F624F28250C970084D8E4 /* InitialStateUITest.swift */,
 			);
 			path = MainScreenUITests;
-			sourceTree = "<group>";
-		};
-		91242EB6281BD78700EAF5F5 /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				91242EB7281BD79400EAF5F5 /* UnitTests */,
-			);
-			path = Testing;
-			sourceTree = "<group>";
-		};
-		91242EB7281BD79400EAF5F5 /* UnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				91242EB8281BD7A100EAF5F5 /* TestObjects */,
-			);
-			path = UnitTests;
-			sourceTree = "<group>";
-		};
-		91242EB8281BD7A100EAF5F5 /* TestObjects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TestObjects;
 			sourceTree = "<group>";
 		};
 		912E7FBC27FAC778001C34A7 /* Toast */ = {
