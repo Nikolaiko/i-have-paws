@@ -21,12 +21,11 @@ platform :ios do
 
   lane :upload_to_test_flight do
     load_asc_api_key
-    increment_build_number
     build_ios_app
     upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
   end
 
   lane :run_ui_tests do
-    run_tests(scheme: "iosHavePawsAppUITests")
+    run_tests(scheme: "iosHavePawsApp")
   end
 end

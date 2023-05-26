@@ -23,7 +23,7 @@ class AddGroupItemPresenter: ObservableObject {
 
         reducer.messagesCallback = { [weak self] message in
             self?.messageReceived(message: message)
-        }        
+        }
     }
 
     func addEntity(groupId: String, callback: ErrorCallback? = nil) {

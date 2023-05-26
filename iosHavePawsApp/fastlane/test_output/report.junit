@@ -1,8 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='iosHavePawsAppUITests.xctest' tests='3' failures='0'>
+<testsuites name='iosHavePawsAppUITests.xctest' tests='7' failures='0'>
+  <testsuite name='iosHavePawsAppUITests.AddGroupScreenTests' tests='4' failures='0'>
+    <testcase classname='iosHavePawsAppUITests.AddGroupScreenTests' name='testAbilityToCloseWithSwipe' time='6.662'/>
+    <testcase classname='iosHavePawsAppUITests.AddGroupScreenTests' name='testAddButtonDisabledAtStart' time='6.500'/>
+    <testcase classname='iosHavePawsAppUITests.AddGroupScreenTests' name='testEnoughEntityLength' time='7.558'/>
+    <testcase classname='iosHavePawsAppUITests.AddGroupScreenTests' name='testNotEnoughEntityLength' time='7.611'/>
+  </testsuite>
   <testsuite name='iosHavePawsAppUITests.InitialStateUITest' tests='3' failures='0'>
-    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testCheckItemsExistance' time='4.841'/>
-    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testNoOtherScreenAtStart' time='12.574'/>
-    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testShowAddScreenOnAddTap' time='5.993'/>
+    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testCheckItemsExistance' time='4.768'/>
+    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testNoOtherScreenAtStart' time='12.625'/>
+    <testcase classname='iosHavePawsAppUITests.InitialStateUITest' name='testShowAddScreenOnAddTap' time='6.448'/>
   </testsuite>
 </testsuites>
