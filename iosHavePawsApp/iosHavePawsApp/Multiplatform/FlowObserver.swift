@@ -12,9 +12,17 @@ class FlowObserver: FlowCollector {
 
     func emit(
         value: Any?,
-        completionHandler: @escaping FlowCompleteCallback = { _, _ in   }
+        completionHandler: @escaping (Error?) -> Void
     ) {
         callback(value)
-        completionHandler(KotlinUnit(), nil)
+        completionHandler(nil)
     }
+
+//    func emit(
+//        value: Any?,
+//        completionHandler: @escaping FlowCompleteCallback = { _, _ in   }
+//    ) {
+//        callback(value)
+//        completionHandler(KotlinUnit(), nil)
+//    }
 }

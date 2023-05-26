@@ -2,21 +2,30 @@ plugins {
     kotlin("multiplatform")
 
     id("com.android.library")
-    id("io.realm.kotlin")
-    id("com.squareup.sqldelight")
+    id("app.cash.sqldelight") version "2.0.0-alpha05"
     id("io.gitlab.arturbosch.detekt")
 }
 
 sqldelight {
-    database("GroupsDatabase") {
-        packageName = "com.nikolai"
-        sourceFolders = listOf("database")
-        schemaOutputDirectory = file("build/dbs")
-        migrationOutputFileFormat = ".sqm"
-        verifyMigrations = true
+    databases {
+        create("GroupsDatabase") {
+            packageName.set("com.nikolai")
+            sourceFolders.set(listOf("database"))
+        }
     }
-    linkSqlite = true
 }
+
+//sqldelight {
+//
+//    database("GroupsDatabase") {
+//        packageName = "com.nikolai"
+//        sourceFolders = listOf("database")
+//        schemaOutputDirectory = file("build/dbs")
+//        migrationOutputFileFormat = ".sqm"
+//        verifyMigrations = true
+//    }
+//    linkSqlite = true
+//}
 
 
 kotlin {
@@ -35,10 +44,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("io.realm.kotlin:library-base:0.9.0")
-                implementation("io.insert-koin:koin-core:3.2.0-beta-1")
-                implementation("com.squareup.sqldelight:runtime:1.5.3")
+                implementation("io.insert-koin:koin-core:3.4.0")
             }
         }
         val commonTest by getting {
@@ -49,8 +57,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
-                implementation("com.squareup.sqldelight:android-driver:1.5.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+                implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
             }
         }
         val androidTest by getting {
@@ -64,7 +72,7 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                implementation("com.squareup.sqldelight:native-driver:1.5.3")
+                implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
             }
 
             dependsOn(commonMain)
