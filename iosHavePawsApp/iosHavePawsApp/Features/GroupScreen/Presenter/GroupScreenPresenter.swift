@@ -17,13 +17,13 @@ class GroupScreenPresenter: ObservableObject {
     private var subscriptions: Set<AnyCancellable> = []
 
     init() {
-        FlowPublisher(kotlinFlow: reducer.state).sink { [weak self] state in
+        reducer.callback = { [weak self] state in
             self?.stateUpdate(newState: state)
-        }.store(in: &subscriptions)
+        }
 
-        FlowPublisher(kotlinFlow: reducer.messages).sink { [weak self] message in
+        reducer.messagesCallback = { [weak self] message in
             self?.messageReceived(newMessage: message)
-        }.store(in: &subscriptions)
+        }
     }
 
     func initWithGroup(item: shared.Group) {

@@ -21,9 +21,9 @@ class AddGroupItemPresenter: ObservableObject {
             }
             .store(in: &subscriptions)
 
-        FlowPublisher(kotlinFlow: reducer.messages).sink { [weak self] message in
+        reducer.messagesCallback = { [weak self] message in
             self?.messageReceived(message: message)
-        }.store(in: &subscriptions)
+        }        
     }
 
     func addEntity(groupId: String, callback: ErrorCallback? = nil) {

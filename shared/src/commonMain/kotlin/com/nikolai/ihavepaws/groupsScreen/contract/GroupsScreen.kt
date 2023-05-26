@@ -1,20 +1,16 @@
 package com.nikolai.ihavepaws.groupsScreen.contract
 
 import com.nikolai.ihavepaws.model.Group
-import com.nikolai.ihavepaws.model.StateMessage
-import com.nikolai.ihavepaws.model.flowsProxy.AnyFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.nikolai.ihavepaws.model.GroupsScreenCallback
+import com.nikolai.ihavepaws.model.base.BaseReducer
 
 class GroupsScreen {
     data class State(
         val groups: List<Group> = emptyList()
     )
 
-    interface Reducer {
-        val state: AnyFlow<State>
-        val messages: AnyFlow<StateMessage>
-
+    interface Reducer: BaseReducer {
+        var callback: GroupsScreenCallback?
         fun refreshGroupsList()
         fun removeGroup(groupName: String)
     }

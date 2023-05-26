@@ -2,10 +2,8 @@ package com.nikolai.ihavepaws.groupScreen.contract
 
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.GroupItem
-import com.nikolai.ihavepaws.model.StateMessage
+import com.nikolai.ihavepaws.model.GroupScreenCallback
 import com.nikolai.ihavepaws.model.base.BaseReducer
-import com.nikolai.ihavepaws.model.flowsProxy.AnyFlow
-import kotlinx.coroutines.flow.SharedFlow
 
 class GroupScreen {
     data class State(
@@ -14,7 +12,7 @@ class GroupScreen {
     )
 
     interface Reducer : BaseReducer {
-        val state: AnyFlow<State>
+        var callback: GroupScreenCallback?
 
         fun getGroupByName(name: String)
         fun deleteGroupItem(item: GroupItem)

@@ -30,14 +30,8 @@ class AddGroupItemViewModel(
     )
 
     init {
-        viewModelScope.launch {
-            reducer.messages.collect {
-                when(it) {
-                    is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Success)
-                    is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(it.text))
-                    else -> messages.tryEmit(ViewModelMessage.Info(it.text))
-                }
-            }
+        reducer.messagesCallback = {
+            processStateUpdate(it)
         }
     }
 
@@ -62,5 +56,15 @@ class AddGroupItemViewModel(
             true
         )
         reducer.addGroupItem(selectedGroupId, groupItem)
+    }
+
+    private fun processStateUpdate(message: StateMessage) {
+        viewModelScope.launch {
+            when(message) {
+                is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Success)
+                is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(message.text))
+                else -> messages.tryEmit(ViewModelMessage.Info(message.text))
+            }
+        }
     }
 }

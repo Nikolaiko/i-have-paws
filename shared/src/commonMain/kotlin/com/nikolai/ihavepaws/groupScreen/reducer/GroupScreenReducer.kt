@@ -2,15 +2,18 @@ package com.nikolai.ihavepaws.groupScreen.reducer
 
 import com.nikolai.ihavepaws.groupScreen.contract.GroupScreen
 import com.nikolai.ihavepaws.localStorage.LocalStorage
-import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.GroupItem
+import com.nikolai.ihavepaws.model.GroupScreenCallback
+import com.nikolai.ihavepaws.model.MessageCallback
 import com.nikolai.ihavepaws.model.StateMessage
-import com.nikolai.ihavepaws.model.consts.*
+import com.nikolai.ihavepaws.model.consts.deleteGroupItemsError
+import com.nikolai.ihavepaws.model.consts.getGroupItemsError
+import com.nikolai.ihavepaws.model.consts.setGroupItemActiveStateError
 import com.nikolai.ihavepaws.model.extensions.isEnabledForRandom
-import com.nikolai.ihavepaws.model.extensions.wrapToAny
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
 
 class GroupScreenReducer constructor(
     private val storage: LocalStorage
@@ -19,8 +22,8 @@ class GroupScreenReducer constructor(
     private val stateFlow = MutableSharedFlow<GroupScreen.State>()
     private val messagesFlow = MutableSharedFlow<StateMessage>()
 
-    override val state = stateFlow.wrapToAny()
-    override val messages = messagesFlow.wrapToAny()
+    override var callback: GroupScreenCallback? = null
+    override var messagesCallback: MessageCallback? = null
 
     private val job = Job()
     private var scope = CoroutineScope(Dispatchers.Main + job)
@@ -69,14 +72,10 @@ class GroupScreenReducer constructor(
     }
 
     private fun emitState() {
-        scope.launch {
-            stateFlow.emit(currentState)
-        }
+        callback?.invoke(currentState)
     }
 
     private fun emitMessage(message: StateMessage) {
-        scope.launch {
-            messagesFlow.emit(message)
-        }
+        messagesCallback?.invoke(message)
     }
 }
