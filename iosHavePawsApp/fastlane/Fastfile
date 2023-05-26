@@ -15,7 +15,7 @@ platform :ios do
     match(
       git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
       type: "appstore", 
-      readonly:true
+      readonly:false
     )
   end
 
