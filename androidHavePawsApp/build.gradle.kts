@@ -16,11 +16,11 @@ android {
             keyPassword = "N1kolaiko"
         }
     }
-    compileSdk = 31
+    compileSdk = 33
     defaultConfig {
         applicationId = "com.nikolai.ihavepaws.android"
-        minSdk = 24
-        targetSdk = 31
+        minSdk = 31
+        targetSdk = 33
         versionCode = 5
         versionName = "5.0"
     }

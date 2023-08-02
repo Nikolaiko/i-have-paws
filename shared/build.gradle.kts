@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    id("org.jetbrains.compose")
 
     id("com.android.library")
     id("app.cash.sqldelight") version "2.0.0-alpha05"
@@ -47,6 +48,13 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("io.realm.kotlin:library-base:0.9.0")
                 implementation("io.insert-koin:koin-core:3.4.0")
+
+                //Compose multiplatform
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
             }
         }
         val commonTest by getting {
@@ -59,6 +67,9 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
                 implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
+
+                //Compose multiplatform
+                api("androidx.activity:activity-compose:1.6.1")
             }
         }
         val androidTest by getting {

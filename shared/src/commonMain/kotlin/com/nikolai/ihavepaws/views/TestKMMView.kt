@@ -1,0 +1,23 @@
+package com.nikolai.ihavepaws.views
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun TestKMMView() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = { println("Hello, World")  }
+        ) {
+            Text("Test Button")
+        }
+    }
+}
