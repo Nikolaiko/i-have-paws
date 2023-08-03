@@ -31,19 +31,19 @@ class GroupsScreenViewModel @Inject constructor(
         messages = messages
     )
 
-    init {
-        viewModelScope.launch {
-            reducer.state.collect {
-                updateState(it)
-            }
-        }
-
-        viewModelScope.launch {
-            reducer.messages.collect {
-                messages.emit(ViewModelMessage.Error(it.text))
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            reducer.state.collect {
+//                updateState(it)
+//            }
+//        }
+//
+//        viewModelScope.launch {
+//            reducer.messages.collect {
+//                messages.emit(ViewModelMessage.Error(it.text))
+//            }
+//        }
+//    }
 
     fun initGroupsList() {
         reducer.refreshGroupsList()
@@ -69,7 +69,7 @@ class GroupsScreenViewModel @Inject constructor(
         navigation.navigateTo(groupRoute)
     }
 
-    private fun updateState(newState: GroupsScreen.State) {
-        groupsList.postValue(newState.groups)
-    }
+//    private fun updateState(newState: GroupsScreen.State) {
+//        groupsList.postValue(newState.groups)
+//    }
 }

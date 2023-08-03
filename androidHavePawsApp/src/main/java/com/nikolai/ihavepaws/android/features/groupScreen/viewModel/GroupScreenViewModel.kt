@@ -34,28 +34,28 @@ class GroupScreenViewModel(
         randomItem = randomItem
     )
 
-    init {
-        viewModelScope.launch {
-            reducer.state.collect {
-                updateState(it)
-            }
-        }
-
-        viewModelScope.launch {
-            reducer.messages.collect {
-                when(it) {
-                    is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(it.text))
-
-                    is StateMessage.InfoMessage,
-                    is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Info(it.text))
-
-                    is StateMessage.SelectedItemMessage -> {
-                        randomItem.postValue(it.selectedItem)
-                    }
-                }
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            reducer.state.collect {
+//                updateState(it)
+//            }
+//        }
+//
+//        viewModelScope.launch {
+//            reducer.messages.collect {
+//                when(it) {
+//                    is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(it.text))
+//
+//                    is StateMessage.InfoMessage,
+//                    is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Info(it.text))
+//
+//                    is StateMessage.SelectedItemMessage -> {
+//                        randomItem.postValue(it.selectedItem)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     fun initWithGroup(name: String) {
         reducer.getGroupByName(name)
@@ -89,9 +89,9 @@ class GroupScreenViewModel(
         randomItem.postValue(null)
     }
 
-    private fun updateState(newState: GroupScreen.State) {
-        randomButtonEnabled.postValue(newState.randomEnabled)
-        groupsItemsList.postValue(newState.group.items)
-        selectedGroupId.postValue(newState.group.id)
-    }
+//    private fun updateState(newState: GroupScreen.State) {
+//        randomButtonEnabled.postValue(newState.randomEnabled)
+//        groupsItemsList.postValue(newState.group.items)
+//        selectedGroupId.postValue(newState.group.id)
+//    }
 }

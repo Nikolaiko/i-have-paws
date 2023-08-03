@@ -26,17 +26,17 @@ class AddGroupViewModel constructor(
         messages = messages
     )
 
-    init {
-        viewModelScope.launch {
-            reducer.messages.collect {
-                when(it) {
-                    is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Success)
-                    is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(it.text))
-                    else -> messages.tryEmit(ViewModelMessage.Info(it.text))
-                }
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            reducer.messages.collect {
+//                when(it) {
+//                    is StateMessage.SuccessMessage -> messages.emit(ViewModelMessage.Success)
+//                    is StateMessage.ErrorMessage -> messages.emit(ViewModelMessage.Error(it.text))
+//                    else -> messages.tryEmit(ViewModelMessage.Info(it.text))
+//                }
+//            }
+//        }
+//    }
 
     fun resetViewModel() {
         groupNameState.postValue("")

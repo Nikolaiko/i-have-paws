@@ -14,8 +14,8 @@ extension Resolver: ResolverRegistering {
             .scope(.application)
 
         // Local Storage
-        register { DatabaseDriverFactory() as DatabaseDriverFactory }
-        register { SQLDelightStorage(factory: resolve()) as LocalStorage  }
+        //register { DatabaseDriverFactory() as DatabaseDriverFactory }
+        register { StubStorage() as LocalStorage  }
             .scope(.application)
 
         // Reducers

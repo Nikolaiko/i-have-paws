@@ -14,8 +14,17 @@ struct iOSApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			//ContentView()
+            ComposeView()
 		}
 	}
+}
+
+struct ComposeView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        IOSTestKMMViewKt.TestView()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 // swiftlint:endable type_name

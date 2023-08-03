@@ -1,20 +1,20 @@
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
-
     id("com.android.library")
-    id("app.cash.sqldelight") version "2.0.0-alpha05"
+
+    //id("app.cash.sqldelight") version "2.0.0-alpha05"
     id("io.gitlab.arturbosch.detekt")
 }
 
-sqldelight {
-    databases {
-        create("GroupsDatabase") {
-            packageName.set("com.nikolai")
-            sourceFolders.set(listOf("database"))
-        }
-    }
-}
+//sqldelight {
+//    databases {
+//        create("GroupsDatabase") {
+//            packageName.set("com.nikolai")
+//            sourceFolders.set(listOf("database"))
+//        }
+//    }
+//}
 
 //sqldelight {
 //
@@ -39,13 +39,14 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
                 implementation("io.realm.kotlin:library-base:0.9.0")
                 implementation("io.insert-koin:koin-core:3.4.0")
 
@@ -65,14 +66,14 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-                implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+                //implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
 
                 //Compose multiplatform
                 api("androidx.activity:activity-compose:1.6.1")
             }
         }
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
@@ -83,7 +84,7 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
+                //implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
             }
 
             dependsOn(commonMain)
