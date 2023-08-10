@@ -5,7 +5,6 @@ import com.nikolai.ihavepaws.android.model.consts.popBackRoute
 
 class NavComponentNavigator : AppNavigator {
     private var controller: NavHostController? = null
-
     override fun setNavigator(navObject: NavHostController) {
         controller = navObject
     }

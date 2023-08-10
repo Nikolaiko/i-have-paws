@@ -1,7 +1,9 @@
-package com.nikolai.ihavepaws.style
+package com.nikolai.ihavepaws.model.consts
+
+const val topAddHeightCoff = 0.1f
 
 const val titleBarBackArrowCoff = 0.064
-const val topAddHeightCoff = 0.05
+
 const val topAddTopPaddingCoff = 0.04
 
 const val groupRowWidthCoff = 0.872

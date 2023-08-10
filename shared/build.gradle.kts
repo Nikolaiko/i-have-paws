@@ -53,7 +53,9 @@ kotlin {
                 //Compose multiplatform
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+
+                //Resources and UI
+                implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
             }
