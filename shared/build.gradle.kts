@@ -1,37 +1,39 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.extraProperties
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
-
-    //id("app.cash.sqldelight") version "2.0.0-alpha05"
     id("io.gitlab.arturbosch.detekt")
+
+    id("app.cash.sqldelight") version "2.0.0-rc02"
+    id("io.realm.kotlin") version "1.10.1"
 }
 
-//sqldelight {
-//    databases {
-//        create("GroupsDatabase") {
-//            packageName.set("com.nikolai")
-//            sourceFolders.set(listOf("database"))
-//        }
-//    }
-//}
-
-//sqldelight {
-//
-//    database("GroupsDatabase") {
-//        packageName = "com.nikolai"
-//        sourceFolders = listOf("database")
-//        schemaOutputDirectory = file("build/dbs")
-//        migrationOutputFileFormat = ".sqm"
-//        verifyMigrations = true
-//    }
-//    linkSqlite = true
-//}
-
+sqldelight {
+    databases {
+        create("GroupsDatabase") {
+            srcDirs.setFrom("src/commonMain/sqldelight")
+            packageName.set("com.nikolai")
+            schemaOutputDirectory.set(file("build/dbs"))
+        }
+    }
+}
 
 kotlin {
-    android()
-    
+
+    android {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
+    }
+
+    jvmToolchain(11)
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -40,6 +42,13 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+
+        }
+    }
+
+    targets.withType(KotlinNativeTarget::class.java).all {
+        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class.java).all {
+            export("dev.icerock.moko:mvvm-core:0.16.1")
         }
     }
 
@@ -47,8 +56,14 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-                implementation("io.realm.kotlin:library-base:0.9.0")
                 implementation("io.insert-koin:koin-core:3.4.0")
+
+                //DI
+                implementation("org.kodein.di:kodein-di:7.19.0")
+                implementation("org.kodein.di:kodein-di-framework-compose:7.19.0")
+
+                //Realm
+                implementation("io.realm.kotlin:library-base:1.10.1")
 
                 //Compose multiplatform
                 implementation(compose.runtime)
@@ -64,12 +79,14 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+                implementation("app.cash.turbine:turbine:1.0.0")
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-                //implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
+                implementation("app.cash.sqldelight:android-driver:2.0.0-rc02")
 
                 //Compose multiplatform
                 api("androidx.activity:activity-compose:1.6.1")
@@ -86,7 +103,7 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                //implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
+                implementation("app.cash.sqldelight:native-driver:2.0.0-rc02")
             }
 
             dependsOn(commonMain)
@@ -111,10 +128,18 @@ android {
         create("release") {
         }
     }
-    compileSdk = 31
+    compileSdk = 33
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
-        targetSdk = 31
+        targetSdk = 33
     }
+}
+
+dependencies {
+    implementation("androidx.core:core:1.10.1")
+    commonMainApi("dev.icerock.moko:mvvm-core:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-compose:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-flow-compose:0.16.1")
 }

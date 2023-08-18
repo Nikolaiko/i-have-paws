@@ -1,6 +1,7 @@
 package com.nikolai.ihavepaws.groupsScreen.view.subviews
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +36,10 @@ fun TopAddButton(
                 .fillMaxHeight(),
             painter = rememberVectorPainter(Icons.Filled.Add),
             contentDescription = addButtonDescription,
-            contentScale = ContentScale.FillHeight
+            contentScale = ContentScale.FillHeight,
+            colorFilter = ColorFilter.tint(
+                MaterialTheme.colorScheme.primary
+            )
         )
     }
 }

@@ -9,8 +9,8 @@ import com.nikolai.ihavepaws.localStorage.stub.StubStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-val commonModule = module {
-    //single { DatabaseDriverFactory(androidContext()) }
-    single<LocalStorage> { StubStorage() }
-    single<AppNavigator> { NavComponentNavigator() }
-}
+//val commonModule = module {
+//    //single { DatabaseDriverFactory(androidContext()) }
+//    single<LocalStorage> { StubStorage() }
+//    single<AppNavigator> { NavComponentNavigator() }
+//}

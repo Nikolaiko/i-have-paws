@@ -6,6 +6,8 @@ import shared
 struct iOSApp: App {
 
     init() {
+        IOSMainDIKt.doInitKoin()
+
 
         UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().backgroundColor = transparentUIColor
