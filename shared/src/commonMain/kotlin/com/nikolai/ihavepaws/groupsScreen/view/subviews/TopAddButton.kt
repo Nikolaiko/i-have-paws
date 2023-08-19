@@ -2,6 +2,7 @@ package com.nikolai.ihavepaws.groupsScreen.view.subviews
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -17,12 +18,15 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.nikolai.ihavepaws.model.DataCallback
+import com.nikolai.ihavepaws.model.VoidCallback
 import com.nikolai.ihavepaws.model.consts.addButtonDescription
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun TopAddButton(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onTap: VoidCallback
 ) {
     Row(
         modifier = modifier
@@ -33,7 +37,8 @@ fun TopAddButton(
     ) {
         Image(
             modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .clickable { onTap() },
             painter = rememberVectorPainter(Icons.Filled.Add),
             contentDescription = addButtonDescription,
             contentScale = ContentScale.FillHeight,
