@@ -7,6 +7,7 @@ plugins {
 }
 
 android {
+    namespace = "com.nikolai.ihavepaws.android"
     signingConfigs {
         create("release") {
             storeFile =

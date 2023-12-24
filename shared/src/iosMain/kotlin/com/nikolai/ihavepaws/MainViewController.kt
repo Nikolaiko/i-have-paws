@@ -1,9 +1,7 @@
-package com.nikolai.ihavepaws.views
+package com.nikolai.ihavepaws
 
-import androidx.compose.ui.interop.LocalUIViewController
 import androidx.compose.ui.window.ComposeUIViewController
 import com.nikolai.ihavepaws.AppMainView
-import com.nikolai.ihavepaws.groupsScreen.view.GroupsScreen
 import platform.UIKit.UIScreen
 import platform.UIKit.UIUserInterfaceStyle
 

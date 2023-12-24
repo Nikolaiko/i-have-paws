@@ -1,29 +1,20 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
+val composeVersion = extra["compose.version"] as String
+val resourceVersion = extra["icerock.resources"] as String
 
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
     id("io.gitlab.arturbosch.detekt")
+    id("dev.icerock.mobile.multiplatform-resources")
 
     id("app.cash.sqldelight") version "2.0.0-rc02"
     id("io.realm.kotlin") version "1.10.1"
 }
 
-sqldelight {
-    databases {
-        create("GroupsDatabase") {
-            srcDirs.setFrom("src/commonMain/sqldelight")
-            packageName.set("com.nikolai")
-            schemaOutputDirectory.set(file("build/dbs"))
-        }
-    }
-}
-
 kotlin {
-
     android {
         compilations.all {
             kotlinOptions {
@@ -73,14 +64,23 @@ kotlin {
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation("dev.icerock.moko:resources:$resourceVersion")
+                implementation("dev.icerock.moko:resources-compose:$resourceVersion")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+
+                //Coroutines test
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+
+                //Flow test
                 implementation("app.cash.turbine:turbine:1.0.0")
+
+                //Resource test
+                implementation("dev.icerock.moko:resources-test:$resourceVersion")
             }
         }
         val androidMain by getting {
@@ -90,6 +90,10 @@ kotlin {
 
                 //Compose multiplatform
                 api("androidx.activity:activity-compose:1.6.1")
+
+                //Preview
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:${composeVersion}")
+                implementation("androidx.compose.ui:ui-tooling:${composeVersion}")
             }
         }
         val androidUnitTest by getting {
@@ -123,7 +127,25 @@ kotlin {
     }
 }
 
+sqldelight {
+    databases {
+        create("GroupsDatabase") {
+            srcDirs.setFrom("src/commonMain/sqldelight")
+            packageName.set("com.nikolai")
+            schemaOutputDirectory.set(file("build/dbs"))
+        }
+    }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.nikolai.ihavepaws"
+    multiplatformResourcesClassName = "sharedRes"
+    multiplatformResourcesVisibility = dev.icerock.gradle.MRVisibility.Internal
+    iosBaseLocalizationRegion = "ru"
+}
+
 android {
+    namespace = "com.nikolai.ihavepaws.android"
     signingConfigs {
         create("release") {
         }
@@ -133,6 +155,13 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
+    }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.7"
     }
 }
 

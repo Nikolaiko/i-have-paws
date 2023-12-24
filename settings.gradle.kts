@@ -3,7 +3,9 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+        mavenLocal()
         maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
+        maven { url = uri("https://plugins.gradle.org/m2/") }
     }
 
     plugins {
@@ -20,6 +22,17 @@ pluginManagement {
         id("org.jetbrains.compose").version(composeVersion)
     }
 }
+
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        maven("https://plugins.gradle.org/m2/")
+    }
+}
+
 
 rootProject.name = "IHavePaws"
 include(":androidHavePawsApp")
