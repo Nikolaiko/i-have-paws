@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.core:core-ktx:+")
     val koin_version= "3.2.0"
 
     implementation(project(":shared"))

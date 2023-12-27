@@ -1,14 +1,16 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
-val composeVersion = extra["compose.version"] as String
+val jetpackComposeVersion = extra["jetpackcompose.version"] as String
 val resourceVersion = extra["icerock.resources"] as String
 val koinVersion = extra["koin.version"] as String
+val decomposeVersion = extra["decompose.version"] as String
 val koinCompose = extra["koin.compose"] as String
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
+
     id("org.jetbrains.compose")
     id("com.android.library")
+
     id("io.gitlab.arturbosch.detekt")
     id("dev.icerock.mobile.multiplatform-resources")
 
@@ -17,6 +19,8 @@ plugins {
 }
 
 kotlin {
+    //androidTarget()
+
     android {
         compilations.all {
             kotlinOptions {
@@ -36,20 +40,34 @@ kotlin {
             baseName = "shared"
             isStatic = true
 
-        }
-    }
-
-    targets.withType(KotlinNativeTarget::class.java).all {
-        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class.java).all {
+            export("com.arkivanov.decompose:decompose:$decomposeVersion")
+            export("com.arkivanov.essenty:lifecycle:2.0.0-alpha02")
+            export("com.arkivanov.essenty:state-keeper:2.0.0-alpha02")
             export("dev.icerock.moko:mvvm-core:0.16.1")
         }
     }
+
+//    targets
+//        .filterIsInstance<KotlinNativeTarget>()
+//        .filter { it.konanTarget.family == org.jetbrains.kotlin.konan.target.Family.IOS }
+//        .forEach {
+//            it.binaries.framework {
+//                export("com.arkivanov.decompose:decompose:$decomposeVersion")
+//                export("com.arkivanov.essenty:lifecycle:2.0.0-alpha02")
+//                export("com.arkivanov.essenty:state-keeper:2.0.0-alpha02")
+//                export("dev.icerock.moko:mvvm-core:0.16.1")
+//            }
+//        }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
 
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
+                //Navigation
+                implementation("com.arkivanov.decompose:decompose:$decomposeVersion")
+                implementation("com.arkivanov.decompose:extensions-compose:$decomposeVersion")
 
                 //DI
                 implementation("io.insert-koin:koin-core:$koinVersion")
@@ -90,6 +108,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
                 implementation("app.cash.sqldelight:android-driver:2.0.0-rc02")
 
+                //Navigation
+                implementation("com.arkivanov.decompose:extensions-android:$decomposeVersion")
+
                 //Compose multiplatform
                 api("androidx.activity:activity-compose:1.8.2")
 
@@ -97,8 +118,8 @@ kotlin {
                 implementation("io.insert-koin:koin-android:$koinVersion")
 
                 //Preview
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:${composeVersion}")
-                implementation("androidx.compose.ui:ui-tooling:${composeVersion}")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:${jetpackComposeVersion}")
+                implementation("androidx.compose.ui:ui-tooling:${jetpackComposeVersion}")
             }
         }
         val androidUnitTest by getting {
@@ -172,6 +193,7 @@ android {
 
 dependencies {
     implementation("androidx.core:core:1.10.1")
+    implementation("androidx.core:core-ktx:+")
     commonMainApi("dev.icerock.moko:mvvm-core:0.16.1")
     commonMainApi("dev.icerock.moko:mvvm-compose:0.16.1")
     commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1")
