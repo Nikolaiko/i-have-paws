@@ -1,7 +1,7 @@
 package com.nikolai.ihavepaws.addGroupItemScreen.reducer
 
 import com.nikolai.ihavepaws.addGroupItemScreen.contract.AddGroupItem
-import com.nikolai.ihavepaws.localStorage.LocalStorage
+import com.nikolai.ihavepaws.services.localStorage.LocalStorage
 import com.nikolai.ihavepaws.model.GroupItem
 import com.nikolai.ihavepaws.model.MessageCallback
 import com.nikolai.ihavepaws.model.StateMessage

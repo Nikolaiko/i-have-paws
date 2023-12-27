@@ -1,7 +1,7 @@
 package com.nikolai.ihavepaws.groupsScreen.viewModel
 
 import com.nikolai.ihavepaws.groupsScreen.contract.GroupsScreen
-import com.nikolai.ihavepaws.localStorage.ObservableLocalStorage
+import com.nikolai.ihavepaws.services.localStorage.ObservableLocalStorage
 import com.nikolai.ihavepaws.model.Group
 import com.nikolai.ihavepaws.model.consts.sharingCoroutineDelay
 import dev.icerock.moko.mvvm.viewmodel.ViewModel

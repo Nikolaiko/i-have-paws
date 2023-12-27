@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,9 @@
 		911F623C2825097A0084D8E4 /* UITestElementTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F623B2825097A0084D8E4 /* UITestElementTags.swift */; };
 		911F624C28250A050084D8E4 /* UITestElementTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F623B2825097A0084D8E4 /* UITestElementTags.swift */; };
 		911F625028250C970084D8E4 /* InitialStateUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F624F28250C970084D8E4 /* InitialStateUITest.swift */; };
+		911F76DC2B3BE99500015189 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F76DB2B3BE99500015189 /* InitialView.swift */; };
+		911F76DE2B3BE9CE00015189 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F76DD2B3BE9CE00015189 /* MainViewController.swift */; };
+		911F76E12B3BEA9300015189 /* InitialView_Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F76E02B3BEA9300015189 /* InitialView_Preview.swift */; };
 		912E7FBE27FAC7B2001C34A7 /* UIToastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FBD27FAC7B2001C34A7 /* UIToastModel.swift */; };
 		912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */; };
 		912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E7FC327FACD46001C34A7 /* View+Toast.swift */; };
@@ -174,6 +177,9 @@
 		911F623B2825097A0084D8E4 /* UITestElementTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestElementTags.swift; sourceTree = "<group>"; };
 		911F6241282509FE0084D8E4 /* iosHavePawsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosHavePawsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		911F624F28250C970084D8E4 /* InitialStateUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialStateUITest.swift; sourceTree = "<group>"; };
+		911F76DB2B3BE99500015189 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		911F76DD2B3BE9CE00015189 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		911F76E02B3BEA9300015189 /* InitialView_Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView_Preview.swift; sourceTree = "<group>"; };
 		912E7FBD27FAC7B2001C34A7 /* UIToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToastModel.swift; sourceTree = "<group>"; };
 		912E7FC127FAC895001C34A7 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		912E7FC327FACD46001C34A7 /* View+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Toast.swift"; sourceTree = "<group>"; };
@@ -295,6 +301,7 @@
 		7555FF7D242A565900829871 /* iosHavePawsApp */ = {
 			isa = PBXGroup;
 			children = (
+				911F76DA2B3BE98200015189 /* Views */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				918B98BF27E98A2D00222FCB /* CallbackTypes.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
@@ -466,6 +473,24 @@
 				911F624F28250C970084D8E4 /* InitialStateUITest.swift */,
 			);
 			path = MainScreenUITests;
+			sourceTree = "<group>";
+		};
+		911F76DA2B3BE98200015189 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				911F76DF2B3BEA8100015189 /* Previews */,
+				911F76DB2B3BE99500015189 /* InitialView.swift */,
+				911F76DD2B3BE9CE00015189 /* MainViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		911F76DF2B3BEA8100015189 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				911F76E02B3BEA9300015189 /* InitialView_Preview.swift */,
+			);
+			path = Previews;
 			sourceTree = "<group>";
 		};
 		912E7FBC27FAC778001C34A7 /* Toast */ = {
@@ -992,6 +1017,7 @@
 				9150F98827EEA0A400AE4BEA /* NavigationDestinations.swift in Sources */,
 				9111AFC127F0CE5A006214E4 /* TabTitleWithBack.swift in Sources */,
 				914FA223281E467B00D82667 /* ToastConsts.swift in Sources */,
+				911F76E12B3BEA9300015189 /* InitialView_Preview.swift in Sources */,
 				9111AFBF27F0CBCC006214E4 /* GroupView.swift in Sources */,
 				912E7FC227FAC895001C34A7 /* ToastViewModifier.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
@@ -1002,6 +1028,7 @@
 				916E884A27ECD6F3007D391A /* DIResolver.swift in Sources */,
 				9110BF942A1FB436000FC87D /* NativeTypeAliases.swift in Sources */,
 				91A5AFF027E8B3BE00DA611B /* AddGroupPresenter.swift in Sources */,
+				911F76DC2B3BE99500015189 /* InitialView.swift in Sources */,
 				91A8194427DA0B3200990954 /* SharedFonts.swift in Sources */,
 				918B98C027E98A2D00222FCB /* CallbackTypes.swift in Sources */,
 				914FA225281E48F200D82667 /* FAB.swift in Sources */,
@@ -1010,6 +1037,7 @@
 				91D4CF2427E7821100362F9B /* AddGroupView.swift in Sources */,
 				911DD90527E60064001F7F18 /* GroupElement.swift in Sources */,
 				912E7FC427FACD46001C34A7 /* View+Toast.swift in Sources */,
+				911F76DE2B3BE9CE00015189 /* MainViewController.swift in Sources */,
 				91FB047128129575004965C9 /* AddGroupItemView.swift in Sources */,
 				91FB046428127394004965C9 /* AddEntityState.swift in Sources */,
 				91A8193C27DA078600990954 /* TabTitleText.swift in Sources */,

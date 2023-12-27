@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 val composeVersion = extra["compose.version"] as String
 val resourceVersion = extra["icerock.resources"] as String
+val koinVersion = extra["koin.version"] as String
+val koinCompose = extra["koin.compose"] as String
 
 plugins {
     kotlin("multiplatform")
@@ -46,12 +48,12 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-                implementation("io.insert-koin:koin-core:3.4.0")
 
                 //DI
-                implementation("org.kodein.di:kodein-di:7.19.0")
-                implementation("org.kodein.di:kodein-di-framework-compose:7.19.0")
+                implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("io.insert-koin:koin-compose:$koinCompose")
 
                 //Realm
                 implementation("io.realm.kotlin:library-base:1.10.1")
@@ -89,7 +91,10 @@ kotlin {
                 implementation("app.cash.sqldelight:android-driver:2.0.0-rc02")
 
                 //Compose multiplatform
-                api("androidx.activity:activity-compose:1.6.1")
+                api("androidx.activity:activity-compose:1.8.2")
+
+                //DI
+                implementation("io.insert-koin:koin-android:$koinVersion")
 
                 //Preview
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:${composeVersion}")

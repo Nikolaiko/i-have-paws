@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
-import com.nikolai.ihavepaws.AppMainView
+import com.nikolai.ihavepaws.appScreens.views.AppMainView
 import com.nikolai.ihavepaws.android.navigation.AppNavigator
 
 class MainActivity : AppCompatActivity() {
@@ -15,10 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            AppMainView(
-                darkTheme = isSystemInDarkTheme(),
-                dynamicColor = true
-            )
+            AppMainView()
 //            val navigationController = rememberNavController()
 //
 //            navigation = get()

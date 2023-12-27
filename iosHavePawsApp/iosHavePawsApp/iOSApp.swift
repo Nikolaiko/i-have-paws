@@ -6,7 +6,7 @@ import shared
 struct iOSApp: App {
 
     init() {
-        IOSMainDIKt.doInitKoin()
+        MainDIKt.doInitKoin()
 
 
         UITableView.appearance().separatorStyle = .none
@@ -16,17 +16,8 @@ struct iOSApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			//ContentView()
-            ComposeView()
+			InitialView()
 		}
 	}
-}
-
-struct ComposeView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 // swiftlint:endable type_name

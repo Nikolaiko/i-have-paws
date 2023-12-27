@@ -1,9 +1,9 @@
 package realmTests
 
 import app.cash.turbine.turbineScope
-import com.nikolai.ihavepaws.localStorage.realm.RealmStorage
-import com.nikolai.ihavepaws.localStorage.realm.realmDbSchema
-import com.nikolai.ihavepaws.localStorage.realm.realmSchemaVersion
+import com.nikolai.ihavepaws.services.localStorage.realm.RealmStorage
+import com.nikolai.ihavepaws.services.localStorage.realm.realmDbSchema
+import com.nikolai.ihavepaws.services.localStorage.realm.realmSchemaVersion
 import com.nikolai.ihavepaws.model.Group
 import io.realm.kotlin.RealmConfiguration
 import kotlinx.coroutines.test.runTest
